@@ -159,27 +159,29 @@
             margin-top: 1rem;
         }
         .gallery-item {
-            width: 100%; /* Take full width of grid cell */
-            height: 180px; /* Fixed height for all containers */
+            width: fit-content; /* This makes the box width adapt to the image + padding */
+            max-width: 100%; /* Ensure it doesn't overflow grid cell */
+            height: auto; /* Height adapts to content */
+            max-height: 180px; /* Maximum height for the box */
             display: flex; /* Use flexbox to center image vertically and horizontally */
             justify-content: center;
             align-items: center;
-            background-color: #3c4a5c; /* Reverted to grayish-blue background */
+            background-color: #3c4a5c; /* Grayish-blue background */
             border-radius: 10px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            border: 1px solid #4a5c6e; /* Reverted to matching border */
+            border: 1px solid #4a5c6e;
             padding: 5px; /* Add some padding inside the container */
             overflow: hidden; /* Ensure image doesn't overflow if bigger */
             transition: transform 0.2s ease-in-out; /* Added hover effect */
+            margin: 0 auto; /* Center the item within its grid cell */
         }
         .gallery-item:hover { /* Added hover effect for gallery items */
             transform: translateY(-3px);
         }
         .gallery-item img {
             max-width: 100%; /* Image should fit within the item */
-            max-height: 100%; /* Image should fit within the item */
-            object-fit: cover; /* Changed back to cover to fill container */
-            /* Removed any previous width/height/margin/padding from img directly to rely on parent .gallery-item */
+            max-height: 170px; /* Image should fit within the item, leaving room for padding */
+            object-fit: contain; /* Show whole image, with background for padding */
         }
         /* Styles for contact information */
         .contact-info a {
