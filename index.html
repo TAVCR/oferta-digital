@@ -6,20 +6,22 @@
     <title>Dimensión Interactiva - Oferta de Servicios</title>
     <!-- Tailwind CSS for rapid and responsive styling -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Google Fonts: Montserrat for headings, Inter for body text, Satisfy for tagline -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;600&family=Satisfy&display=swap" rel="stylesheet">
+    <!-- Google Fonts: League Spartan for headings, Inter for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* CSS Custom Properties for vertical logo positioning */
         :root {
             --header-logo-vertical-offset: -10px; /* Adjust this value (e.g., -10px, 20px) to move the header logo vertically */
             --footer-logo-vertical-offset: -50px; /* Adjust this value (e.g., -10px, 20px) to move the footer logo vertically */
+            --unified-orange-color: #d97706; /* The single unified orange tone (from package-card-title) */
+            --light-orange-accent: #f5a623; /* A slightly lighter accent for hover/subtler elements if needed */
         }
 
         /* General body styles */
         body {
-            font-family: 'Inter', sans-serif; /* Font for general text */
+            font-family: 'Inter', sans-serif; /* New font for general text */
             background-color: #2e2e2e; /* Dark warm gray background */
-            color: #f8f8f8; /* Light text color for readability on dark background */
+            color: #f8f8f8; /* Light text color for readability */
         }
         /* Main container for centering content and limiting width on large screens */
         .container {
@@ -28,17 +30,13 @@
         }
         /* Header styles */
         .header {
-            background-color: #5c4033; /* Deep warm brown for header */
+            background-color: #3a3a3a; /* Changed to match section background color */
             color: white;
             padding: 2rem 1rem;
             text-align: center;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow for dark theme */
-        }
-        /* Custom class for the tagline font */
-        .tagline-font {
-            font-family: 'Satisfy', cursive; /* Applied to the tagline text */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow for dark theme */
         }
         /* Content section styles */
         .section {
@@ -46,26 +44,28 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for sections */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow for sections */
         }
-        /* Section title styles */
+        /* Section title styles - UNIFIED ORANGE & FONT */
         .section-title {
-            font-family: 'Montserrat', sans-serif; /* Font for section titles */
-            font-size: 2rem; /* Larger font size for section titles */
+            font-family: 'League Spartan', sans-serif; /* New font for section titles */
+            font-size: 2.3rem; /* Slightly larger font size for section titles */
             font-weight: 800; /* Bolder */
-            color: #FFB74D; /* Lighter, warmer orange for titles */
+            color: var(--unified-orange-color); /* Unified orange tone */
             margin-bottom: 1rem;
             text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for pop */
         }
-        /* Subsection title styles (like gallery titles) */
+        /* Subsection title styles (like gallery titles) - UNIFIED ORANGE & FONT */
         .subsection-title {
-            font-family: 'Montserrat', sans-serif; /* Font for subtitles */
-            font-size: 1.5rem; /* Font size for subtitles */
+            font-family: 'League Spartan', sans-serif; /* New font for subtitles */
+            font-size: 1.8rem; /* Larger font size for subtitles */
             font-weight: 700;
-            color: #f5a623; /* Orange/Coral as accent */
+            color: var(--unified-orange-color); /* Unified orange tone */
             margin-top: 1.5rem;
             margin-bottom: 0.8rem;
             text-align: center; /* Center subtitles too */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for pop */
         }
         /* Styles for individual service items */
         .service-item {
@@ -81,7 +81,7 @@
             background-color: #4a4a4a; /* Darker hover background */
         }
         .service-item svg {
-            color: #f5a623; /* Accent color for icons */
+            color: var(--unified-orange-color); /* Unified orange tone for icons */
             margin-right: 0.75rem; /* More space to icon */
             flex-shrink: 0;
             width: 28px; /* Slightly larger icons */
@@ -89,34 +89,47 @@
         }
         /* Styles for individual price cards */
         .price-card {
-            background-color: #4a4a4a; /* Darker background for price cards */
+            background-color: #fff3e0; /* Changed to light orange/cream */
             padding: 1.2rem;
             border-radius: 12px;
             margin-bottom: 1rem;
-            border: 1px solid #555555; /* Softer border */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ffe0b2; /* Matching softer border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out; /* Added hover effect */
+        }
+        .price-card:hover { /* Added hover effect for price cards */
+            transform: translateY(-3px);
         }
         .price-card-title {
-            font-family: 'Montserrat', sans-serif; /* Font for price card titles */
+            font-family: 'League Spartan', sans-serif; /* New font for price card titles */
             font-weight: 700;
-            color: #FFB74D; /* Lighter yellow/orange for price card titles */
+            color: var(--unified-orange-color); /* Unified orange tone for price card titles - CORRECTED */
             margin-bottom: 0.6rem;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1); /* Subtle text shadow for pop on light background */
         }
-        /* Styles for promotional package cards */
+        /* New style for text inside price-card for readability */
+        .price-card p {
+            color: #333333; /* Dark text for readability on light background */
+        }
+        /* Styles for promotional package cards - PRESERVED WARM PALETTE (as requested) */
         .package-card {
             background-color: #fff3e0; /* Light orange/Cream (preserved) */
             padding: 1.5rem;
             border-radius: 12px;
             margin-bottom: 1.5rem;
             border: 1px solid #ffe0b2; /* Softer border (preserved) */
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Soft shadow */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Soft shadow */
+            transition: transform 0.2s ease-in-out; /* Added hover effect */
+        }
+        .package-card:hover { /* Added hover effect for package cards */
+            transform: translateY(-3px);
         }
         .package-card-title {
-            font-family: 'Montserrat', sans-serif; /* Font for package titles */
+            font-family: 'League Spartan', sans-serif; /* New font for package titles */
             font-weight: 800;
-            color: #d97706; /* Dark orange (preserved) */
-            font-size: 1.4rem; /* Font size for package titles */
+            color: #d97706; /* Dark orange (preserved, as requested) */
+            font-size: 1.6rem; /* Larger font size for package titles */
             margin-bottom: 0.8rem;
         }
         .package-card ul {
@@ -131,7 +144,7 @@
             color: #333333; /* Darker text for readability on light background */
         }
         .package-card ul li svg {
-            color: #f5a623; /* Accent color for icons (preserved) */
+            color: var(--unified-orange-color); /* Unified orange tone for package icons */
             margin-right: 0.75rem;
             margin-top: 0.2rem;
             flex-shrink: 0;
@@ -145,32 +158,39 @@
             gap: 1rem; /* Space between images */
             margin-top: 1rem;
         }
-        .gallery-grid img {
-            width: 90%; /* Make images 90% of their grid cell width */
-            display: block; /* Required for margin: auto to work */
-            margin: 0 auto; /* Center the image within its grid cell */
-            height: auto; /* Changed to auto to maintain aspect ratio */
-            max-height: 180px; /* Set a max-height to control overall size */
-            object-fit: contain; /* Changed to contain to show full image */
-            background-color: #555555; /* A background color for padding areas */
+        .gallery-item {
+            width: 100%; /* Take full width of grid cell */
+            height: 180px; /* Fixed height for all containers */
+            display: flex; /* Use flexbox to center image vertically and horizontally */
+            justify-content: center;
+            align-items: center;
+            background-color: #3c4a5c; /* Reverted to grayish-blue background */
             border-radius: 10px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease-in-out; /* Hover effect */
-            padding: 5px; /* Add some padding to see the "contain" effect better */
+            border: 1px solid #4a5c6e; /* Reverted to matching border */
+            padding: 5px; /* Add some padding inside the container */
+            overflow: hidden; /* Ensure image doesn't overflow if bigger */
+            transition: transform 0.2s ease-in-out; /* Added hover effect */
         }
-        .gallery-grid img:hover {
-            transform: scale(1.03); /* Slightly larger on hover */
+        .gallery-item:hover { /* Added hover effect for gallery items */
+            transform: translateY(-3px);
+        }
+        .gallery-item img {
+            max-width: 100%; /* Image should fit within the item */
+            max-height: 100%; /* Image should fit within the item */
+            object-fit: cover; /* Changed back to cover to fill container */
+            /* Removed any previous width/height/margin/padding from img directly to rely on parent .gallery-item */
         }
         /* Styles for contact information */
         .contact-info a {
-            color: #FFB74D; /* Lighter orange accent for links */
+            color: var(--unified-orange-color); /* Unified orange tone for links */
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s ease;
         }
         .contact-info a:hover {
             text-decoration: underline;
-            color: #FF9800; /* Darker orange on hover */
+            color: var(--light-orange-accent); /* Use a slightly different orange for hover effect */
         }
 
         /* Styles for YouTube videos */
@@ -183,6 +203,10 @@
             margin-bottom: 1rem; /* Space between videos */
             border-radius: 10px; /* Rounded corners for video container */
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out; /* Added hover effect */
+        }
+        .video-container:hover { /* Added hover effect for video containers */
+            transform: translateY(-3px);
         }
         .video-container iframe {
             position: absolute;
@@ -205,9 +229,8 @@
     <div class="container mx-auto">
         <!-- Header -->
         <header class="header">
-            <!-- Logo in the header - Updated with your ibb.co URL and custom height -->
-            <img src=https://i.postimg.cc/CxBrwd9Y/Soluciones-Digitales-Creativas.png" alt="Dimensión Interactiva Logo" class="mx-auto rounded-lg h-[4.5rem] object-contain mt-[var(--header-logo-vertical-offset)]">
-            <!-- Removed the tagline text as requested -->
+            <!-- Logo in the header -->
+            <img src="https://i.ibb.co/xtbWZDMf/Soluciones-Digitales-Creativas.png" alt="Dimensión Interactiva Logo" class="mx-auto rounded-lg h-[4.5rem] object-contain mb-4 mt-[var(--header-logo-vertical-offset)]">
         </header>
 
         <!-- Welcome Section -->
@@ -245,7 +268,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
-                    <span>Realización de videos comerciales o informativos.</span>
+                    <span>Realización de Videos y Reels comerciales o informativos.</span>
                 </div>
                 <div class="service-item">
                     <!-- Icon for audio editing -->
@@ -260,7 +283,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span>Fotografía Profesional con Cámara Canon y/o Generación de Imágenes con IA.</span>
+                    <span>Fotografía Profesional con Cámara Canon y/o Generación de Imágenes con IA. Retoque Digital con Photoshop, Lightroom y/o IA</span>
                 </div>
                 <div class="service-item">
                     <!-- Icon for social media management -->
@@ -294,25 +317,25 @@
             </p>
             <ul class="list-none p-0">
                 <li class="flex items-center mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     Comprendemos la cultura tica y los hábitos digitales locales
                 </li>
                 <li class="flex items-center mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     Precios accesibles para emprendimientos y pymes
                 </li>
                 <li class="flex items-center mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     Entregas rápidas, contenido personalizado y asesoría constante
                 </li>
                 <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     Diseño y producción con herramientas de alto nivel
@@ -327,25 +350,33 @@
 
             <div class="price-card">
                 <h3 class="price-card-title">Diseño de Logotipos Personalizado</h3>
-                <p>Desde ₡54,000</p>
+                <p>Desde ₡52,000 dependiendo de la complejidad del logotipo</p>
             </div>
             <div class="price-card">
-                <h3 class="price-card-title">Digitalización y Modernización de Logotipos Existentes</h3>
-                <p>₡21,600</p>
+                <h3 class="price-card-title">Digitalización, Modernización y Vectorización de Logotipos Existentes</h3>
+                <p>₡20,000</p>
             </div>
             <div class="price-card">
                 <h3 class="price-card-title">Elaboración de Carteles Promocionales o Banners</h3>
-                <p>₡16,900 c/u</p>
+                <p>₡16,000 c/u</p>
             </div>
             <div class="price-card">
                 <h3 class="price-card-title">Elaboración de Videos de Marca tipo Reel</h3>
-                <p>Video tipo reel con material de stock hasta 1 min: desde ₡81,000 (sin locución, solo música).</p>
-                <p>Con video de Stock, edición de sonido y locución con IA: ₡121,500.</p>
-                <p>Con video filmado y/o profesional y edición de sonido: ₡190,000.</p>
+                <p>Video tipo reel con material de stock hasta 1 min: desde ₡80,000 (sin locución, solo música y subtítulos).</p>
+                <p>Con video de Stock, edición de sonido,  locución con IA y subtítulos: ₡115,000.</p>
+                <p>Con video filmado y/o profesional,  locución humana y subtítulos: ₡190,000.</p>
             </div>
             <div class="price-card">
                 <h3 class="price-card-title">Fotografía de Producto o Eventos con Cámara Profesional Canon/Edición</h3>
-                <p>₡81,000 por hora (incluye edición)</p>
+                <p>₡85,000 por hora (incluye edición y revelado digital)</p>
+            </div>
+            <div class="price-card">
+                <h3 class="price-card-title">Generación de Imágenes por medio de Inteligencia Artificial</h3>
+                <p>Con tecnología de Última Generación como ChatGPT, Gemini, Flux Kontext ₡5,000 por imagen.</p>
+            </div>
+            <div class="price-card">
+                <h3 class="price-card-title">Restauración de fotografías</h3>
+                <p>Desde ₡20,000 por foto, dependiendo del grado de complejidad del proyecto.</p>
             </div>
         </section>
 
@@ -356,7 +387,7 @@
 
             <div class="package-card">
                 <h3 class="package-card-title">Paquete Arranque Digital</h3>
-                <p class="text-gray-700"><strong>Inversión: ₡172,800</strong></p>
+                <p class="text-gray-700"><strong>Inversión: ₡160,000</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
@@ -372,11 +403,11 @@
 
             <div class="package-card">
                 <h3 class="package-card-title">Paquete Impulso Pyme</h3>
-                <p class="text-gray-700"><strong>Inversión: ₡256,500</strong></p>
+                <p class="text-gray-700"><strong>Inversión: ₡290,000</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>2 videos básicos</li>
+                    </svg>2 videos con locución por IA</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>8 afiches promocionales mensuales</li>
@@ -388,11 +419,11 @@
 
             <div class="package-card">
                 <h3 class="package-card-title">Paquete Presencia Completa</h3>
-                <p class="text-gray-700"><strong>Inversión: ₡378,000</strong></p>
+                <p class="text-gray-700"><strong>Inversión: ₡360,000</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>3 videos básicos</li>
+                    </svg>2 Videos Básicos con Sonido y Locución IA, 1 Video Filmado Profesionalmente con Locución Humana </li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>12 diseños gráficos mensuales</li>
@@ -404,16 +435,16 @@
 
             <div class="package-card">
                 <h3 class="package-card-title">Servicio de Administración de Redes Sociales</h3>
-                <p class="text-gray-700"><strong>Inversión: ₡207,900 al mes</strong></p>
+                <p class="text-gray-700"><strong>Inversión: Desde ₡220,000 al mes</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>Manejo de cuentas en Facebook, Instagram, TikTok y WhatsApp Business</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>Programación y Reprogramación de publicaciones</li>
+                    </svg>1 Video Básico mensual con Sonido y Locución IA + 3 diseños con sus variantes por red</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8  8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>Respuesta a mensajes y comentarios</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
@@ -431,41 +462,68 @@
 
             <h3 class="subsection-title">Logotipos Diseñados o Rediseñados:</h3>
             <div class="gallery-grid">
-                <!-- Updated with your ibb.co logo URL for El Boyero -->
-                <img src="https://i.ibb.co/yxvbvr7/LOGO-BOYERO-BARRIL-1.png" onerror="this.onerror=null;this.src='https://placehold.co/150x150/8B4513/FFFFFF?text=El+Boyero';" alt="Logotipo El Boyero Restaurante">
-                <img src="https://i.ibb.co/BHPQ0G0d/ANTOLOGIAS-REPOSA-VASOS-2.png" alt="Logotipo Restaurante Antologías">
-                <img src="https://i.ibb.co/CKyQPsqT/ALJIME.png" alt="Logotipo Distribuciones ALJIME">
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/yxvbvr7/LOGO-BOYERO-BARRIL-1.png" alt="Logotipo El Boyero Restaurante">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/BHPQ0G0d/ANTOLOGIAS-REPOSA-VASOS-2.png" alt="Logotipo Restaurante Antologías">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/CKyQPsqT/ALJIME.png" alt="Logotipo Distribuciones ALJIME">
+                </div>
             </div>
 
             <h3 class="subsection-title">Ejemplos de Banners:</h3>
             <div class="gallery-grid">
-                <img src="https://i.postimg.cc/BbRYF01R/Copia-de-JAKAMO-BARCELO-ANNY-PICADO.png" alt="Banner Canciones & Amor">
-                <img src="https://i.postimg.cc/431dy4h2/David-Zeled-n-1080-x-1920-px-Post-para-Instagram-45-1.png" alt="Banner Anny Picado Celebrando a la Mujer">
-                <img src="https://i.postimg.cc/q7G55S9C/ZUMBA-BOYERO.jpg" alt="Banner Clase de Zumba">
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/BbRYF01R/Copia-de-JAKAMO-BARCELO-ANNY-PICADO.png" alt="Banner Canciones & Amor">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/431dy4h2/David-Zeled-n-1080-x-1920-px-Post-para-Instagram-45-1.png" alt="Banner Anny Picado Celebrando a la Mujer">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/q7G55S9C/ZUMBA-BOYERO.jpg" alt="Banner Clase de Zumba">
+                </div>
             </div>
 
             <h3 class="subsection-title">Ejemplos de Fotografía de Producto:</h3>
             <div class="gallery-grid">
-                <img src="https://i.postimg.cc/W4KXCV5z/Comfy-UI-00115.png" alt="Fotografía de producto 1">
-                <img src="https://i.postimg.cc/fRPcTKmg/Comfy-UI-00150.png" alt="Fotografía de producto 2">
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/W4KXCV5z/Comfy-UI-00115.png" alt="Fotografía de producto 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/fRPcTKmg/Comfy-UI-00150.png" alt="Fotografía de producto 2">
+                </div>
             </div>
 
             <h3 class="subsection-title">Ejemplos de Fotografía de Personas:</h3>
             <div class="gallery-grid">
-                <img src="https://i.postimg.cc/brdbhSdj/PAPAS-ANTOLOGIAS-1-of-1-3.jpg" alt="Fotografía de persona 1">
-                <img src="https://live.staticflickr.com/65535/54601680060_20465b4587_k.jpg" alt="Fotografía de persona 2">
-                <img src="https://live.staticflickr.com/65535/54600506762_c4aef43089_h.jpg" alt="Fotografía de persona 3">
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/brdbhSdj/PAPAS-ANTOLOGIAS-1-of-1-3.jpg" alt="Fotografía de persona 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://live.staticflickr.com/65535/54601680060_20465b4587_k.jpg" alt="Fotografía de persona 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://live.staticflickr.com/65535/54600506762_c4aef43089_h.jpg" alt="Fotografía de persona 3">
+                </div>
             </div>
 
             <h3 class="subsection-title">Restauración con IA y Photoshop:</h3>
             <div class="gallery-grid">
-                <img src="https://i.postimg.cc/G3xRGgMV/Celebra-el-D-a-del-Padre-1920-x-1080-px.png" alt="Imagen restaurada 1">                
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/G3xRGgMV/Celebra-el-D-a-del-Padre-1920-x-1080-px.png" alt="Imagen restaurada 1">                
+                </div>
             </div>
 
             <h3 class="subsection-title">Fotografía de Vehículos:</h3>
             <div class="gallery-grid">
-                <img src="https://live.staticflickr.com/65535/54601643985_de3469da96_h.jpg" alt="Fotografía de vehículo 1">
-                <img src="https://live.staticflickr.com/65535/54601530629_7ee5a57433_h.jpg" alt="Fotografía de vehículo 2">
+                <div class="gallery-item">
+                    <img src="https://live.staticflickr.com/65535/54601643985_de3469da96_h.jpg" alt="Fotografía de vehículo 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://live.staticflickr.com/65535/54601530629_7ee5a57433_h.jpg" alt="Fotografía de vehículo 2">
+                </div>
             </div>
         </section>
 
@@ -498,7 +556,7 @@
 
                 <!-- Video 5 -->
                 <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/8ANdWC3PlS8?si=AvVU1h_8Mo29YhXe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/8ANdWC3PlS8?si=AvVU1h_8Mo29YhXe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <!-- Video 6 -->
@@ -511,17 +569,17 @@
         <!-- Contact Section -->
         <section class="section">
             <h2 class="section-title">¡Contáctanos!</h2>
-            <p class="mb-4 text-center">
+            <p class="mb-4 text-center text-2xl">
                 Para conocer tus necesidades y recomendarte el plan ideal.
             </p>
-            <div class="contact-info text-center">
+            <div class="contact-info text-center text-2xl">
                 <p class="mb-2"><strong>Correo:</strong> <a href="mailto:dimension.interactiva@gmail.com">dimension.interactiva@gmail.com</a></p>
                 <p class="mb-2"><strong>WhatsApp:</strong> <a href="https://wa.me/50685020909" target="_blank">+506 8502-0909</a></p>
                 <p><strong>Instagram:</strong> <a href="https://www.instagram.com/dimensioninteractiva" target="_blank">@dimensioninteractiva</a></p>
             </div>
-            <!-- Logo in the footer - Updated with your ibb.co URL and custom height -->
+            <!-- Logo in the footer -->
             <img src="https://i.ibb.co/xtbWZDMf/Soluciones-Digitales-Creativas.png" alt="Dimensión Interactiva Logo Footer" class="mx-auto mt-[var(--footer-logo-vertical-offset)] rounded-lg h-[3.5rem] object-contain">
-            <p class="text-center mt-4 font-semibold">
+            <p class="text-center mt-4 font-semibold text-3xl">
                 ¡Pura vida y hasta pronto! <br> Equipo de Dimensión Interactiva
             </p>
         </section>
@@ -529,4 +587,3 @@
     </div>
 </body>
 </html>
-
