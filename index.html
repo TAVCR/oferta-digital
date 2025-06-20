@@ -166,10 +166,10 @@
             display: flex; /* Use flexbox to center image vertically and horizontally */
             justify-content: center;
             align-items: center;
-            background-color: #fff3e0; /* Cream background for the container */
+            background-color: #3c4a5c; /* Reverted to grayish-blue background */
             border-radius: 10px;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ffe0b2; /* Matching softer border */
+            border: 1px solid #4a5c6e; /* Reverted to matching border */
             padding: 5px; /* Add some padding inside the container */
             overflow: hidden; /* Ensure image doesn't overflow if bigger */
             transition: transform 0.2s ease-in-out; /* Added hover effect */
@@ -180,7 +180,7 @@
         .gallery-item img {
             max-width: 100%; /* Image should fit within the item */
             max-height: 100%; /* Image should fit within the item */
-            object-fit: contain; /* Show whole image, with background for padding */
+            object-fit: cover; /* Changed back to cover to fill container */
             /* Removed any previous width/height/margin/padding from img directly to rely on parent .gallery-item */
         }
         /* Styles for contact information */
@@ -397,7 +397,7 @@
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>4 diseños gráficos al mes</li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>Incluye variaciones de formato para Facebook, Instagram y TikTok</li>
                 </ul>
@@ -572,9 +572,9 @@
                 Para conocer tus necesidades y recomendarte el plan ideal.
             </p>
             <div class="contact-info text-center">
-                <p class="text-lg mb-2"><strong>Correo:</strong> <a href="mailto:dimension.interactiva@gmail.com">dimension.interactiva@gmail.com</a></p>
-                <p class="text-lg mb-2"><strong>WhatsApp:</strong> <a href="https://wa.me/50685020909" target="_blank">+506 8502-0909</a></p>
-                <p class="text-lg"><strong>Instagram:</strong> <a href="https://www.instagram.com/dimensioninteractiva" target="_blank">@dimensioninteractiva</a></p>
+                <p class="text-base mb-2"><strong>Correo:</strong> <a href="mailto:dimension.interactiva@gmail.com">dimension.interactiva@gmail.com</a></p>
+                <p class="text-base mb-2"><strong>WhatsApp:</strong> <a href="https://wa.me/50685020909" target="_blank">+506 8502-0909</a></p>
+                <p class="text-base"><strong>Instagram:</strong> <a href="https://www.instagram.com/dimensioninteractiva" target="_blank">@dimensioninteractiva</a></p>
             </div>
             <!-- Logo in the footer -->
             <img src="https://i.ibb.co/xtbWZDMf/Soluciones-Digitales-Creativas.png" alt="Dimensión Interactiva Logo Footer" class="mx-auto mt-[var(--footer-logo-vertical-offset)] rounded-lg h-[3.5rem] object-contain">
