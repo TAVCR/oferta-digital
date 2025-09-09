@@ -197,6 +197,24 @@
             gap: 1.5rem;
             margin-top: 1rem;
         }
+
+        /* Mobile-specific styles using a media query for screens up to 640px wide */
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.5rem; /* Reduced font size for mobile titles */
+            }
+            .subsection-title {
+                font-size: 1.25rem; /* Reduced font size for mobile subtitles */
+            }
+            .contact-info p {
+                font-size: 0.9rem; /* Smaller font size for contact info on mobile */
+                word-wrap: break-word; /* Prevents long text from overflowing */
+                overflow-wrap: break-word;
+            }
+            .video-container {
+                padding-bottom: 75%; /* More suitable aspect ratio for shorts (4:3) on mobile */
+            }
+        }
     </style>
 </head>
 <body>
