@@ -40,6 +40,7 @@
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow for dark theme */
+            overflow: hidden; /* Evita que el contenido se desborde */
         }
         /* Navigation bar styles */
         .navbar-bottom {
@@ -72,7 +73,7 @@
             font-weight: 600;
             padding: 0.25rem 1rem; /* Increased horizontal padding */
             border-radius: 8px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color: 0.3s ease, color: 0.3s ease;
             flex-shrink: 0; /* Prevent items from shrinking */
         }
         .navbar-bottom a:hover {
@@ -103,7 +104,7 @@
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease;
+            transition: background-color: 0.3s ease;
             z-index: 1000;
             display: flex; /* Make it a flex container */
             justify-content: center; /* Center content horizontally */
@@ -129,6 +130,10 @@
             margin-bottom: 1rem;
             text-align: center;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for pop */
+            overflow-wrap: break-word; /* Evita desbordamiento con palabras largas */
+            -webkit-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
         }
         #why-choose-us .section-title {
             font-family: 'League Spartan', sans-serif;
@@ -143,6 +148,10 @@
             margin-bottom: 0.8rem;
             text-align: center; /* Center subtitles too */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for pop */
+            overflow-wrap: break-word; /* Evita desbordamiento con palabras largas */
+            -webkit-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
         }
         /* Styles for individual service items */
         .service-item {
@@ -151,7 +160,7 @@
             margin-bottom: 0.7rem;
             padding: 0.5rem; /* Small padding for each item */
             border-radius: 8px; /* Rounded corners */
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            transition: background-color: 0.3s ease; /* Smooth transition on hover */
             color: #f8f8f8; /* Ensure text is light */
         }
         .service-item:hover {
@@ -184,10 +193,18 @@
             margin-bottom: 0.6rem;
             font-size: 1.25rem;
             text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1); /* Subtle text shadow for pop on light background */
+            overflow-wrap: break-word; /* Evita desbordamiento con palabras largas */
+            -webkit-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
         }
         /* New style for text inside price-card for readability */
         .price-card p {
             color: #333333; /* Dark text for readability on light background */
+        }
+        /* Regla general para párrafos para evitar desbordamiento por palabras largas */
+        p {
+            overflow-wrap: break-word;
         }
         /* Styles for promotional package cards - PRESERVED WARM PALETTE (as requested) */
         .package-card {
@@ -208,6 +225,10 @@
             color: #d97706; /* Dark orange (preserved, as requested) */
             font-size: 1.6rem; /* Larger font size for package titles */
             margin-bottom: 0.8rem;
+            overflow-wrap: break-word; /* Evita desbordamiento con palabras largas */
+            -webkit-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
         }
         .package-card ul {
             list-style: none;
@@ -266,7 +287,7 @@
             color: var(--unified-orange-color); /* Unified orange tone for links */
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.2s ease;
+            transition: color: 0.2s ease;
         }
         .contact-info a:hover {
             text-decoration: underline;
@@ -299,7 +320,7 @@
         }
         .video-grid {
             display: grid; /* Changed to grid */
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Ancho mínimo reducido para móviles */
             gap: 1.5rem;
             margin-top: 1rem;
             /* Removed max-width and auto margins to allow full width */
@@ -352,7 +373,7 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease;
+            transition: background-color: 0.3s ease;
         }
 
         .close-button:hover {
@@ -400,7 +421,7 @@
             cursor: pointer;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s ease, background-color 0.3s ease;
+            transition: opacity 0.3s ease, background-color: 0.3s ease;
             backdrop-filter: blur(2px);
         }
         .to-top-button.visible {
@@ -433,7 +454,7 @@
             background-color: #4a4a4a;
             color: #f8f8f8;
             margin-bottom: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color: 0.3s ease, box-shadow: 0.3s ease;
         }
         .contact-form input:focus,
         .contact-form textarea:focus {
@@ -451,20 +472,20 @@
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color: 0.3s ease;
         }
         .contact-form button:hover {
             background-color: var(--light-orange-accent);
         }
 
-        </style>
+    </style>
 </head>
 <body>
     <main class="container mx-auto">
         <!-- Header -->
         <header class="header">
             <!-- Logo in the header -->
-            <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="mx-auto rounded-lg h-[4.5rem] object-contain mb-4 mt-[var(--header-logo-vertical-offset)]" loading="lazy">
+            <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="mx-auto rounded-lg h-[4.5rem] max-w-full object-contain mb-4 mt-[var(--header-logo-vertical-offset)]" loading="lazy">
         </header>
 
         <!-- Welcome Section -->
@@ -702,6 +723,18 @@
             <h3 class="subsection-title" id="gallery-logos">Logotipos Diseñados o Rediseñados:</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/YSn3HtXS/RETRO-PARTY.png" alt="Logotipo Retro Party" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/SNTnSj6C/imagen-4-0-ultra-generate-preview-06-06-Create-a-retro-logo.png" alt="Logotipo Retro" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/c49vx6Rf/undefined-Create-a-striking-lo-1.png" alt="Logotipo Llamativo" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/BvybxzYb/FLASHBACK-TRANSPARENTE-3.png" alt="Logotipo Flashback" loading="lazy">
+                </div>
+                <div class="gallery-item">
                     <img src="https://i.ibb.co/yxvbvr7/LOGO-BOYERO-BARRIL-1.png" alt="Logotipo El Boyero Restaurante" loading="lazy">
                 </div>
                 <div class="gallery-item">
@@ -715,6 +748,15 @@
             <h3 class="subsection-title" id="gallery-banners">Banners Publicitarios:</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/WpK4CxsL/MUSIC-AVENUE-PC-GEN.png" alt="Banner Music Avenue" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/L5jJ4VV5/ROCK-DE-TERROR.png" alt="Banner Rock de Terror" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/3RsyHq2y/SPINS-01-NOV-1.png" alt="Banner Spins Noviembre" loading="lazy">
+                </div>
+                <div class="gallery-item">
                     <img src="https://i.postimg.cc/BbRYF01R/Copia-de-JAKAMO-BARCELO-ANNY-PICADO.png" alt="Banner Canciones & Amor" loading="lazy">
                 </div>
                 <div class="gallery-item">
@@ -725,8 +767,38 @@
                 </div>
             </div>
 
-            <h3 class="subsection-title" id="gallery-product-photos">Ejemplos de Fotografía de Producto:</h3>
+            <h3 class="subsection-title" id="gallery-gastronomic-photos">Ejemplos de Fotografía Gastronómica:</h3>
             <div class="gallery-grid">
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/qqkDJ1sX/SPAGUETTI_(1_of_1).jpg" alt="Fotografía de Spaguetti" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/8Frpj1QR/PLATOS-SEPT-1-of-1-15.jpg" alt="Fotografía Gastronómica" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/wtsq768w/PLATOS-SEPT-1-of-1-7.jpg" alt="Fotografía Gastronómica" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/4d90dKHh/PLATOS-SEPT-1-of-1-11.jpg" alt="Fotografía de producto 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/qBY7SW4Y/Hamburguesa-Antolog-as-1.png" alt="Fotografía de producto 4" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/Hn1h7pb3/PLATOS-SEPT-1-of-1-14.jpg" alt="Fotografía de producto 5" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/zf3Ms2Js/PLATOS-SEPT-1-of-1-3.jpg" alt="Fotografía de producto 6" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/J7ghvSRL/Generated-Image-September-16-2025-2-15-AM.png" alt="Fotografía de producto 7" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/SsCZ4wH3/PLATOS-SEPT-1-of-1-9.jpg" alt="Fotografía de producto 8" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/7PcLdjq4/Generated-Image-September-16-2025-3-25-AM.png" alt="Fotografía de producto 9" loading="lazy">
+                </div>
                 <div class="gallery-item">
                     <img src="https://i.postimg.cc/W4KXCV5z/Comfy-UI-00115.png" alt="Fotografía de producto 1" loading="lazy">
                 </div>
@@ -738,7 +810,22 @@
             <h3 class="subsection-title" id="gallery-people-photos">Ejemplos de Fotografía de Personas:</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/6QmqrQ6H/MONT-PARA-SUBIR-1-of-1-3.jpg" alt="Fotografía de persona 6" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/W4sQbmMp/MONT-PARA-SUBIR-1-of-1.jpg" alt="Fotografía de persona 5" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/FsQG4rbV/PLATOS-SEPT-1-of-1.jpg" alt="Fotografía de persona 4" loading="lazy">
+                </div>
+                <div class="gallery-item">
                     <img src="https://i.postimg.cc/brdbhSdj/PAPAS-ANTOLOGIAS-1-of-1-3.jpg" alt="Fotografía de persona 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/908ch841/PAPAS_ANTOLOGIAS_(1_of_1)-15.jpg" alt="Fotografía de persona 7" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/JnKLN6Qz/PAPAS_ANTOLOGIAS-1-of-1-20.jpg" alt="Fotografía de persona 8" loading="lazy">
                 </div>
                 <div class="gallery-item">
                     <img src="https://live.staticflickr.com/65535/54601680060_20465b4587_k.jpg" alt="Fotografía de persona 2" loading="lazy">
@@ -751,7 +838,10 @@
             <h3 class="subsection-title" id="gallery-restoration">Restauración con IA y Photoshop:</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://i.postimg.cc/G3xRGgMV/Celebra-el-D-a-del-Padre-1920-x-1080-px.png" alt="Imagen restaurada 1" loading="lazy">                
+                    <img src="https://i.postimg.cc/jdZ7DMby/VARGAS-RESTAURACION.jpg" alt="Restauración Vargas" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/G3xRGgMV/Celebra-el-D-a-del-Padre-1920-x-1080-px.png" alt="Imagen restaurada 1" loading="lazy">
                 </div>
             </div>
 
@@ -762,6 +852,43 @@
                 </div>
                 <div class="gallery-item">
                     <img src="https://live.staticflickr.com/65535/54601530629_7ee5a57433_h.jpg" alt="Fotografía de vehículo 2" loading="lazy">
+                </div>
+            </div>
+
+            <h3 class="subsection-title" id="gallery-real-estate">Ejemplos de Fotografía Inmobiliaria:</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/kgDGH9tT/APTO-3-RIOS-1-of-1-28.jpg" alt="Fotografía inmobiliaria 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/HW4rc6gM/APTO-3-RIOS-1-of-1-27.jpg" alt="Fotografía inmobiliaria 2" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/Gm9tfrs5/APTO-3-RIOS-1-of-1-26.jpg" alt="Fotografía inmobiliaria 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.postimg.cc/15v4M44Y/APTO-3-RIOS-1-of-1-29.jpg" alt="Fotografía inmobiliaria 4" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/RCcH1McR/APTO-3-RIOS-1-of-1-4.jpg" alt="Fotografía inmobiliaria 5" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/hPc7pHrH/APTO-3-RIOS-1-of-1-6.jpg" alt="Fotografía inmobiliaria 6" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/kXsRZfY5/APTO-3-RIOS-1-of-1-3.jpg" alt="Fotografía inmobiliaria 7" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/r0S1TXfh/APTO-3-RIOS-1-of-1-11.jpg" alt="Fotografía inmobiliaria 8" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/dk82FPWK/APTO-3-RIOS-1-of-1-12.jpg" alt="Fotografía inmobiliaria 9" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/MfqyKP4w/APTO-3-RIOS-1-of-1-13.jpg" alt="Fotografía inmobiliaria 10" loading="lazy">
+                </div>
+                 <div class="gallery-item">
+                    <img src="https://i.postimg.cc/MMk7gKmt/APTO-3-RIOS-1-of-1-16.jpg" alt="Fotografía inmobiliaria 11" loading="lazy">
                 </div>
             </div>
         </section>
@@ -891,12 +1018,12 @@
             </svg>
             Banners
         </a>
-        <a href="#gallery-product-photos" aria-label="Ver Fotos de Producto">
+        <a href="#gallery-gastronomic-photos" aria-label="Ver Fotos Gastronómicas">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            Foto Producto
+            Foto Gastronómica
         </a>
         <a href="#gallery-people-photos" aria-label="Ver Fotos de Personas">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -909,6 +1036,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h10m-9 4h8m-9-18h10a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2z" />
             </svg>
             Foto Vehículos
+        </a>
+        <a href="#gallery-real-estate" aria-label="Ver Fotografía Inmobiliaria">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a.75.75 0 011.06 0l8.955 8.955M3 10.5V20.25a1.5 1.5 0 001.5 1.5H19.5a1.5 1.5 0 001.5-1.5V10.5M8.25 21V12h7.5v9" />
+            </svg>
+            Foto Inmobiliaria
         </a>
         <a href="#gallery-restoration" aria-label="Ver Restauraciones">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -948,6 +1081,7 @@
             const backToContentButton = document.getElementById('back-to-content');
             let lastScrollPosition = 0;
             let scrollTimeoutId; // Variable to hold the timeout ID
+            let lastFocusedElement; // To store the element that had focus before opening the modal
 
             // Function to show the button
             const showBackToContentButton = () => {
@@ -967,24 +1101,29 @@
             // Add click event listener to each gallery image
             galleryItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    console.log('Imagen de galería clicada'); // Debugging line
+                    lastFocusedElement = document.activeElement; // Save focus
                     magnifiedImage.src = item.src; // Set the source of the magnified image
                     magnifiedImage.alt = item.alt; // Set the alt text
                     imageModal.style.display = 'flex'; // Show the modal (flex to center content)
                     closeModalButton.focus(); // Focus the close button for accessibility
                 });
             });
+            
+            const closeModal = () => {
+                imageModal.style.display = 'none'; // Hide the modal
+                 if (lastFocusedElement) {
+                    lastFocusedElement.focus(); // Return focus
+                }
+            };
 
             // Add click event listener to the close button
-            closeModalButton.addEventListener('click', () => {
-                imageModal.style.display = 'none'; // Hide the modal
-            });
+            closeModalButton.addEventListener('click', closeModal);
 
             // Add click event listener to the modal overlay itself to close it when clicking outside the image
             imageModal.addEventListener('click', (event) => {
                 // If the click target is the modal overlay itself (not the image or button inside)
                 if (event.target === imageModal) {
-                    imageModal.style.display = 'none'; // Hide the modal
+                    closeModal(); // Hide the modal
                 }
             });
 
@@ -992,10 +1131,7 @@
             document.addEventListener('keydown', (e) => {
                 if (imageModal.style.display === 'flex') { // Only active when modal is open
                     if (e.key === 'Escape') {
-                        imageModal.style.display = 'none';
-                        if (lastFocusedElement) {
-                            lastFocusedElement.focus(); // Return focus
-                        }
+                       closeModal();
                     } else if (e.key === 'Tab') {
                         // Get all focusable elements inside the modal
                         const focusableElements = imageModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -1033,10 +1169,8 @@
             // Handle navigation from bottom bar (Event Delegation)
             const nav = document.querySelector('.navbar-bottom');
             nav.addEventListener('click', (e) => {
-                console.log('Clic en navbar-bottom detectado'); // Debugging general click
                 const targetLink = e.target.closest('a'); // Find the closest 'a' tag
                 if (targetLink) {
-                    console.log('Enlace de barra de navegación clicado (delegado)'); // Debugging line
                     lastScrollPosition = window.scrollY; // Save current scroll position
                     showBackToContentButton(); // Show back button on click
                     // Start timeout to hide button after inactivity
@@ -1288,3 +1422,4 @@
     </script>
 </body>
 </html>
+
