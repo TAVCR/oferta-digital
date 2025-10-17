@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dimensión Interactiva - Oferta de Servicios</title>
-    <!-- Tailwind CSS for rapid and responsive styling -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Google Fonts: League Spartan for headings, Inter for body text -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&display=swap" as="style">
+    <!-- Tailwind CSS for rapid and responsive styling --><link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts: League Spartan for headings, Inter for body text --><link rel="preload" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&display=swap" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -507,20 +505,22 @@
             .price-card-title {
                 font-size: 1.15rem;
             }
+             /* Specific adjustment for the problematic titles */
+            #packages .section-title,
+            #videos .section-title {
+                font-size: 1.8rem; /* Further reduced for these specific sections */
+            }
         }
 
     </style>
 </head>
 <body>
     <main class="container mx-auto">
-        <!-- Header -->
-        <header class="header">
-            <!-- Logo in the header -->
-            <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="mx-auto rounded-lg h-[4.5rem] max-w-full object-contain mb-4 mt-[var(--header-logo-vertical-offset)]" loading="lazy">
+        <!-- Header --><header class="header">
+            <!-- Logo in the header --><img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="mx-auto rounded-lg h-[4.5rem] max-w-full object-contain mb-4 mt-[var(--header-logo-vertical-offset)]" loading="lazy">
         </header>
 
-        <!-- Welcome Section -->
-        <section class="section mt-6" id="welcome">
+        <!-- Welcome Section --><section class="section mt-6" id="welcome">
             <h2 class="section-title">Una Cálida Bienvenida</h2>
             <p class="mb-4">
                 Somos un emprendimiento creativo costarricense que cree en el poder de las redes sociales para impulsar negocios de todos los tamaños. Nuestro objetivo es democratizar el contenido digital de calidad, ayudando a las marcas a crecer, conectar con su público y generar ventas.
@@ -530,66 +530,57 @@
             </p>
         </section>
 
-        <!-- Our Services Offer Section -->
-        <section class="section" id="services">
+        <!-- Our Services Offer Section --><section class="section" id="services">
             <h2 class="section-title">Nuestra Oferta de Servicios</h2>
             <p class="mb-4">Esta es la lista de servicios que te ofrecemos:</p>
             <div>
                 <a href="#price-logo-design" class="service-item" aria-label="Creación y digitalización de logotipos.">
-                    <!-- Icon for logo creation -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    <!-- Icon for logo creation --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                     </svg>
                     <span>Creación y digitalización de logotipos.</span>
                 </a>
                 <a href="#price-banners" class="service-item" aria-label="Elaboración de carteles promocionales.">
-                    <!-- Icon for promotional posters/banners -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m7 0V5a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6" />
+                    <!-- Icon for promotional posters/banners --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m7 0V5a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6"></path>
                     </svg>
                     <span>Elaboración de carteles promocionales.</span>
                 </a>
                 <a href="#price-videos" class="service-item" aria-label="Realización de Videos y Reels comerciales o informativos.">
-                    <!-- Icon for video production -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    <!-- Icon for video production --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                     </svg>
                     <span>Realización de Videos y Reels comerciales o informativos.</span>
                 </a>
                 <a href="#price-audio-editing" class="service-item" aria-label="Edición avanzada de sonido con locución, música y efectos especiales.">
-                    <!-- Icon for audio editing -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.792 2-4 2s-4-.895-4-2 1.792-2 4-2 4 .895 4 2zM9 9l12-3" />
+                    <!-- Icon for audio editing --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.792 2-4 2s-4-.895-4-2 1.792-2 4-2 4 .895 4 2zM9 9l12-3"></path>
                     </svg>
                     <span>Edición avanzada de sonido con locución, música y efectos especiales.</span>
                 </a>
                 <a href="#price-photography-ia" class="service-item" aria-label="Fotografía Profesional con Cámara Canon y/o Generación de Imágenes con IA. Retoque Digital con Photoshop, Lightroom y/o IA">
-                    <!-- Icon for photography -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <!-- Icon for photography --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
                     <span>Fotografía Profesional con Cámara Canon y/o Generación de Imágenes con IA. Retoque Digital con Photoshop, Lightroom y/o IA</span>
                 </a>
                 <a href="#package-social-media-management" class="service-item" aria-label="Administración de redes sociales (Facebook, Instagram, WhatsApp, TikTok, etc.).">
-                    <!-- Icon for social media management -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.116-1.272.338-1.849m0 0a.975.975 0 00-1.077-1.127H5.212A2.25 2.25 0 003 16.25V20m7-2.75V20m0-2.75a1.75 1.75 0 001.75-1.75V11a2.25 2.25 0 00-4.5 0v3.5C8.5 16.75 9.25 17.25 10 17.25zM17.25 11h-2a2.25 2.25 0 00-2.25 2.25v2a2.25 2.25 0 002.25 2.25h2a2.25 2.25 0 002.25-2.25v-2a2.25 2.25 0 00-2.25-2.25z" />
+                    <!-- Icon for social media management --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.116-1.272.338-1.849m0 0a.975.975 0 00-1.077-1.127H5.212A2.25 2.25 0 003 16.25V20m7-2.75V20m0-2.75a1.75 1.75 0 001.75-1.75V11a2.25 2.25 0 00-4.5 0v3.5C8.5 16.75 9.25 17.25 10 17.25zM17.25 11h-2a2.25 2.25 0 00-2.25 2.25v2a2.25 2.25 0 002.25 2.25h2a2.25 2.25 0 002.25-2.25v-2a2.25 2.25 0 00-2.25-2.25z"></path>
                     </svg>
                     <span>Administración de redes sociales (Facebook, Instagram, WhatsApp, TikTok, etc.).</span>
                 </a>
                 <a href="#price-brand-identity" class="service-item" aria-label="Desarrollo de identidad de marca y asesoramiento.">
-                    <!-- Icon for brand identity development -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    <!-- Icon for brand identity development --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
                     <span>Desarrollo de identidad de marca y asesoramiento.</span>
                 </a>
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
-        <section class="section" id="why-choose-us">
+        <!-- Why Choose Us Section --><section class="section" id="why-choose-us">
             <h2 class="section-title">¿Por Qué Elegirnos?</h2>
             <p class="mb-4">Las razones por las cuales podemos ayudarte a crecer:</p>
             <p class="mb-4">
@@ -604,33 +595,32 @@
             <ul class="list-none p-0">
                 <li class="flex items-center mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     Comprendemos la cultura tica y los hábitos digitales locales
                 </li>
                 <li class="flex items-center mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     Precios accesibles para emprendimientos y pymes
                 </li>
                 <li class="flex items-center mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     Entregas rápidas, contenido personalizado y asesoría constante
                 </li>
                 <li class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     Diseño y producción con herramientas de alto nivel
                 </li>
             </ul>
         </section>
 
-        <!-- Prices of Our Individual Services Section -->
-        <section class="section" id="individual-prices">
+        <!-- Prices of Our Individual Services Section --><section class="section" id="individual-prices">
             <h2 class="section-title">Precios de Nuestros Servicios Individuales</h2>
             <p class="mb-4">La inversión que harás si solo deseas ciertos servicios puntuales:</p>
 
@@ -674,8 +664,7 @@
             </div>
         </section>
 
-        <!-- Our Promotional Packages Section -->
-        <section class="section" id="packages">
+        <!-- Our Promotional Packages Section --><section class="section" id="packages">
             <h2 class="section-title">Nuestros Paquetes Promocionales</h2>
             <p class="mb-4">Tu inversión será beneficiosa al elegir uno de nuestros paquetes de marketing.</p>
 
@@ -684,13 +673,13 @@
                 <p class="text-gray-700"><strong>Inversión: ₡160,000</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>1 video promocional básico</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>4 diseños gráficos al mes</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Incluye variaciones de formato para Facebook, Instagram y TikTok</li>
                 </ul>
             </div>
@@ -700,13 +689,13 @@
                 <p class="text-gray-700"><strong>Inversión: ₡290,000</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>2 videos con locución por IA</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>8 afiches promocionales mensuales</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Formatos para feed, historia y reels</li>
                 </ul>
             </div>
@@ -716,13 +705,13 @@
                 <p class="text-gray-700"><strong>Inversión: ₡360,000</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>2 Videos Básicos con Sonido y Locución IA, 1 Video Filmado Profesionalmente con Locución Humana </li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>12 diseños gráficos mensuales</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Adaptado a todas las plataformas sociales</li>
                 </ul>
             </div>
@@ -732,23 +721,22 @@
                 <p class="text-gray-700"><strong>Inversión: Desde ₡220,000 al mes</strong></p>
                 <ul class="list-none p-0">
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Manejo de cuentas en Facebook, Instagram, TikTok y WhatsApp Business</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8  8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8  8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Respuesta a mensajes y comentarios</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Informe mensual con métricas clave</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>Requiere acceso de administrador a las cuentas.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Gallery Examples Section -->
-        <section class="section" id="gallery">
+        <!-- Gallery Examples Section --><section class="section" id="gallery">
             <h2 class="section-title">Algunos Ejemplos de Nuestro Trabajo</h2>
 
             <h3 class="subsection-title" id="gallery-logos">Logotipos Diseñados o Rediseñados:</h3>
@@ -924,54 +912,44 @@
             </div>
         </section>
 
-        <!-- Promotional Videos Section -->
-        <section class="section" id="videos">
+        <!-- Promotional Videos Section --><section class="section" id="videos">
             <h2 class="section-title">Nuestros Videos Promocionales</h2>
             <p class="mb-4 text-center">
                 Mira algunos de nuestros trabajos en video.
             </p>
             <div class="video-grid">
-                <!-- Video 1 -->
-                <div class="video-container">
+                <!-- Video 1 --><div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hcA54EHCjKU?si=gLHg2fXvnxsZN2Dy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
-                <!-- Video 2 -->
-                <div class="video-container">
+                <!-- Video 2 --><div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/t3WMFjvSUJA?si=1_hma6E-ieyMigpW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
-                <!-- Video 3 -->
-                <div class="video-container">
+                <!-- Video 3 --><div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1WOoFSZVsCc?si=o9D5gRvGpLjvrhYD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
-                <!-- Video 4 -->
-                <div class="video-container">
+                <!-- Video 4 --><div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rQxfArcj3fM?si=&autoplay=0" title="YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
-                <!-- Video 5 -->
-                <div class="video-container">
+                <!-- Video 5 --><div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8ANdWC3PlS8?si=AvVU1h_8Mo29YhXe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
-                <!-- Video 6 -->
-                <div class="video-container">
+                <!-- Video 6 --><div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YNKi1BD2ELA?si=GEqvQeC8YjuXUKQe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 
-                <!-- Video 7 (Nuevo Short) -->
-                <div class="video-container">
-                    <!-- ID: pD1vG4t8B-s de https://youtube.com/shorts/pD1vG4t8B-s?feature=share -->
-                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD1vG4t8B-s" title="YouTube Short promocional Dimensión Interactiva" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Video 7 (Nuevo Short) --><div class="video-container">
+                    <!-- ID: pD1vG4t8B-s de https://youtube.com/shorts/pD1vG4t8B-s?feature=share --><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pD1vG4t8B-s" title="YouTube Short promocional Dimensión Interactiva" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="section" id="contact">
+        <!-- Contact Section --><section class="section" id="contact">
             <h2 class="section-title">¡Contáctanos!</h2>
             <p class="mb-4 text-center text-xl">
                 Para conocer tus necesidades y recomendarte el plan ideal.
@@ -982,8 +960,7 @@
                 <p class="text-sm"><strong>Instagram:</strong> <a href="https://www.instagram.com/dimensioninteractiva" target="_blank">@dimensioninteractiva</a></p>
             </div>
 
-            <!-- Formspree Contact Form -->
-            <form 
+            <!-- Formspree Contact Form --><form 
               action="https://formspree.io/f/mqabjovv" 
               method="POST"
               class="contact-form"
@@ -1012,8 +989,7 @@
             <p id="success-message" class="hidden text-green-400 text-center font-semibold mt-4 transition-opacity duration-500 ease-in opacity-0">¡Gracias! Tu mensaje fue enviado correctamente.</p>
             <p id="error-message" class="hidden text-red-500 text-center font-semibold mt-4 transition-opacity duration-500 ease-in opacity-0">Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.</p>
 
-            <!-- Logo in the footer -->
-            <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo Footer" class="mx-auto mt-[var(--footer-logo-vertical-offset)] rounded-lg h-[3.5rem] object-contain" loading="lazy">
+            <!-- Logo in the footer --><img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo Footer" class="mx-auto mt-[var(--footer-logo-vertical-offset)] rounded-lg h-[3.5rem] object-contain" loading="lazy">
             <p class="text-center mt-4 font-semibold text-xl">
                 ¡Pura vida y hasta pronto! <br> Equipo de Dimensión Interactiva
             </p>
@@ -1021,8 +997,7 @@
 
     </main>
 
-    <!-- Modal for image magnification -->
-    <div id="image-modal" class="modal-overlay">
+    <!-- Modal for image magnification --><div id="image-modal" class="modal-overlay">
         <div class="modal-content">
             <img id="magnified-image" src="" alt="Imagen Ampliada" loading="lazy">
             <button id="close-modal" class="close-button">X</button>
@@ -1032,69 +1007,68 @@
     <nav class="navbar-bottom">
         <a href="#videos" aria-label="Ver Videos">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             Videos
         </a>
         <a href="#gallery-logos" aria-label="Ver Logotipos">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
             Logotipos
         </a>
         <a href="#gallery-banners" aria-label="Ver Banners">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m7 0V5a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m7 0V5a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6"></path>
             </svg>
             Banners
         </a>
         <a href="#gallery-gastronomic-photos" aria-label="Ver Fotos Gastronómicas">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
             Foto Gastronómica
         </a>
         <a href="#gallery-people-photos" aria-label="Ver Fotos de Personas">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
             Foto Personas
         </a>
         <a href="#gallery-vehicle-photos" aria-label="Ver Fotos de Vehículos">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h10m-9 4h8m-9-18h10a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h10m-9 4h8m-9-18h10a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2z"></path>
             </svg>
             Foto Vehículos
         </a>
         <a href="#gallery-real-estate" aria-label="Ver Fotografía Inmobiliaria">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a.75.75 0 011.06 0l8.955 8.955M3 10.5V20.25a1.5 1.5 0 001.5 1.5H19.5a1.5 1.5 0 001.5-1.5V10.5M8.25 21V12h7.5v9" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a.75.75 0 011.06 0l8.955 8.955M3 10.5V20.25a1.5 1.5 0 001.5 1.5H19.5a1.5 1.5 0 001.5-1.5V10.5M8.25 21V12h7.5v9"></path>
             </svg>
             Foto Inmobiliaria
         </a>
         <a href="#gallery-restoration" aria-label="Ver Restauraciones">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 22.5l-.648-1.938a3.375 3.375 0 00-2.685-2.685L11.25 18l1.938-.648a3.375 3.375 0 002.685-2.685L16.25 13l.648 1.938a3.375 3.375 0 002.685 2.685L21.75 18l-1.938.648a3.375 3.375 0 00-2.685 2.685z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 22.5l-.648-1.938a3.375 3.375 0 00-2.685-2.685L11.25 18l1.938-.648a3.375 3.375 0 002.685-2.685L16.25 13l.648 1.938a3.375 3.375 0 002.685 2.685L21.75 18l-1.938.648a3.375 3.375 0 00-2.685 2.685z"></path>
             </svg>
             Restauración
         </a>
         <a href="#contact" aria-label="Contactar">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
             </svg>
             Contacto
         </a>
     </nav>
 
-    <!-- Scroll Indicators -->
-    <div id="scroll-indicator-left" class="scroll-indicator left-0 hidden">&#x2039;</div>
+    <!-- Scroll Indicators --><div id="scroll-indicator-left" class="scroll-indicator left-0 hidden">&#x2039;</div>
     <div id="scroll-indicator-right" class="scroll-indicator right-0 hidden">&#x203A;</div>
 
     <button id="to-top-button" class="to-top-button">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
         </svg>
     </button>
 
