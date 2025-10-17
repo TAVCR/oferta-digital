@@ -89,6 +89,19 @@
         .navbar-bottom a:hover svg {
             color: #ffffff;
         }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(217, 119, 6, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(217, 119, 6, 0);
+            }
+        }
+
         /* Back to content button */
         #back-to-content {
             position: fixed;
@@ -109,9 +122,11 @@
             display: flex; /* Make it a flex container */
             justify-content: center; /* Center content horizontally */
             align-items: center; /* Center content vertically */
+            animation: pulse 2s infinite;
         }
         #back-to-content:hover {
             background-color: var(--light-orange-accent);
+            animation: none; /* Detiene la animación en hover */
         }
         /* Content section styles */
         .section {
@@ -478,6 +493,22 @@
             background-color: var(--light-orange-accent);
         }
 
+        /* Responsive adjustments for mobile titles */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2.0rem;
+            }
+            .subsection-title {
+                font-size: 1.6rem;
+            }
+            .package-card-title {
+                font-size: 1.4rem;
+            }
+            .price-card-title {
+                font-size: 1.15rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -623,7 +654,7 @@
             </div>
             <div class="price-card" id="price-audio-editing">
                 <h3 class="price-card-title">Edición Avanzada de Sonido</h3>
-                <p>Desde ₡120,000 incluyendo una sola voz humana masculina, musicalización, efectos de sonido, mezcla, tiempo de estudio, masterización y entrega de la copia digital, adicionalmente se cobran ₡90,000 por cada voz humana adicional que es la tarifa promedio de un locutor costarricense.</p>
+                <p>Desde ₡120,000 incluyendo una sola voz humana masculina o femenina, musicalización, efectos de sonido, mezcla, tiempo de estudio, masterización y entrega de la copia digital, adicionalmente se cobran ₡90,000 por cada voz humana adicional que es la tarifa promedio de un locutor costarricense</p>
             </div>
             <div class="price-card" id="price-photography-ia">
                 <h3 class="price-card-title">Fotografía de Producto o Eventos con Cámara Profesional Canon/Edición</h3>
@@ -631,7 +662,7 @@
             </div>
             <div class="price-card">
                 <h3 class="price-card-title">Generación de Imágenes por medio de Inteligencia Artificial</h3>
-                <p>Con tecnología de Última Generación como ChatGPT, Gemini, Flux Kontext ₡5,000 por imagen.</p>
+                <p>Con tecnología de Última Generación como ChatGPT, Nano Banana, Flux Kontext o Seedream ₡5,000 por imagen.</p>
             </div>
             <div class="price-card">
                 <h3 class="price-card-title">Restauración de fotografías</h3>
@@ -773,10 +804,10 @@
                     <img src="https://i.postimg.cc/qqkDJ1sX/SPAGUETTI_(1_of_1).jpg" alt="Fotografía de Spaguetti" loading="lazy">
                 </div>
                  <div class="gallery-item">
-                    <img src="https://i.postimg.cc/8Frpj1QR/PLATOS-SEPT-1-of-1-15.jpg" alt="Fotografía Gastronómica" loading="lazy">
+                    <img src="https://i.postimg.cc/8Frpj1QR/PLATOS-SEPT-1-of_1-15.jpg" alt="Fotografía Gastronómica" loading="lazy">
                 </div>
                  <div class="gallery-item">
-                    <img src="https://i.postimg.cc/wtsq768w/PLATOS-SEPT-1-of-1-7.jpg" alt="Fotografía Gastronómica" loading="lazy">
+                    <img src="https://i.postimg.cc/wtsq768w/PLATOS-SEPT-1-of_1-7.jpg" alt="Fotografía Gastronómica" loading="lazy">
                 </div>
                 <div class="gallery-item">
                     <img src="https://i.postimg.cc/4d90dKHh/PLATOS-SEPT-1-of-1-11.jpg" alt="Fotografía de producto 3" loading="lazy">
@@ -821,7 +852,7 @@
                 <div class="gallery-item">
                     <img src="https://i.postimg.cc/brdbhSdj/PAPAS-ANTOLOGIAS-1-of-1-3.jpg" alt="Fotografía de persona 1" loading="lazy">
                 </div>
-                <div class="gallery-item">
+                 <div class="gallery-item">
                     <img src="https://i.postimg.cc/908ch841/PAPAS_ANTOLOGIAS_(1_of_1)-15.jpg" alt="Fotografía de persona 7" loading="lazy">
                 </div>
                 <div class="gallery-item">
