@@ -20,11 +20,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            orange: '#d97706', // Tu color original
-                            gold: '#f59e0b',   // Un tono más dorado para hover
-                            dark: '#111111',   // Casi negro, más elegante que azul
-                            surface: '#1a1a1a', // Color de las tarjetas
-                            subtle: '#262626',  // Color de bordes/detalles
+                            orange: '#d97706', 
+                            gold: '#f59e0b',
+                            dark: '#111111',   
+                            surface: '#1a1a1a', 
+                            subtle: '#262626',
                         }
                     },
                     fontFamily: {
@@ -48,9 +48,9 @@
     <style>
         /* Fondo Profesional Sobrio */
         body {
-            background-color: #111111; /* Negro Carbón */
+            background-color: #111111; 
             background-image: linear-gradient(to bottom, #111111, #0a0a0a);
-            color: #e5e5e5; /* Blanco no puro para no cansar la vista */
+            color: #e5e5e5;
             transition: max-width 0.5s ease, margin 0.5s ease, border-radius 0.5s ease, border 0.5s ease;
         }
 
@@ -72,14 +72,12 @@
             max-width: 366px;
         }
         
-        /* Ajuste de elementos fijos en modo móvil simulado */
         html.simulated-mobile .fixed-nav-container {
-            max-width: 366px; /* 390px - 24px borders approx */
+            max-width: 366px;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 2.5rem; /* Subir un poco por el margen del body */
+            bottom: 2.5rem; 
             border-radius: 999px;
-            /* CORRECCIÓN CRÍTICA: Forzar inicio a la izquierda en simulación para evitar recorte por centrado */
             justify-content: flex-start !important; 
         }
 
@@ -104,11 +102,6 @@
 
         .text-accent {
             color: #d97706;
-        }
-
-        /* Asegurar visibilidad inicial */
-        .reveal {
-            opacity: 1; 
         }
         
         /* Scrollbar oculta pero funcional */
@@ -155,20 +148,22 @@
     <main class="container mx-auto px-4 md:px-6 max-w-6xl overflow-x-hidden">
         
         <!-- Header / Hero Section -->
+        <!-- Animación fade-in-up aplicada directamente aquí para entrada suave segura -->
         <header class="pt-16 pb-20 text-center relative animate-fade-in-up">
             <div class="flex justify-center mb-10">
                 <div class="relative group max-w-full">
                     <div class="absolute -inset-4 bg-brand-orange rounded-full blur-2xl opacity-10 group-hover:opacity-20 transition duration-500"></div>
-                    <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-40 md:h-60 w-auto max-w-full object-contain">
+                    <!-- Logo Header: Igualado al tamaño del footer (h-60 en móvil, h-96 en desktop) -->
+                    <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-60 md:h-96 w-auto max-w-full object-contain">
                 </div>
             </div>
             
             <h1 class="font-display font-bold text-4xl md:text-7xl tracking-tight mb-6 text-white">
-                Elevamos tu <span class="text-accent">Marca</span> <br class="hidden md:block" />
-                a la <span class="text-white/80">Dimensión Digital</span>
+                Elevamos tu <span class="text-white">Marca</span> <br class="hidden md:block" />
+                a la <span class="text-brand-orange">Dimensión Digital</span>
             </h1>
             
-            <p class="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed font-light">
+            <p class="text-lg text-brand-orange max-w-2xl mx-auto leading-relaxed font-light">
                 Estrategia creativa, diseño de alto nivel y producción audiovisual para marcas que buscan destacar con seriedad y estilo.
             </p>
 
@@ -295,7 +290,7 @@
 
             <div class="grid md:grid-cols-3 gap-8 items-start">
                 
-                <!-- Pack 1 -->
+                <!-- Pack 1 (Standard) - Added transition duration-300 hover:-translate-y-2 -->
                 <div class="glass-panel rounded-2xl p-8 border-t-4 border-neutral-600 flex flex-col h-full hover:border-neutral-500 transition duration-300 hover:-translate-y-2">
                     <h3 class="font-display font-bold text-2xl text-neutral-300 mb-2">Arranque Digital</h3>
                     <div class="text-3xl font-bold text-white mb-6">₡160,000</div>
@@ -324,7 +319,7 @@
                     </a>
                 </div>
 
-                <!-- Pack 3 -->
+                <!-- Pack 3 (Premium) - Added transition duration-300 hover:-translate-y-2 -->
                 <div class="glass-panel rounded-2xl p-8 border-t-4 border-neutral-400 flex flex-col h-full hover:border-white transition duration-300 hover:-translate-y-2">
                     <h3 class="font-display font-bold text-2xl text-white mb-2">Presencia Total</h3>
                     <div class="text-3xl font-bold text-white mb-6">₡360,000</div>
@@ -422,17 +417,33 @@
                     Diseño de Identidad
                 </h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Logo 1 -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/YSn3HtXS/RETRO-PARTY.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo">
+                        <img src="https://i.postimg.cc/YSn3HtXS/RETRO-PARTY.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Retro Party">
                     </div>
+                    <!-- Logo 2 -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/SNTnSj6C/imagen-4-0-ultra-generate-preview-06-06-Create-a-retro-logo.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo">
+                        <img src="https://i.postimg.cc/SNTnSj6C/imagen-4-0-ultra-generate-preview-06-06-Create-a-retro-logo.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Retro">
                     </div>
+                    <!-- Logo 3 (Restored) -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/BvybxzYb/FLASHBACK-TRANSPARENTE-3.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo">
+                         <img src="https://i.postimg.cc/c49vx6Rf/undefined-Create-a-striking-lo-1.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logotipo Llamativo">
                     </div>
+                    <!-- Logo 4 -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.ibb.co/yxvbvr7/LOGO-BOYERO-BARRIL-1.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo">
+                        <img src="https://i.postimg.cc/BvybxzYb/FLASHBACK-TRANSPARENTE-3.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Flashback">
+                    </div>
+                    <!-- Logo 5 -->
+                    <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
+                        <img src="https://i.ibb.co/yxvbvr7/LOGO-BOYERO-BARRIL-1.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Boyero">
+                    </div>
+                    <!-- Logo 6 (Restored) -->
+                    <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
+                        <img src="https://i.ibb.co/BHPQ0G0d/ANTOLOGIAS-REPOSA-VASOS-2.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logotipo Restaurante Antologías">
+                    </div>
+                    <!-- Logo 7 (Restored) -->
+                    <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
+                        <img src="https://i.ibb.co/CKyQPsqT/ALJIME.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logotipo Distribuciones ALJIME">
                     </div>
                 </div>
             </div>
@@ -443,14 +454,29 @@
                     Publicidad Digital
                 </h3>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Banner 1 -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/WpK4CxsL/MUSIC-AVENUE-PC-GEN.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner">
+                        <img src="https://i.postimg.cc/WpK4CxsL/MUSIC-AVENUE-PC-GEN.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Music Avenue">
                     </div>
+                    <!-- Banner 2 -->
                      <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/L5jJ4VV5/ROCK-DE-TERROR.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner">
+                        <img src="https://i.postimg.cc/L5jJ4VV5/ROCK-DE-TERROR.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Rock">
                     </div>
+                    <!-- Banner 3 -->
                      <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/3RsyHq2y/SPINS-01-NOV-1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner">
+                        <img src="https://i.postimg.cc/3RsyHq2y/SPINS-01-NOV-1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Spins">
+                    </div>
+                    <!-- Banner 4 (Restored) -->
+                    <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
+                        <img src="https://i.postimg.cc/BbRYF01R/Copia-de-JAKAMO-BARCELO-ANNY-PICADO.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Canciones & Amor">
+                    </div>
+                    <!-- Banner 5 (Restored) -->
+                    <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
+                        <img src="https://i.postimg.cc/431dy4h2/David-Zeled-n-1080-x-1920-px-Post-para-Instagram-45-1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Anny Picado">
+                    </div>
+                    <!-- Banner 6 (Restored) -->
+                    <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
+                        <img src="https://i.postimg.cc/q7G55S9C/ZUMBA-BOYERO.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Zumba">
                     </div>
                 </div>
             </div>
@@ -539,20 +565,18 @@
         <section id="videos" class="mb-24">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-800 pb-4">
                 <h2 class="font-display font-bold text-3xl text-white">Producción Audiovisual</h2>
-                <!-- Indicador visual para móvil -->
                 <p class="text-neutral-500 text-xs uppercase tracking-widest md:hidden">Desliza para ver más</p>
             </div>
             
-            <!-- Container relativo para posicionar los botones de navegación -->
+            <!-- Navigation Container -->
             <div class="relative group">
                 
-                <!-- Botón Navegación Izquierda (Solo Desktop) -->
+                <!-- Botón Navegación Izquierda (Visible en desktop) -->
                 <button id="scroll-left-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-20 bg-brand-orange text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center hover:bg-orange-500 hover:scale-110">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
                 </button>
 
-                <!-- Scrollable Horizontal Container -->
-                <!-- Quitamos 'pointer-events-none' de los iframes para permitir play -->
+                <!-- Scrollable Horizontal Container (Pointer events enabled for iframes) -->
                 <div id="video-carousel" class="flex overflow-x-auto space-x-6 pb-8 hide-scrollbar snap-x scroll-smooth">
                     
                     <!-- Video Nuevo (Short) -->
@@ -612,12 +636,11 @@
                     </div>
                 </div>
 
-                <!-- Botón Navegación Derecha (Solo Desktop) -->
+                <!-- Botón Navegación Derecha (Visible en desktop) -->
                 <button id="scroll-right-btn" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-20 bg-brand-orange text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center hover:bg-orange-500 hover:scale-110">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
             </div>
-            
         </section>
 
         <!-- Contact Form -->
@@ -670,14 +693,21 @@
                         <div class="p-3 rounded-full bg-neutral-800 group-hover:bg-[#E1306C] transition-colors mb-2">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </div>
+                        <span class="text-xs font-bold">Instagram</span>
+                    </a>
+                     <a href="mailto:dimension.interactiva@gmail.com" class="text-neutral-500 hover:text-white transition flex flex-col items-center group">
+                        <div class="p-3 rounded-full bg-neutral-800 group-hover:bg-brand-orange transition-colors mb-2">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
                         <span class="text-xs font-bold">Email</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Footer Logo & Copyright -->
+            <!-- Footer Logo & Copyright - Final adjustment: Balanced Size -->
             <div class="text-center pb-12">
-                <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Logo Footer" class="h-56 md:h-72 w-auto max-w-full mx-auto mb-6 hover:scale-105 transition duration-500 object-contain opacity-80 hover:opacity-100">
+                <!-- Footer Logo: Reducido a la mitad del anterior para equilibrar (h-60 en móvil, h-96 en desktop) -->
+                <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Logo Footer" class="h-60 md:h-96 w-auto max-w-full mx-auto mb-6 hover:scale-105 transition duration-500 object-contain opacity-80 hover:opacity-100">
                 <p class="text-neutral-600 text-sm">&copy; 2025 Dimensión Interactiva. Todos los derechos reservados.</p>
             </div>
         </section>
@@ -743,21 +773,6 @@
 
     <!-- Scripts -->
     <script>
-        // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger once on load
-
         // Modal Logic
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('magnified-image');
@@ -766,7 +781,6 @@
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
                 modal.classList.remove('hidden');
-                // Small delay to allow display:block to apply before opacity transition
                 setTimeout(() => {
                     modal.classList.remove('opacity-0');
                 }, 10);
@@ -794,21 +808,22 @@
         const viewText = document.getElementById('view-text');
         const nav = document.getElementById('main-nav');
 
-        viewToggleBtn.addEventListener('click', () => {
-            htmlEl.classList.toggle('simulated-mobile');
-            const isMobile = htmlEl.classList.contains('simulated-mobile');
-            
-            if (isMobile) {
-                iconDesktop.classList.add('hidden');
-                iconMobile.classList.remove('hidden');
-                viewText.innerText = 'Móvil';
-                // Navbar ajustment style is handled via CSS class on HTML
-            } else {
-                iconMobile.classList.add('hidden');
-                iconDesktop.classList.remove('hidden');
-                viewText.innerText = 'Escritorio';
-            }
-        });
+        if(viewToggleBtn) {
+            viewToggleBtn.addEventListener('click', () => {
+                htmlEl.classList.toggle('simulated-mobile');
+                const isMobile = htmlEl.classList.contains('simulated-mobile');
+                
+                if (isMobile) {
+                    iconDesktop.classList.add('hidden');
+                    iconMobile.classList.remove('hidden');
+                    viewText.innerText = 'Móvil';
+                } else {
+                    iconMobile.classList.add('hidden');
+                    iconDesktop.classList.remove('hidden');
+                    viewText.innerText = 'Escritorio';
+                }
+            });
+        }
 
         // Contact Form Logic
         const form = document.querySelector('.contact-form');
@@ -818,41 +833,42 @@
         const spinner = document.getElementById('submit-spinner');
         const btnText = document.getElementById('submit-text');
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // UI Loading State
-            btnText.classList.add('hidden');
-            spinner.classList.remove('hidden');
-            submitBtn.disabled = true;
+        if(form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                btnText.classList.add('hidden');
+                spinner.classList.remove('hidden');
+                submitBtn.disabled = true;
 
-            const formData = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
+                const formData = new FormData(form);
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
 
-                if (response.ok) {
-                    form.reset();
-                    successMsg.classList.remove('hidden');
-                    errorMsg.classList.add('hidden');
-                } else {
-                    throw new Error('Error');
+                    if (response.ok) {
+                        form.reset();
+                        successMsg.classList.remove('hidden');
+                        errorMsg.classList.add('hidden');
+                    } else {
+                        throw new Error('Error');
+                    }
+                } catch (err) {
+                    errorMsg.classList.remove('hidden');
+                    successMsg.classList.add('hidden');
+                } finally {
+                    btnText.classList.remove('hidden');
+                    spinner.classList.add('hidden');
+                    submitBtn.disabled = false;
                 }
-            } catch (err) {
-                errorMsg.classList.remove('hidden');
-                successMsg.classList.add('hidden');
-            } finally {
-                btnText.classList.remove('hidden');
-                spinner.classList.add('hidden');
-                submitBtn.disabled = false;
-            }
-        });
+            });
+        }
 
-        /* --- NUEVA LÓGICA DE BOTONES DE NAVEGACIÓN PARA VIDEOS --- */
+        /* --- LÓGICA DE BOTONES DE NAVEGACIÓN PARA VIDEOS --- */
         const videoCarousel = document.getElementById('video-carousel');
         const leftBtn = document.getElementById('scroll-left-btn');
         const rightBtn = document.getElementById('scroll-right-btn');
@@ -868,29 +884,31 @@
         }
 
         /* --- DRAG TO SCROLL (Solo para elementos no interactivos) --- */
-        // Nota: Ya no aplicamos esto al carrusel de videos para permitir interacción con los iframes
-        // Se mantiene para el menú de navegación u otros sliders puramente visuales
+        // Aplicamos esto a otros sliders que no sean el de video para evitar conflictos
         const otherSliders = document.querySelectorAll('.overflow-x-auto:not(#video-carousel)');
         
         otherSliders.forEach(slider => {
             let isDown = false;
             let startX;
             let scrollLeft;
-            // ... (resto de lógica de drag)
+
             slider.addEventListener('mousedown', (e) => {
                 isDown = true;
                 slider.style.cursor = 'grabbing';
                 startX = e.pageX - slider.offsetLeft;
                 scrollLeft = slider.scrollLeft;
             });
+
             slider.addEventListener('mouseleave', () => {
                 isDown = false;
                 slider.style.cursor = 'grab';
             });
+
             slider.addEventListener('mouseup', () => {
                 isDown = false;
                 slider.style.cursor = 'grab';
             });
+
             slider.addEventListener('mousemove', (e) => {
                 if (!isDown) return;
                 e.preventDefault();
