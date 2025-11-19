@@ -539,76 +539,85 @@
         <section id="videos" class="mb-24">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-800 pb-4">
                 <h2 class="font-display font-bold text-3xl text-white">Producción Audiovisual</h2>
+                <!-- Indicador visual para móvil -->
+                <p class="text-neutral-500 text-xs uppercase tracking-widest md:hidden">Desliza para ver más</p>
             </div>
             
-            <!-- Scrollable Horizontal Container - Added cursor-grab and select-none -->
-            <div class="flex overflow-x-auto space-x-6 pb-8 hide-scrollbar snap-x cursor-grab select-none" style="cursor: grab;">
+            <!-- Container relativo para posicionar los botones de navegación -->
+            <div class="relative group">
                 
-                <!-- Video Nuevo (Short) -->
-                <div class="snap-center flex-shrink-0 w-72 md:w-80 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[177%] rounded-lg overflow-hidden bg-black">
-                         <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/pD1vG4t8B-s" title="YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                         <div class="absolute inset-0 bg-transparent"></div> <!-- Capa para permitir arrastre sobre iframe -->
+                <!-- Botón Navegación Izquierda (Solo Desktop) -->
+                <button id="scroll-left-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-20 bg-brand-orange text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center hover:bg-orange-500 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+
+                <!-- Scrollable Horizontal Container -->
+                <!-- Quitamos 'pointer-events-none' de los iframes para permitir play -->
+                <div id="video-carousel" class="flex overflow-x-auto space-x-6 pb-8 hide-scrollbar snap-x scroll-smooth">
+                    
+                    <!-- Video Nuevo (Short) -->
+                    <div class="snap-center flex-shrink-0 w-72 md:w-80 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[177%] rounded-lg overflow-hidden bg-black">
+                             <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/pD1vG4t8B-s" title="YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video 1 -->
+                    <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/HpMxXIUSl6w" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
+                     <!-- Video 2 -->
+                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hcA54EHCjKU" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/t3WMFjvSUJA" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                     <!-- Video 4 -->
+                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/1WOoFSZVsCc" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                     <!-- Video 5 (Short) -->
+                     <div class="snap-center flex-shrink-0 w-72 md:w-80 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[177%] rounded-lg overflow-hidden bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/rQxfArcj3fM" title="YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video 6 -->
+                    <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/8ANdWC3PlS8" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video 7 -->
+                    <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/YNKi1BD2ELA" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Video 1 -->
-                <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/HpMxXIUSl6w" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                         <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
-                
-                 <!-- Video 2 -->
-                 <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/hcA54EHCjKU" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/t3WMFjvSUJA" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
-
-                 <!-- Video 4 -->
-                 <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/1WOoFSZVsCc" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
-
-                 <!-- Video 5 (Short) -->
-                 <div class="snap-center flex-shrink-0 w-72 md:w-80 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[177%] rounded-lg overflow-hidden bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/rQxfArcj3fM" title="YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/8ANdWC3PlS8" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
-
-                <!-- Video 7 -->
-                <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                    <div class="relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black">
-                        <iframe class="absolute top-0 left-0 w-full h-full pointer-events-none" src="https://www.youtube.com/embed/YNKi1BD2ELA" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="absolute inset-0 bg-transparent"></div>
-                    </div>
-                </div>
+                <!-- Botón Navegación Derecha (Solo Desktop) -->
+                <button id="scroll-right-btn" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-20 bg-brand-orange text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center hover:bg-orange-500 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
             </div>
-            <p class="text-center text-neutral-600 text-xs tracking-wider uppercase mt-2">Desliza para explorar</p>
+            
         </section>
 
         <!-- Contact Form -->
@@ -843,45 +852,53 @@
             }
         });
 
-        /* --- NUEVA FUNCIONALIDAD: DRAG TO SCROLL PARA ESCRITORIO --- */
-        const sliders = document.querySelectorAll('.overflow-x-auto');
+        /* --- NUEVA LÓGICA DE BOTONES DE NAVEGACIÓN PARA VIDEOS --- */
+        const videoCarousel = document.getElementById('video-carousel');
+        const leftBtn = document.getElementById('scroll-left-btn');
+        const rightBtn = document.getElementById('scroll-right-btn');
+
+        if(videoCarousel && leftBtn && rightBtn) {
+            leftBtn.addEventListener('click', () => {
+                videoCarousel.scrollBy({ left: -350, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', () => {
+                videoCarousel.scrollBy({ left: 350, behavior: 'smooth' });
+            });
+        }
+
+        /* --- DRAG TO SCROLL (Solo para elementos no interactivos) --- */
+        // Nota: Ya no aplicamos esto al carrusel de videos para permitir interacción con los iframes
+        // Se mantiene para el menú de navegación u otros sliders puramente visuales
+        const otherSliders = document.querySelectorAll('.overflow-x-auto:not(#video-carousel)');
         
-        sliders.forEach(slider => {
+        otherSliders.forEach(slider => {
             let isDown = false;
             let startX;
             let scrollLeft;
-
+            // ... (resto de lógica de drag)
             slider.addEventListener('mousedown', (e) => {
                 isDown = true;
                 slider.style.cursor = 'grabbing';
                 startX = e.pageX - slider.offsetLeft;
                 scrollLeft = slider.scrollLeft;
             });
-
             slider.addEventListener('mouseleave', () => {
                 isDown = false;
                 slider.style.cursor = 'grab';
             });
-
             slider.addEventListener('mouseup', () => {
                 isDown = false;
                 slider.style.cursor = 'grab';
             });
-
             slider.addEventListener('mousemove', (e) => {
                 if (!isDown) return;
-                e.preventDefault(); // Evita selección de texto al arrastrar
+                e.preventDefault();
                 const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2; // Velocidad del scroll
+                const walk = (x - startX) * 2;
                 slider.scrollLeft = scrollLeft - walk;
             });
-
-            // Prevenir arrastre nativo de imágenes y enlaces para no bloquear el scroll
-            slider.querySelectorAll('img, a').forEach(el => {
-                el.addEventListener('dragstart', e => e.preventDefault());
-            });
             
-            // Cursor inicial para indicar interactividad
             slider.style.cursor = 'grab';
         });
     </script>
