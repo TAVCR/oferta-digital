@@ -942,19 +942,26 @@
                     const scrollAmount = card ? (card.offsetWidth + 24) : 400; 
                     
                     const currentScroll = carousel.scrollLeft;
-                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    // Usamos Math.floor/ceil para evitar problemas con decimales
+                    const containerWidth = carousel.clientWidth;
+                    const totalWidth = carousel.scrollWidth;
                     
+                    // Margen de tolerancia para detectar el final/inicio
+                    const tolerance = 50;
+
                     if (direction === 'right') {
-                        // Si estamos al final (o muy cerca), volver al inicio
-                        if (currentScroll >= maxScroll - 20) {
+                        // Si la posición actual + ancho visible está cerca del ancho total
+                        if (currentScroll + containerWidth >= totalWidth - tolerance) {
+                            // Volver al inicio
                             carousel.scrollTo({ left: 0, behavior: 'smooth' });
                         } else {
                             carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                         }
                     } else {
-                        // Si estamos al inicio (o muy cerca), ir al final
-                        if (currentScroll <= 20) {
-                            carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+                        // Si estamos al inicio
+                        if (currentScroll <= tolerance) {
+                            // Ir al final
+                            carousel.scrollTo({ left: totalWidth, behavior: 'smooth' });
                         } else {
                             carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                         }
