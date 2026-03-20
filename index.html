@@ -448,7 +448,6 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800 relative">
                             <img src="https://i.postimg.cc/dtxBKGzB/la_mierda_esa_SIN_IA.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto original sin IA">
-                            <span class="absolute top-2 left-2 text-[10px] uppercase tracking-wide bg-black/70 border border-neutral-700 rounded px-2 py-1 text-neutral-200">Base sin IA</span>
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
                             <img src="https://i.postimg.cc/286wJ0XX/Gemini_Generated_Image_z9tvd2z9tvd2z9tv.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 1">
@@ -953,6 +952,14 @@
     <!-- Navbar -->
     <nav id="main-nav" class="fixed bottom-0 left-0 w-full bg-[#111111]/95 backdrop-blur-md border-t border-neutral-800 z-50 pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.8)] transition-all duration-500">
         <div class="fixed-nav-container w-full flex overflow-x-auto hide-scrollbar py-3 px-4 space-x-4 snap-x justify-start md:justify-center">
+            <a href="#gallery" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Portafolio</span>
+            </a>
+            <a href="#services" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18v11a2 2 0 01-2 2H5a2 2 0 01-2-2V7zm6-3h6a2 2 0 012 2v1H7V6a2 2 0 012-2z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Servicios</span>
+            </a>
             <a href="#videos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Videos</span>
@@ -969,6 +976,10 @@
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Logos</span>
             </a>
+            <a href="#gallery-banners" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Banners</span>
+            </a>
             <a href="#gallery-gastronomic-photos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Gastro</span>
@@ -977,9 +988,33 @@
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M5 7l1 12h12l1-12M9 7V5a3 3 0 116 0v2"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Prod IA</span>
             </a>
-             <a href="#gallery-people-photos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+            <a href="#gallery-people-photos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                 <span class="text-[10px] font-medium uppercase tracking-wide">Retrato</span>
+            </a>
+            <a href="#gallery-restoration" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M5.64 18.36A9 9 0 1021 12"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Restaurar</span>
+            </a>
+            <a href="#gallery-vehicles" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 16h14l1-4-2-3H6l-2 3 1 4zm0 0a2 2 0 104 0m6 0a2 2 0 104 0"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Autos</span>
+            </a>
+            <a href="#gallery-real-estate" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1v-9z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Inmuebles</span>
+            </a>
+            <a href="#why-choose-us" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Por Qué</span>
+            </a>
+            <a href="#packages" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2v-7m16 0l-2-7H6l-2 7m16 0H4"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Paquetes</span>
+            </a>
+            <a href="#individual-prices" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[84px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Precios</span>
             </a>
             <a href="#contact" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -1082,9 +1117,16 @@
             "ENVIAR SOLICITUD": "SEND REQUEST",
             "¡Mensaje enviado con éxito!": "Message sent successfully!",
             "Menús": "Menus",
+            "Portafolio": "Portfolio",
             "Gastro": "Food",
+            "Banners": "Banners",
             "Prod IA": "AI Prod",
             "Retrato": "Portrait",
+            "Restaurar": "Restore",
+            "Autos": "Cars",
+            "Inmuebles": "Real Estate",
+            "Por Qué": "Why Us",
+            "Precios": "Pricing",
             "Contacto": "Contact",
             "Dimensión Interactiva Logo": "Interactive Dimension Logo",
             "Logo Footer": "Footer Logo",
@@ -1268,6 +1310,75 @@
             applyLanguage(storedLanguage === 'en' ? 'en' : 'es');
         };
 
+        const reorderLandingSections = () => {
+            const main = document.querySelector('main');
+            const header = main ? main.querySelector('header') : null;
+            const gallery = document.getElementById('gallery');
+            const contact = document.getElementById('contact');
+
+            if (main && header && gallery) {
+                main.insertBefore(gallery, header.nextSibling);
+            }
+
+            if (main && contact) {
+                ['why-choose-us', 'packages', 'individual-prices'].forEach((sectionId) => {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        main.insertBefore(section, contact);
+                    }
+                });
+            }
+        };
+
+        const setupInfiniteBottomNav = () => {
+            const navContainer = document.querySelector('.fixed-nav-container');
+            if (!navContainer || navContainer.dataset.infiniteReady === 'true') return;
+
+            const originalItems = Array.from(navContainer.children);
+            if (originalItems.length < 2) return;
+
+            const prependGroup = document.createDocumentFragment();
+            const appendGroup = document.createDocumentFragment();
+
+            originalItems.forEach((item) => {
+                const clone = item.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.tabIndex = -1;
+                prependGroup.appendChild(clone);
+            });
+
+            originalItems.forEach((item) => {
+                const clone = item.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.tabIndex = -1;
+                appendGroup.appendChild(clone);
+            });
+
+            navContainer.prepend(prependGroup);
+            navContainer.appendChild(appendGroup);
+
+            const recenter = () => {
+                const segmentWidth = navContainer.scrollWidth / 3;
+                if (segmentWidth > 0) navContainer.scrollLeft = segmentWidth;
+            };
+
+            requestAnimationFrame(recenter);
+            window.addEventListener('resize', recenter);
+
+            navContainer.addEventListener('scroll', () => {
+                const segmentWidth = navContainer.scrollWidth / 3;
+                if (segmentWidth <= 0) return;
+
+                if (navContainer.scrollLeft < segmentWidth * 0.5) {
+                    navContainer.scrollLeft += segmentWidth;
+                } else if (navContainer.scrollLeft > segmentWidth * 1.5) {
+                    navContainer.scrollLeft -= segmentWidth;
+                }
+            }, { passive: true });
+
+            navContainer.dataset.infiniteReady = 'true';
+        };
+
         // Modal Logic
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('magnified-image');
@@ -1396,7 +1507,9 @@
             }
         };
 
-        // Initialize Language System
+        // Reorder Sections + Infinite Bottom Carousel + Language System
+        reorderLandingSections();
+        setupInfiniteBottomNav();
         initializeLanguageSystem();
 
         // Initialize Carousels
