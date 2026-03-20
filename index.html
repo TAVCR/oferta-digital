@@ -713,7 +713,7 @@
         <!-- Videos Section (FIXED ERROR 153) -->
         <section id="videos" class="mb-24">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-800 pb-4">
-                <h2 class="font-display font-bold text-3xl text-white">Producción Audiovisual</h2>
+                <h2 class="font-display font-bold text-3xl text-white">Videos 16:9 para Youtube</h2>
                 <p class="text-neutral-500 text-xs uppercase tracking-widest md:hidden">Desliza para ver más</p>
             </div>
             
@@ -784,7 +784,7 @@
         <!-- Shorts Section (New) -->
         <section id="shorts" class="mb-24">
             <div class="flex items-center justify-between mb-8 border-b border-neutral-800 pb-4">
-                <h2 class="font-display font-bold text-3xl text-white">Videos Shorts</h2>
+                <h2 class="font-display font-bold text-3xl text-white">Video Shorts 9:16</h2>
                 <p class="text-neutral-500 text-xs uppercase tracking-widest md:hidden">Desliza para ver más</p>
             </div>
             
@@ -872,6 +872,30 @@
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="loadVideo(this, '-ENgDZzT4a4')">
                             <img src="https://img.youtube.com/vi/-ENgDZzT4a4/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Short 7 (User Requested) -->
+                    <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="loadVideo(this, 'a16ScScX61c')">
+                            <img src="https://img.youtube.com/vi/a16ScScX61c/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
+                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Short 8 (User Requested) -->
+                    <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
+                        <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="loadVideo(this, '1WOoFSZVsCc')">
+                            <img src="https://img.youtube.com/vi/1WOoFSZVsCc/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1108,6 +1132,9 @@
             "Fotografía Automotriz": "Automotive Photography",
             "Fotografía Inmobiliaria": "Real Estate Photography",
             "Producción Audiovisual": "Audiovisual Production",
+            "Producción Audio Visual": "Audiovisual Production",
+            "Videos 16:9 para Youtube": "16:9 Videos for YouTube",
+            "Video Shorts 9:16": "9:16 Video Shorts",
             "Desliza para ver más": "Swipe to see more",
             "Videos Shorts": "Short Videos",
             "Inicia tu Proyecto": "Start Your Project",
@@ -1328,7 +1355,15 @@
                 if (!mediaRow) {
                     mediaRow = document.createElement('section');
                     mediaRow.id = 'media-showcase-row';
-                    mediaRow.className = 'mb-24 grid grid-cols-1 xl:grid-cols-2 gap-8 items-start';
+                    mediaRow.className = 'mb-24 space-y-10';
+                }
+
+                let mediaTitle = document.getElementById('media-showcase-title');
+                if (!mediaTitle) {
+                    mediaTitle = document.createElement('div');
+                    mediaTitle.id = 'media-showcase-title';
+                    mediaTitle.className = 'border-b border-neutral-800 pb-4';
+                    mediaTitle.innerHTML = '<h2 class="font-display font-bold text-3xl text-white">Producción Audio Visual</h2>';
                 }
 
                 videos.classList.remove('mb-24');
@@ -1336,6 +1371,7 @@
                 videos.classList.add('mb-0');
                 shorts.classList.add('mb-0');
 
+                mediaRow.appendChild(mediaTitle);
                 mediaRow.appendChild(videos);
                 mediaRow.appendChild(shorts);
                 banners.insertAdjacentElement('afterend', mediaRow);
