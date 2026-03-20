@@ -1317,12 +1317,29 @@
             const contact = document.getElementById('contact');
             const banners = document.getElementById('gallery-banners');
             const videos = document.getElementById('videos');
+            const shorts = document.getElementById('shorts');
 
             if (main && header && gallery) {
                 main.insertBefore(gallery, header.nextSibling);
             }
 
-            if (banners && videos) {
+            if (main && banners && videos && shorts) {
+                let mediaRow = document.getElementById('media-showcase-row');
+                if (!mediaRow) {
+                    mediaRow = document.createElement('section');
+                    mediaRow.id = 'media-showcase-row';
+                    mediaRow.className = 'mb-24 grid grid-cols-1 xl:grid-cols-2 gap-8 items-start';
+                }
+
+                videos.classList.remove('mb-24');
+                shorts.classList.remove('mb-24');
+                videos.classList.add('mb-0');
+                shorts.classList.add('mb-0');
+
+                mediaRow.appendChild(videos);
+                mediaRow.appendChild(shorts);
+                banners.insertAdjacentElement('afterend', mediaRow);
+            } else if (banners && videos) {
                 banners.insertAdjacentElement('afterend', videos);
             }
 
