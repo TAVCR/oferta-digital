@@ -1315,9 +1315,15 @@
             const header = main ? main.querySelector('header') : null;
             const gallery = document.getElementById('gallery');
             const contact = document.getElementById('contact');
+            const banners = document.getElementById('gallery-banners');
+            const videos = document.getElementById('videos');
 
             if (main && header && gallery) {
                 main.insertBefore(gallery, header.nextSibling);
+            }
+
+            if (banners && videos) {
+                banners.insertAdjacentElement('afterend', videos);
             }
 
             if (main && contact) {
