@@ -142,6 +142,12 @@
         </div>
     </button>
 
+    <!-- Language Toggle -->
+    <div id="language-toggle" class="fixed top-6 left-6 z-50 flex items-center gap-1 bg-neutral-800/90 backdrop-blur-md border border-neutral-700 p-1 rounded-full shadow-2xl">
+        <button type="button" data-lang-option="es" class="lang-option px-3 py-1 rounded-full text-xs font-bold transition bg-brand-orange text-white">ES</button>
+        <button type="button" data-lang-option="en" class="lang-option px-3 py-1 rounded-full text-xs font-bold transition text-neutral-300 hover:text-white">EN</button>
+    </div>
+
     <!-- Luz ambiental muy sutil -->
     <div class="background-blob fixed top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[500px] bg-brand-orange rounded-full mix-blend-screen filter blur-[120px] opacity-[0.08] -z-10 pointer-events-none"></div>
 
@@ -298,7 +304,7 @@
                         <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 4 Diseños al mes</li>
                         <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> Adaptación formatos RRSS</li>
                     </ul>
-                    <a href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Arranque%20Digital" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-colors mt-auto border border-neutral-700">
+                    <a id="wa-package-starter" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Arranque%20Digital" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-colors mt-auto border border-neutral-700">
                         Solicitar Ahora
                     </a>
                 </div>
@@ -313,7 +319,7 @@
                         <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 8 Afiches promocionales</li>
                         <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> Formatos Feed/Stories/Reels</li>
                     </ul>
-                    <a href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Impulso%20Pyme" target="_blank" class="block w-full py-4 btn-primary text-white font-bold text-center rounded-lg transition-colors mt-auto">
+                    <a id="wa-package-growth" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Impulso%20Pyme" target="_blank" class="block w-full py-4 btn-primary text-white font-bold text-center rounded-lg transition-colors mt-auto">
                         Solicitar Ahora
                     </a>
                 </div>
@@ -327,7 +333,7 @@
                         <li class="flex items-center"><span class="text-white mr-3">●</span> 12 Diseños mensuales</li>
                         <li class="flex items-center"><span class="text-white mr-3">●</span> Cobertura total plataformas</li>
                     </ul>
-                    <a href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Presencia%20Total" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-colors mt-auto border border-neutral-700">
+                    <a id="wa-package-total" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Presencia%20Total" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-colors mt-auto border border-neutral-700">
                         Solicitar Ahora
                     </a>
                 </div>
@@ -983,6 +989,285 @@
     </nav>
 
     <script>
+        // Language Logic (ES / EN)
+        const htmlEl = document.documentElement;
+        let currentLanguage = 'es';
+        const languageStorageKey = 'landing-language';
+        const languageButtons = document.querySelectorAll('[data-lang-option]');
+        const languageToggle = document.getElementById('language-toggle');
+
+        const modeLabels = {
+            es: { mobile: 'Móvil', desktop: 'Escritorio' },
+            en: { mobile: 'Mobile', desktop: 'Desktop' },
+        };
+
+        const textTranslations = {
+            "Modo Vista": "View Mode",
+            "Escritorio": "Desktop",
+            "Elevamos tu": "We elevate your",
+            "Marca": "Brand",
+            "a la": "to the",
+            "Dimensión Digital": "Digital Dimension",
+            "Estrategia creativa, diseño de alto nivel y producción audiovisual para marcas que buscan destacar con seriedad y estilo.": "Creative strategy, high-end design, and audiovisual production for brands that want to stand out with style and professionalism.",
+            "Ver Paquetes": "View Packages",
+            "Contáctanos": "Contact Us",
+            "¿Por qué elegirnos?": "Why choose us?",
+            "En la actualidad, los medios tradicionales como la Radio, la Prensa Escrita y la Televisión están siendo desplazados por plataformas digitales. La mayoría de las personas tienen acceso a teléfonos celulares o computadoras con internet, y pasan gran parte de su tiempo en redes sociales.": "Today, traditional media such as radio, print, and television are being displaced by digital platforms. Most people have access to internet-enabled phones or computers, and spend much of their time on social media.",
+            "El mercado digital trasciende fronteras y barreras lingüísticas, permitiendo un crecimiento exponencial. En este entorno saturado de contenido, es fundamental que el mensaje de su marca resalte con calidad profesional.": "The digital market crosses borders and language barriers, enabling exponential growth. In this content-saturated environment, it is essential for your brand message to stand out with professional quality.",
+            "Una estrategia de comunicación efectiva es crucial para sobresalir. Aunque su producto sea de calidad, una mala estrategia visual puede socavar sus esfuerzos.": "An effective communication strategy is crucial to stand out. Even if your product is high-quality, a weak visual strategy can undermine your efforts.",
+            "Comprendemos la cultura tica y los hábitos digitales locales.": "We understand Costa Rican culture and local digital habits.",
+            "Precios accesibles optimizados para PyMES.": "Affordable pricing optimized for SMEs.",
+            "Entregas rápidas y asesoría constante.": "Fast delivery and ongoing guidance.",
+            "Producción High-End con herramientas modernas.": "High-end production with modern tools.",
+            "Servicios": "Services",
+            "Profesionales": "Professional",
+            "Diseño de Logotipos": "Logo Design",
+            "Producción de Video & Reels": "Video & Reels Production",
+            "Menús para Restaurantes": "Restaurant Menus",
+            "Fotografía & IA": "Photography & AI",
+            "Edición de Audio": "Audio Editing",
+            "Diseño de Banners": "Banner Design",
+            "Paquetes": "Packages",
+            "Estratégicos": "Strategic",
+            "Arranque Digital": "Digital Kickstart",
+            "1 Video promocional": "1 Promotional Video",
+            "4 Diseños al mes": "4 Designs per month",
+            "Adaptación formatos RRSS": "Social media format adaptation",
+            "Solicitar Ahora": "Request Now",
+            "Impulso Pyme": "SME Boost",
+            "2 Videos con Locución IA": "2 Videos with AI Voice-over",
+            "8 Afiches promocionales": "8 Promotional Posters",
+            "Formatos Feed/Stories/Reels": "Feed/Stories/Reels formats",
+            "Presencia Total": "Total Presence",
+            "2 Videos IA + 1 Filmado Prof.": "2 AI Videos + 1 Professional Shoot",
+            "12 Diseños mensuales": "12 Monthly Designs",
+            "Cobertura total plataformas": "Full platform coverage",
+            "Administración de Redes Sociales": "Social Media Management",
+            "Manejo integral de Facebook, Instagram, TikTok y WhatsApp. Incluye respuesta a clientes e informes mensuales.": "Comprehensive management of Facebook, Instagram, TikTok, and WhatsApp. Includes client responses and monthly reports.",
+            "Inversión Mensual": "Monthly Investment",
+            "Servicios Individuales": "Individual Services",
+            "Personalizado según complejidad": "Customized by complexity",
+            "Desde ₡52,000": "From ₡52,000",
+            "Diseño de Menús": "Menu Design",
+            "Formatos digitales (QR) y listos para impresión": "Digital (QR) and print-ready formats",
+            "Precio Negociable": "Negotiable Price",
+            "Digitalización de Logos": "Logo Digitization",
+            "Vectorización de logotipos existentes": "Vectorization of existing logos",
+            "Videos & Reels": "Videos & Reels",
+            "Desde ₡80,000": "From ₡80,000",
+            "Stock + Música (1 min): ₡80,000 | Con IA + Locución: ₡115,000 | Filmación Profesional: ₡190,000": "Stock + Music (1 min): ₡80,000 | With AI + Voice-over: ₡115,000 | Professional Filming: ₡190,000",
+            "Fotografía Profesional": "Professional Photography",
+            "Canon Profesional + Edición (Por hora)": "Professional Canon + Editing (Per hour)",
+            "Nuestro Portafolio": "Our Portfolio",
+            "Creatividad & Precisión": "Creativity & Precision",
+            "Menús Digitales & Físicos": "Digital & Printed Menus",
+            "Fotografía de Producto IA": "AI Product Photography",
+            "Esta colección presenta imágenes de producto intervenidas y refinadas mediante prompts de IA para elevar su impacto visual en Landing Pages reales. Cada pieza fue dirigida con criterio creativo para mejorar luz, composición y presencia de marca, logrando resultados exclusivos: imágenes únicas, hechas a medida, no fotografías de stock.": "This collection showcases product images enhanced and refined through AI prompts to elevate their visual impact on real Landing Pages. Each piece was art-directed to improve lighting, composition, and brand presence, delivering exclusive results: unique, custom-made images, not stock photography.",
+            "Base sin IA": "Base without AI",
+            "Diseño de Identidad": "Identity Design",
+            "(Logos diseñados o rediseñados desde la fuente original con Photoshop, Ilustrador, Canva, IA o combinación de varios programas)": "(Logos designed or redesigned from the original source using Photoshop, Illustrator, Canva, AI, or a combination of tools)",
+            "Publicidad Digital": "Digital Advertising",
+            "Fotografía Gastronómica": "Food Photography",
+            "Retrato & Estilo de Vida": "Portrait & Lifestyle",
+            "Restauración": "Restoration",
+            "Fotografía Automotriz": "Automotive Photography",
+            "Fotografía Inmobiliaria": "Real Estate Photography",
+            "Producción Audiovisual": "Audiovisual Production",
+            "Desliza para ver más": "Swipe to see more",
+            "Videos Shorts": "Short Videos",
+            "Inicia tu Proyecto": "Start Your Project",
+            "Déjanos tus datos y te contactaremos a la brevedad.": "Leave your details and we will contact you shortly.",
+            "NOMBRE": "NAME",
+            "MENSAJE": "MESSAGE",
+            "ENVIAR SOLICITUD": "SEND REQUEST",
+            "¡Mensaje enviado con éxito!": "Message sent successfully!",
+            "Menús": "Menus",
+            "Gastro": "Food",
+            "Prod IA": "AI Prod",
+            "Retrato": "Portrait",
+            "Contacto": "Contact",
+            "Dimensión Interactiva Logo": "Interactive Dimension Logo",
+            "Logo Footer": "Footer Logo",
+            "Ampliada": "Enlarged",
+            "Tu nombre completo": "Your full name",
+            "nombre@empresa.com": "name@company.com",
+            "Cuéntanos sobre tu proyecto...": "Tell us about your project...",
+            "Logo Guitarra Antologías": "Antologias Guitar Logo",
+            "Logo Boyero Barril": "Boyero Barril Logo",
+            "Logo Antologías Clásico": "Antologias Classic Logo",
+            "Logo Antologías Clásico 2": "Antologias Classic Logo 2",
+            "Logo Nuevo Diseño": "New Design Logo",
+            "Logo Flashback": "Flashback Logo",
+            "Logo Retro Party": "Retro Party Logo",
+            "Producto original sin IA": "Original product without AI",
+            "Diseño de Menú HD 1": "HD Menu Design 1",
+            "Diseño de Menú HD 2": "HD Menu Design 2",
+            "© 2025 Dimensión Interactiva. Todos los derechos reservados.": "© 2025 Interactive Dimension. All rights reserved."
+        };
+
+        const dynamicPatternTranslations = [
+            { regex: /^Producto mejorado con IA (\d+)$/i, fn: (n) => `AI-enhanced product ${n}` },
+            { regex: /^Foto Gastronomía (\d+)$/i, fn: (n) => `Food photo ${n}` },
+            { regex: /^Persona (\d+)$/i, fn: (n) => `Person ${n}` },
+            { regex: /^Restauración (\d+)$/i, fn: (n) => `Restoration ${n}` },
+            { regex: /^Vehiculo (\d+)$/i, fn: (n) => `Vehicle ${n}` },
+        ];
+
+        const headingHtmlTranslations = [
+            { selector: '#services h2', en: 'Professional <span class="text-brand-orange">Services</span>' },
+            { selector: '#packages > h2', en: 'Strategic <span class="text-brand-orange">Packages</span>' },
+        ];
+
+        const submitStates = {
+            es: { sending: 'ENVIANDO...', sent: 'ENVIADO', idle: 'ENVIAR SOLICITUD' },
+            en: { sending: 'SENDING...', sent: 'SENT', idle: 'SEND REQUEST' },
+        };
+
+        const whatsappLinks = {
+            starter: document.getElementById('wa-package-starter'),
+            growth: document.getElementById('wa-package-growth'),
+            total: document.getElementById('wa-package-total'),
+        };
+
+        const whatsappMessages = {
+            es: {
+                starter: 'https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Arranque%20Digital',
+                growth: 'https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Impulso%20Pyme',
+                total: 'https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Presencia%20Total',
+            },
+            en: {
+                starter: 'https://wa.me/50685020909?text=Hello,%20I%27m%20interested%20in%20the%20Digital%20Kickstart%20package',
+                growth: 'https://wa.me/50685020909?text=Hello,%20I%27m%20interested%20in%20the%20SME%20Boost%20package',
+                total: 'https://wa.me/50685020909?text=Hello,%20I%27m%20interested%20in%20the%20Total%20Presence%20package',
+            },
+        };
+
+        const translatableTextNodes = [];
+        const translatableAttributes = [];
+        const translatableAttributeNames = ['placeholder', 'alt', 'title', 'aria-label'];
+
+        const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
+
+        const translateWithPattern = (normalizedText) => {
+            for (const pattern of dynamicPatternTranslations) {
+                const match = normalizedText.match(pattern.regex);
+                if (match) {
+                    return pattern.fn(match[1]);
+                }
+            }
+            return null;
+        };
+
+        const translateCore = (value, lang) => {
+            if (lang === 'es') return value;
+            const normalized = normalizeText(value);
+            if (!normalized) return value;
+            return textTranslations[normalized] || translateWithPattern(normalized) || value;
+        };
+
+        const setWhatsAppLanguage = (lang) => {
+            const set = whatsappMessages[lang] || whatsappMessages.es;
+            if (whatsappLinks.starter) whatsappLinks.starter.href = set.starter;
+            if (whatsappLinks.growth) whatsappLinks.growth.href = set.growth;
+            if (whatsappLinks.total) whatsappLinks.total.href = set.total;
+        };
+
+        const setLanguageButtonState = () => {
+            languageButtons.forEach((button) => {
+                const isActive = button.dataset.langOption === currentLanguage;
+                button.classList.toggle('bg-brand-orange', isActive);
+                button.classList.toggle('text-white', isActive);
+                button.classList.toggle('text-neutral-300', !isActive);
+                button.classList.toggle('hover:text-white', !isActive);
+            });
+        };
+
+        const syncViewModeLabel = () => {
+            const viewTextNode = document.getElementById('view-text');
+            if (!viewTextNode) return;
+            const isMobileMode = htmlEl.classList.contains('simulated-mobile');
+            const labels = modeLabels[currentLanguage] || modeLabels.es;
+            viewTextNode.innerText = isMobileMode ? labels.mobile : labels.desktop;
+        };
+
+        const applyLanguage = (lang) => {
+            currentLanguage = lang === 'en' ? 'en' : 'es';
+            document.documentElement.lang = currentLanguage;
+            document.title = currentLanguage === 'en'
+                ? 'Interactive Dimension | Digital Solutions'
+                : 'Dimensión Interactiva | Soluciones Digitales';
+
+            translatableTextNodes.forEach((node) => {
+                const originalValue = node.__i18nOriginal || node.nodeValue;
+                const match = originalValue.match(/^(\s*)([\s\S]*?)(\s*)$/);
+                if (!match) return;
+                const leading = match[1];
+                const core = match[2];
+                const trailing = match[3];
+                const translated = translateCore(core, currentLanguage);
+                node.nodeValue = `${leading}${translated}${trailing}`;
+            });
+
+            translatableAttributes.forEach((item) => {
+                const translated = translateCore(item.original, currentLanguage);
+                item.element.setAttribute(item.attribute, translated);
+            });
+
+            headingHtmlTranslations.forEach((entry) => {
+                if (!entry.element) return;
+                entry.element.innerHTML = currentLanguage === 'en' ? entry.en : entry.es;
+            });
+
+            setWhatsAppLanguage(currentLanguage);
+            syncViewModeLabel();
+            setLanguageButtonState();
+            localStorage.setItem(languageStorageKey, currentLanguage);
+        };
+
+        const initializeLanguageSystem = () => {
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode(node) {
+                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    if (['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_ACCEPT;
+                },
+            });
+
+            while (walker.nextNode()) {
+                const node = walker.currentNode;
+                node.__i18nOriginal = node.nodeValue;
+                translatableTextNodes.push(node);
+            }
+
+            document.querySelectorAll('*').forEach((element) => {
+                translatableAttributeNames.forEach((attribute) => {
+                    if (!element.hasAttribute(attribute)) return;
+                    const original = element.getAttribute(attribute);
+                    if (!original || !original.trim()) return;
+                    translatableAttributes.push({ element, attribute, original });
+                });
+            });
+
+            headingHtmlTranslations.forEach((entry) => {
+                entry.element = document.querySelector(entry.selector);
+                entry.es = entry.element ? entry.element.innerHTML : '';
+            });
+
+            if (languageToggle) {
+                languageButtons.forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const selected = button.dataset.langOption === 'en' ? 'en' : 'es';
+                        applyLanguage(selected);
+                    });
+                });
+            }
+
+            const storedLanguage = localStorage.getItem(languageStorageKey);
+            applyLanguage(storedLanguage === 'en' ? 'en' : 'es');
+        };
+
         // Modal Logic
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('magnified-image');
@@ -1016,10 +1301,8 @@
 
         // View Toggle Logic
         const viewToggleBtn = document.getElementById('view-toggle');
-        const htmlEl = document.documentElement;
         const iconDesktop = document.getElementById('icon-desktop');
         const iconMobile = document.getElementById('icon-mobile');
-        const viewText = document.getElementById('view-text');
 
         if(viewToggleBtn) {
             viewToggleBtn.addEventListener('click', () => {
@@ -1027,7 +1310,7 @@
                 const isMobile = htmlEl.classList.contains('simulated-mobile');
                 iconDesktop.classList.toggle('hidden', isMobile);
                 iconMobile.classList.toggle('hidden', !isMobile);
-                viewText.innerText = isMobile ? 'Móvil' : 'Escritorio';
+                syncViewModeLabel();
             });
         }
 
@@ -1038,19 +1321,27 @@
                 e.preventDefault();
                 const btn = form.querySelector('button');
                 btn.disabled = true;
-                btn.innerText = "ENVIANDO...";
-                
-                const formData = new FormData(form);
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
+                btn.innerText = submitStates[currentLanguage].sending;
 
-                if (response.ok) {
-                    form.reset();
-                    document.getElementById('success-message').classList.remove('hidden');
-                    btn.innerText = "ENVIADO";
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        form.reset();
+                        document.getElementById('success-message').classList.remove('hidden');
+                        btn.innerText = submitStates[currentLanguage].sent;
+                    } else {
+                        btn.disabled = false;
+                        btn.innerText = submitStates[currentLanguage].idle;
+                    }
+                } catch (error) {
+                    btn.disabled = false;
+                    btn.innerText = submitStates[currentLanguage].idle;
                 }
             });
         }
@@ -1104,6 +1395,9 @@
                 rightBtn.addEventListener('click', () => scrollCarousel('right'));
             }
         };
+
+        // Initialize Language System
+        initializeLanguageSystem();
 
         // Initialize Carousels
         setupCarousel('video-carousel', 'scroll-left-btn', 'scroll-right-btn');
