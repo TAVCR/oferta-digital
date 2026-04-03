@@ -765,7 +765,7 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                            <button class="absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 'HpMxXIUSl6w')" aria-label="Agrandar video">
+                            <button class="expand-16x9 absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 'HpMxXIUSl6w')" aria-label="Agrandar video">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
                             </button>
                         </div>
@@ -780,7 +780,7 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                            <button class="absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 't3WMFjvSUJA')" aria-label="Agrandar video">
+                            <button class="expand-16x9 absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 't3WMFjvSUJA')" aria-label="Agrandar video">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
                             </button>
                         </div>
@@ -795,7 +795,7 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                            <button class="absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, '8ANdWC3PlS8')" aria-label="Agrandar video">
+                            <button class="expand-16x9 absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, '8ANdWC3PlS8')" aria-label="Agrandar video">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
                             </button>
                         </div>
@@ -810,7 +810,7 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                            <button class="absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 'hcA54EHCjKU')" aria-label="Agrandar video">
+                            <button class="expand-16x9 absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 'hcA54EHCjKU')" aria-label="Agrandar video">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
                             </button>
                         </div>
@@ -1639,6 +1639,18 @@
             closeInlineVideo();
             showVideoModal(videoId);
         }
+
+        const toggleWideExpandButtons = async () => {
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            const canLock = !!(screen.orientation && screen.orientation.lock);
+            const buttons = document.querySelectorAll('.expand-16x9');
+            buttons.forEach(btn => {
+                btn.classList.toggle('hidden', isMobile && !canLock);
+            });
+        };
+
+        window.addEventListener('resize', toggleWideExpandButtons);
+        toggleWideExpandButtons();
 
         // View Toggle Logic
         const viewToggleBtn = document.getElementById('view-toggle');
