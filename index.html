@@ -1628,6 +1628,12 @@
                 window.addEventListener('orientationchange', handleUpdate);
             });
         };
+
+        const shouldAutoCloseImageFullscreenOnPortrait = () => {
+            if (!imageWideFullscreen) return false;
+            if (modal.classList.contains('hidden')) return false;
+            return window.innerHeight > window.innerWidth;
+        };
         
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
@@ -1664,8 +1670,8 @@
         const hideModal = async () => {
             modal.classList.add('opacity-0');
             if (imageWideFullscreen) {
-                await exitFullscreen();
                 imageWideFullscreen = false;
+                await exitFullscreen();
             }
             resetModalImageClasses();
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
@@ -1791,8 +1797,18 @@
                 hideVideoModalWide();
             }
         });
+        const handleImageFullscreenViewportShift = () => {
+            if (shouldAutoCloseImageFullscreenOnPortrait()) {
+                hideModal();
+            }
+        };
         document.addEventListener('fullscreenchange', () => {
             fitWideVideoFrame();
+            handleImageFullscreenViewportShift();
+            if (!document.fullscreenElement && imageWideFullscreen && !modal.classList.contains('hidden')) {
+                hideModal();
+                return;
+            }
             if (!document.fullscreenElement && !videoModalWide.classList.contains('hidden')) {
                 hideVideoModalWide();
             }
@@ -1842,7 +1858,9 @@
         window.addEventListener('resize', () => {
             toggleWideExpandButtons();
             fitWideVideoFrame();
+            handleImageFullscreenViewportShift();
         });
+        window.addEventListener('orientationchange', handleImageFullscreenViewportShift);
         toggleWideExpandButtons();
 
         // View Toggle Logic
