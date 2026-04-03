@@ -1029,11 +1029,11 @@
 
     <!-- Video Modal (16:9 Fullscreen) -->
     <div id="video-modal-wide" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 p-4">
-        <div class="relative w-full max-w-5xl">
-            <button id="close-video-modal-wide" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-orange transition">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            <div class="w-full aspect-video rounded-xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
+        <button id="close-video-modal-wide" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-orange transition z-10">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="w-full h-full flex items-center justify-center">
+            <div class="w-full max-w-[calc(100vh*16/9)] max-h-[90vh] aspect-video rounded-xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
                 <div id="video-modal-wide-frame" class="w-full h-full"></div>
             </div>
         </div>
