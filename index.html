@@ -132,6 +132,31 @@
         #video-modal-wide:fullscreen #close-video-modal-wide {
             display: block;
         }
+        #video-modal-wide {
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top);
+            padding-right: env(safe-area-inset-right);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+        }
+        #video-modal-wide-stage {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #video-modal-wide-player {
+            background: #000;
+            overflow: hidden;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        #video-modal-wide-player iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
         .expand-btn {
             display: inline-flex;
             align-items: center;
@@ -1076,8 +1101,8 @@
         <button id="close-video-modal-wide" class="fixed top-4 right-4 z-[70] text-white bg-black/70 hover:bg-black/90 rounded-md p-2 transition">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-        <div class="w-screen h-screen flex items-center justify-center">
-            <div class="w-full h-full rounded-none overflow-hidden bg-black">
+        <div id="video-modal-wide-stage">
+            <div id="video-modal-wide-player" class="rounded-none">
                 <div id="video-modal-wide-frame" class="w-full h-full"></div>
             </div>
         </div>
@@ -1506,6 +1531,7 @@
         const closeVideoBtn = document.getElementById('close-video-modal');
         const videoModalWide = document.getElementById('video-modal-wide');
         const videoModalWideFrame = document.getElementById('video-modal-wide-frame');
+        const videoModalWidePlayer = document.getElementById('video-modal-wide-player');
         const closeVideoWideBtn = document.getElementById('close-video-modal-wide');
         let currentInlineVideo = null;
         const bodyEl = document.body;
@@ -1620,6 +1646,25 @@
         let videoModalHideTimer = null;
         let videoModalWideHideTimer = null;
 
+        const fitWideVideoFrame = () => {
+            if (!videoModalWidePlayer || videoModalWide.classList.contains('hidden')) return;
+            const availableWidth = videoModalWide.clientWidth;
+            const availableHeight = videoModalWide.clientHeight;
+            if (!availableWidth || !availableHeight) return;
+
+            const targetRatio = 16 / 9;
+            let width = availableWidth;
+            let height = Math.round(width / targetRatio);
+
+            if (height > availableHeight) {
+                height = availableHeight;
+                width = Math.round(height * targetRatio);
+            }
+
+            videoModalWidePlayer.style.width = `${width}px`;
+            videoModalWidePlayer.style.height = `${height}px`;
+        };
+
         const showVideoModal = (videoId) => {
             hideVideoModalWide();
             if (videoModalHideTimer) {
@@ -1656,7 +1701,11 @@
             setTimeout(() => { videoModalWide.classList.remove('opacity-0'); }, 10);
             videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             lockScroll();
-            enterFullscreen(videoModalWide);
+            fitWideVideoFrame();
+            enterFullscreen(videoModalWide).finally(() => {
+                fitWideVideoFrame();
+                setTimeout(fitWideVideoFrame, 220);
+            });
         };
 
         const hideVideoModalWide = () => {
@@ -1667,6 +1716,8 @@
             videoModalWideHideTimer = setTimeout(() => {
                 videoModalWide.classList.add('hidden');
                 videoModalWideFrame.innerHTML = '';
+                videoModalWidePlayer.style.width = '';
+                videoModalWidePlayer.style.height = '';
             }, 300);
             unlockScroll();
             exitFullscreen();
@@ -1683,6 +1734,7 @@
             }
         });
         document.addEventListener('fullscreenchange', () => {
+            fitWideVideoFrame();
             if (!document.fullscreenElement && !videoModalWide.classList.contains('hidden')) {
                 hideVideoModalWide();
             }
@@ -1729,7 +1781,10 @@
             });
         };
 
-        window.addEventListener('resize', toggleWideExpandButtons);
+        window.addEventListener('resize', () => {
+            toggleWideExpandButtons();
+            fitWideVideoFrame();
+        });
         toggleWideExpandButtons();
 
         // View Toggle Logic
