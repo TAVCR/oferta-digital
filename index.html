@@ -1539,14 +1539,14 @@
         const lockScroll = () => { bodyEl.style.overflow = 'hidden'; };
         const unlockScroll = () => { bodyEl.style.overflow = ''; };
         const enterFullscreen = async (el) => {
-            if (document.fullscreenElement) return;
+            if (document.fullscreenElement) return true;
             const request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
-            if (request) {
-                try { await request.call(el); } catch (_) {}
-            }
+            if (!request) return false;
+            try { await request.call(el); } catch (_) { return false; }
             if (screen.orientation && screen.orientation.lock) {
                 try { await screen.orientation.lock('landscape'); } catch (_) {}
             }
+            return !!document.fullscreenElement;
         };
         const exitFullscreen = async () => {
             if (screen.orientation && screen.orientation.unlock) {
@@ -1572,12 +1572,38 @@
         const isWideImage = (imgEl) => {
             if (!imgEl.naturalWidth || !imgEl.naturalHeight) return false;
             const ratio = imgEl.naturalWidth / imgEl.naturalHeight;
-            return ratio >= 1.72 && ratio <= 1.82;
+            return ratio > 1.15;
         };
 
         const shouldPromoteWideImageOnMobile = (imgEl) => {
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
-            return isMobile && isWideImage(imgEl);
+            const touchLike = navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            const shortestEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
+            const mobileLike = touchLike && shortestEdge <= 915;
+            const compactViewport = window.matchMedia('(max-width: 768px)').matches;
+            return isWideImage(imgEl) && (mobileLike || compactViewport);
+        };
+
+        const waitForLandscapeViewport = (timeoutMs = 500) => {
+            if (window.innerWidth > window.innerHeight) return Promise.resolve(true);
+            return new Promise((resolve) => {
+                let settled = false;
+                const finish = (value) => {
+                    if (settled) return;
+                    settled = true;
+                    window.removeEventListener('resize', handleUpdate);
+                    window.removeEventListener('orientationchange', handleUpdate);
+                    clearTimeout(timer);
+                    resolve(value);
+                };
+                const handleUpdate = () => {
+                    if (window.innerWidth > window.innerHeight) finish(true);
+                };
+                const timer = setTimeout(() => {
+                    finish(window.innerWidth > window.innerHeight);
+                }, timeoutMs);
+                window.addEventListener('resize', handleUpdate);
+                window.addEventListener('orientationchange', handleUpdate);
+            });
         };
         
         document.querySelectorAll('.gallery-item img').forEach(img => {
@@ -1589,11 +1615,19 @@
                 const applyImageMode = async () => {
                     resetModalImageClasses();
                     if (shouldPromoteWideImageOnMobile(modalImg)) {
-                        modalImg.classList.remove(...imageDefaultClasses);
-                        modalImg.classList.add(...imageWideClasses);
-                        await enterFullscreen(modal);
-                        imageWideFullscreen = true;
+                        const enteredFullscreen = await enterFullscreen(modal);
+                        if (enteredFullscreen) {
+                            const hasLandscapeViewport = await waitForLandscapeViewport();
+                            if (hasLandscapeViewport) {
+                                modalImg.classList.remove(...imageDefaultClasses);
+                                modalImg.classList.add(...imageWideClasses);
+                                imageWideFullscreen = true;
+                                return;
+                            }
+                            await exitFullscreen();
+                        }
                     }
+                    imageWideFullscreen = false;
                 };
                 modalImg.onload = applyImageMode;
                 modalImg.src = img.src;
