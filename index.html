@@ -1629,12 +1629,6 @@
             });
         };
 
-        const shouldAutoCloseImageFullscreenOnPortrait = () => {
-            if (!imageWideFullscreen) return false;
-            if (modal.classList.contains('hidden')) return false;
-            return window.innerHeight > window.innerWidth;
-        };
-        
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
                 modal.classList.remove('hidden');
@@ -1797,17 +1791,11 @@
                 hideVideoModalWide();
             }
         });
-        const handleImageFullscreenViewportShift = () => {
-            if (shouldAutoCloseImageFullscreenOnPortrait()) {
-                hideModal();
-            }
-        };
         document.addEventListener('fullscreenchange', () => {
             fitWideVideoFrame();
-            handleImageFullscreenViewportShift();
             if (!document.fullscreenElement && imageWideFullscreen && !modal.classList.contains('hidden')) {
-                hideModal();
-                return;
+                imageWideFullscreen = false;
+                resetModalImageClasses();
             }
             if (!document.fullscreenElement && !videoModalWide.classList.contains('hidden')) {
                 hideVideoModalWide();
@@ -1858,9 +1846,7 @@
         window.addEventListener('resize', () => {
             toggleWideExpandButtons();
             fitWideVideoFrame();
-            handleImageFullscreenViewportShift();
         });
-        window.addEventListener('orientationchange', handleImageFullscreenViewportShift);
         toggleWideExpandButtons();
 
         // View Toggle Logic
