@@ -1643,9 +1643,10 @@
         const toggleWideExpandButtons = async () => {
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
             const canLock = !!(screen.orientation && screen.orientation.lock);
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
             const buttons = document.querySelectorAll('.expand-16x9');
             buttons.forEach(btn => {
-                btn.classList.toggle('hidden', isMobile && !canLock);
+                btn.classList.toggle('hidden', isMobile && isIOS && !canLock);
             });
         };
 
