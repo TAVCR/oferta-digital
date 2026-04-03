@@ -1583,9 +1583,17 @@
             hideVideoModalWide();
         };
 
+        let videoModalHideTimer = null;
+        let videoModalWideHideTimer = null;
+
         const showVideoModal = (videoId) => {
             hideVideoModalWide();
+            if (videoModalHideTimer) {
+                clearTimeout(videoModalHideTimer);
+                videoModalHideTimer = null;
+            }
             videoModal.classList.remove('hidden');
+            videoModal.classList.remove('opacity-0');
             setTimeout(() => { videoModal.classList.remove('opacity-0'); }, 10);
             videoModalFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="YouTube Shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             lockScroll();
@@ -1593,7 +1601,10 @@
 
         const hideVideoModal = () => {
             videoModal.classList.add('opacity-0');
-            setTimeout(() => {
+            if (videoModalHideTimer) {
+                clearTimeout(videoModalHideTimer);
+            }
+            videoModalHideTimer = setTimeout(() => {
                 videoModal.classList.add('hidden');
                 videoModalFrame.innerHTML = '';
             }, 300);
@@ -1602,7 +1613,12 @@
 
         const showVideoModalWide = (videoId) => {
             hideVideoModal();
+            if (videoModalWideHideTimer) {
+                clearTimeout(videoModalWideHideTimer);
+                videoModalWideHideTimer = null;
+            }
             videoModalWide.classList.remove('hidden');
+            videoModalWide.classList.remove('opacity-0');
             setTimeout(() => { videoModalWide.classList.remove('opacity-0'); }, 10);
             videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             lockScroll();
@@ -1613,7 +1629,10 @@
 
         const hideVideoModalWide = () => {
             videoModalWide.classList.add('opacity-0');
-            setTimeout(() => {
+            if (videoModalWideHideTimer) {
+                clearTimeout(videoModalWideHideTimer);
+            }
+            videoModalWideHideTimer = setTimeout(() => {
                 videoModalWide.classList.add('hidden');
                 videoModalWideFrame.innerHTML = '';
             }, 300);
