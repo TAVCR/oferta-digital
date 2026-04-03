@@ -1052,7 +1052,7 @@
     <!-- Image Modal -->
     <div id="image-modal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 p-4">
         <div class="relative max-w-5xl max-h-[90vh] w-full flex justify-center">
-            <button id="close-modal" class="absolute -top-12 right-0 text-neutral-400 hover:text-brand-orange transition">
+            <button id="close-modal" class="fixed top-4 right-4 z-[70] text-white bg-black/70 hover:bg-black/90 rounded-md p-2 transition">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <img id="magnified-image" src="" alt="Ampliada" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl border border-neutral-800">
@@ -1533,17 +1533,57 @@
                 }
             }
         };
+
+        const imageDefaultClasses = ['max-w-full', 'max-h-[85vh]', 'rounded-lg', 'border', 'border-neutral-800'];
+        const imageWideClasses = ['w-screen', 'h-screen', 'max-w-none', 'max-h-none', 'object-cover', 'rounded-none', 'border-0'];
+        let imageWideFullscreen = false;
+
+        const resetModalImageClasses = () => {
+            modalImg.classList.remove(...imageWideClasses);
+            modalImg.classList.add(...imageDefaultClasses);
+        };
+
+        const isWideImage = (imgEl) => {
+            if (!imgEl.naturalWidth || !imgEl.naturalHeight) return false;
+            const ratio = imgEl.naturalWidth / imgEl.naturalHeight;
+            return ratio >= 1.72 && ratio <= 1.82;
+        };
+
+        const shouldPromoteWideImageOnMobile = (imgEl) => {
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            return isMobile && isWideImage(imgEl);
+        };
         
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
                 modal.classList.remove('hidden');
                 setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+                resetModalImageClasses();
+                imageWideFullscreen = false;
+                const applyImageMode = async () => {
+                    resetModalImageClasses();
+                    if (shouldPromoteWideImageOnMobile(modalImg)) {
+                        modalImg.classList.remove(...imageDefaultClasses);
+                        modalImg.classList.add(...imageWideClasses);
+                        await enterFullscreen(modal);
+                        imageWideFullscreen = true;
+                    }
+                };
+                modalImg.onload = applyImageMode;
                 modalImg.src = img.src;
+                if (modalImg.complete) {
+                    applyImageMode();
+                }
             });
         });
 
-        const hideModal = () => {
+        const hideModal = async () => {
             modal.classList.add('opacity-0');
+            if (imageWideFullscreen) {
+                await exitFullscreen();
+                imageWideFullscreen = false;
+            }
+            resetModalImageClasses();
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
         };
 
