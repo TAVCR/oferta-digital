@@ -1074,7 +1074,7 @@
             <!-- Footer Logo -->
             <div class="text-center pb-12">
                 <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Logo Footer" class="h-60 md:h-96 w-auto max-w-full mx-auto mb-6 opacity-80 object-contain">
-                <p class="text-neutral-600 text-sm">&copy; 2025 Dimensión Interactiva. Todos los derechos reservados.</p>
+                <p id="copyright-text" class="text-neutral-600 text-sm">&copy; 2026 Dimensión Interactiva. Todos los derechos reservados.</p>
                 <p class="text-neutral-700 text-xs mt-2 max-w-2xl mx-auto">
                     Todos los conceptos, diseño y ejecución fueron desarrollados por Dimensión Interactiva. Producción integral 100% in-house, desde la narrativa estratégica hasta la entrega final, sin intervención de agencias externas.
                 </p>
@@ -1264,8 +1264,7 @@
             "Logo Retro Party": "Retro Party Logo",
             "Producto original sin IA": "Original product without AI",
             "Diseño de Menú HD 1": "HD Menu Design 1",
-            "Diseño de Menú HD 2": "HD Menu Design 2",
-            "© 2025 Dimensión Interactiva. Todos los derechos reservados.": "© 2025 Interactive Dimension. All rights reserved."
+            "Diseño de Menú HD 2": "HD Menu Design 2"
         };
 
         const dynamicPatternTranslations = [
@@ -1304,6 +1303,8 @@
                 total: 'https://wa.me/50685020909?text=Hello,%20I%27m%20interested%20in%20the%20Total%20Presence%20package',
             },
         };
+        const copyrightText = document.getElementById('copyright-text');
+        const getCurrentYear = () => new Date().getFullYear();
 
         const translatableTextNodes = [];
         const translatableAttributes = [];
@@ -1333,6 +1334,14 @@
             if (whatsappLinks.starter) whatsappLinks.starter.href = set.starter;
             if (whatsappLinks.growth) whatsappLinks.growth.href = set.growth;
             if (whatsappLinks.total) whatsappLinks.total.href = set.total;
+        };
+
+        const setDynamicCopyright = (lang) => {
+            if (!copyrightText) return;
+            const year = getCurrentYear();
+            copyrightText.textContent = lang === 'en'
+                ? `© ${year} Interactive Dimension. All rights reserved.`
+                : `© ${year} Dimensión Interactiva. Todos los derechos reservados.`;
         };
 
         const setLanguageButtonState = () => {
@@ -1382,6 +1391,7 @@
             });
 
             setWhatsAppLanguage(currentLanguage);
+            setDynamicCopyright(currentLanguage);
             syncViewModeLabel();
             setLanguageButtonState();
             localStorage.setItem(languageStorageKey, currentLanguage);
