@@ -1468,6 +1468,27 @@
 
         const lockScroll = () => { bodyEl.style.overflow = 'hidden'; };
         const unlockScroll = () => { bodyEl.style.overflow = ''; };
+        const enterFullscreen = async (el) => {
+            if (document.fullscreenElement) return;
+            const request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+            if (request) {
+                try { await request.call(el); } catch (_) {}
+            }
+            if (screen.orientation && screen.orientation.lock) {
+                try { await screen.orientation.lock('landscape'); } catch (_) {}
+            }
+        };
+        const exitFullscreen = async () => {
+            if (screen.orientation && screen.orientation.unlock) {
+                try { screen.orientation.unlock(); } catch (_) {}
+            }
+            if (document.fullscreenElement) {
+                const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+                if (exit) {
+                    try { await exit.call(document); } catch (_) {}
+                }
+            }
+        };
         
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
@@ -1528,6 +1549,7 @@
             setTimeout(() => { videoModalWide.classList.remove('opacity-0'); }, 10);
             videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             lockScroll();
+            enterFullscreen(videoModalWide);
         };
 
         const hideVideoModalWide = () => {
@@ -1537,6 +1559,7 @@
                 videoModalWideFrame.innerHTML = '';
             }, 300);
             unlockScroll();
+            exitFullscreen();
         };
 
         closeVideoBtn.addEventListener('click', hideVideoModal);
