@@ -1556,24 +1556,31 @@
         closeBtn.addEventListener('click', hideModal);
         modal.addEventListener('click', (e) => { if(e.target === modal) hideModal(); });
 
-        const closeInlineVideo = () => {
-            if (!currentInlineVideo) return;
-            const thumb = currentInlineVideo.dataset.thumb;
-            const kind = currentInlineVideo.dataset.kind;
-            if (thumb) {
-                const playSize = kind === 'shorts' ? 'w-14 h-14' : 'w-16 h-16';
-                const playSvg = kind === 'shorts' ? 'w-6 h-6' : 'w-8 h-8';
-                currentInlineVideo.innerHTML = `
-                    <img src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="${playSize} bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
-                            <svg class="${playSvg} text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>`;
-                currentInlineVideo.classList.add('cursor-pointer', 'group');
-                currentInlineVideo.onclick = () => loadVideo(currentInlineVideo, currentInlineVideo.dataset.videoId);
+        const restoreInlineVideo = (element) => {
+            if (!element) return;
+            const thumb = element.dataset.thumb;
+            const kind = element.dataset.kind;
+            if (!thumb) return;
+            const playSize = kind === 'shorts' ? 'w-14 h-14' : 'w-16 h-16';
+            const playSvg = kind === 'shorts' ? 'w-6 h-6' : 'w-8 h-8';
+            element.innerHTML = `
+                <img src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="${playSize} bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
+                        <svg class="${playSvg} text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </div>`;
+            element.classList.add('cursor-pointer', 'group');
+            element.onclick = () => loadVideo(element, element.dataset.videoId);
+        };
+
+        const stopAllVideos = () => {
+            if (currentInlineVideo) {
+                restoreInlineVideo(currentInlineVideo);
+                currentInlineVideo = null;
             }
-            currentInlineVideo = null;
+            hideVideoModal();
+            hideVideoModalWide();
         };
 
         const showVideoModal = (videoId) => {
@@ -1623,11 +1630,7 @@
         // Video Loader Logic (Facade Pattern)
         function loadVideo(element, videoId) {
             const isShorts = element.closest('#shorts');
-            hideVideoModal();
-            hideVideoModalWide();
-            if (currentInlineVideo && currentInlineVideo !== element) {
-                closeInlineVideo();
-            }
+            stopAllVideos();
             element.dataset.thumb = element.querySelector('img')?.src || '';
             element.dataset.videoId = videoId;
             element.dataset.kind = isShorts ? 'shorts' : 'wide';
@@ -1642,13 +1645,13 @@
 
         function openWideVideo(event, videoId) {
             event.stopPropagation();
-            closeInlineVideo();
+            stopAllVideos();
             showVideoModalWide(videoId);
         }
 
         function openShortsVideo(event, videoId) {
             event.stopPropagation();
-            closeInlineVideo();
+            stopAllVideos();
             showVideoModal(videoId);
         }
 
