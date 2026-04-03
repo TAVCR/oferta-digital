@@ -1003,6 +1003,18 @@
         </div>
     </div>
 
+    <!-- Video Modal (Shorts Fullscreen) -->
+    <div id="video-modal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 p-4">
+        <div class="relative w-full max-w-sm sm:max-w-md md:max-w-lg">
+            <button id="close-video-modal" class="absolute -top-12 right-0 text-neutral-400 hover:text-brand-orange transition">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="w-full aspect-[9/16] rounded-xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
+                <div id="video-modal-frame" class="w-full h-full"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav id="main-nav" class="fixed bottom-0 left-0 w-full bg-[#111111]/95 backdrop-blur-md border-t border-neutral-800 z-50 pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.8)] transition-all duration-500">
         <div class="fixed-nav-container w-full flex overflow-x-auto hide-scrollbar py-3 px-4 space-x-4 snap-x justify-start md:justify-center">
@@ -1421,6 +1433,9 @@
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('magnified-image');
         const closeBtn = document.getElementById('close-modal');
+        const videoModal = document.getElementById('video-modal');
+        const videoModalFrame = document.getElementById('video-modal-frame');
+        const closeVideoBtn = document.getElementById('close-video-modal');
         
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
@@ -1437,9 +1452,32 @@
 
         closeBtn.addEventListener('click', hideModal);
         modal.addEventListener('click', (e) => { if(e.target === modal) hideModal(); });
+
+        const showVideoModal = (videoId) => {
+            videoModal.classList.remove('hidden');
+            setTimeout(() => { videoModal.classList.remove('opacity-0'); }, 10);
+            videoModalFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube Shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        };
+
+        const hideVideoModal = () => {
+            videoModal.classList.add('opacity-0');
+            setTimeout(() => {
+                videoModal.classList.add('hidden');
+                videoModalFrame.innerHTML = '';
+            }, 300);
+        };
+
+        closeVideoBtn.addEventListener('click', hideVideoModal);
+        videoModal.addEventListener('click', (e) => { if (e.target === videoModal) hideVideoModal(); });
         
         // Video Loader Logic (Facade Pattern)
         function loadVideo(element, videoId) {
+            const isShorts = element.closest('#shorts');
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            if (isShorts && isMobile) {
+                showVideoModal(videoId);
+                return;
+            }
             // Replace the image/button with the actual iframe
             element.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             // Remove click handler so clicking again doesn't reload
