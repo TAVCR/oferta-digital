@@ -128,12 +128,6 @@
         }
 
         /* Fullscreen video helpers */
-        #video-modal-wide.force-landscape .landscape-frame {
-            width: 100vh;
-            height: 100vw;
-            transform: rotate(90deg);
-            transform-origin: center;
-        }
         #video-modal:fullscreen #close-video-modal,
         #video-modal-wide:fullscreen #close-video-modal-wide {
             display: block;
@@ -1083,7 +1077,7 @@
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <div class="w-screen h-screen flex items-center justify-center">
-            <div class="landscape-frame w-full h-full rounded-none overflow-hidden bg-black">
+            <div class="w-full h-full rounded-none overflow-hidden bg-black">
                 <div id="video-modal-wide-frame" class="w-full h-full"></div>
             </div>
         </div>
@@ -1623,8 +1617,6 @@
             videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             lockScroll();
             enterFullscreen(videoModalWide);
-            const forceLandscape = window.innerHeight > window.innerWidth;
-            videoModalWide.classList.toggle('force-landscape', forceLandscape);
         };
 
         const hideVideoModalWide = () => {
@@ -1638,7 +1630,6 @@
             }, 300);
             unlockScroll();
             exitFullscreen();
-            videoModalWide.classList.remove('force-landscape');
         };
 
         closeVideoBtn.addEventListener('click', hideVideoModal);
