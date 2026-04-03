@@ -757,6 +757,9 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
+                            <button class="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 'HpMxXIUSl6w')" aria-label="Agrandar video">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
+                            </button>
                         </div>
                     </div>
 
@@ -769,6 +772,9 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
+                            <button class="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 't3WMFjvSUJA')" aria-label="Agrandar video">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
+                            </button>
                         </div>
                     </div>
 
@@ -781,6 +787,9 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
+                            <button class="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, '8ANdWC3PlS8')" aria-label="Agrandar video">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
+                            </button>
                         </div>
                     </div>
 
@@ -793,6 +802,9 @@
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
+                            <button class="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-md p-2" onclick="openWideVideo(event, 'hcA54EHCjKU')" aria-label="Agrandar video">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
+                            </button>
                         </div>
                     </div>
 
@@ -1006,11 +1018,23 @@
     <!-- Video Modal (Shorts Fullscreen) -->
     <div id="video-modal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 p-4">
         <div class="relative w-full max-w-sm sm:max-w-md md:max-w-lg">
-            <button id="close-video-modal" class="absolute -top-12 right-0 text-neutral-400 hover:text-brand-orange transition">
+            <button id="close-video-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-orange transition">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="w-full aspect-[9/16] rounded-xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
                 <div id="video-modal-frame" class="w-full h-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal (16:9 Fullscreen) -->
+    <div id="video-modal-wide" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 p-4">
+        <div class="relative w-full max-w-5xl">
+            <button id="close-video-modal-wide" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-orange transition">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="w-full aspect-video rounded-xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
+                <div id="video-modal-wide-frame" class="w-full h-full"></div>
             </div>
         </div>
     </div>
@@ -1436,6 +1460,10 @@
         const videoModal = document.getElementById('video-modal');
         const videoModalFrame = document.getElementById('video-modal-frame');
         const closeVideoBtn = document.getElementById('close-video-modal');
+        const videoModalWide = document.getElementById('video-modal-wide');
+        const videoModalWideFrame = document.getElementById('video-modal-wide-frame');
+        const closeVideoWideBtn = document.getElementById('close-video-modal-wide');
+        let currentInlineVideo = null;
         
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
@@ -1453,7 +1481,28 @@
         closeBtn.addEventListener('click', hideModal);
         modal.addEventListener('click', (e) => { if(e.target === modal) hideModal(); });
 
+        const closeInlineVideo = () => {
+            if (!currentInlineVideo) return;
+            const thumb = currentInlineVideo.dataset.thumb;
+            const kind = currentInlineVideo.dataset.kind;
+            if (thumb) {
+                const playSize = kind === 'shorts' ? 'w-14 h-14' : 'w-16 h-16';
+                const playSvg = kind === 'shorts' ? 'w-6 h-6' : 'w-8 h-8';
+                currentInlineVideo.innerHTML = `
+                    <img src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="${playSize} bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
+                            <svg class="${playSvg} text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>`;
+                currentInlineVideo.classList.add('cursor-pointer', 'group');
+                currentInlineVideo.onclick = () => loadVideo(currentInlineVideo, currentInlineVideo.dataset.videoId);
+            }
+            currentInlineVideo = null;
+        };
+
         const showVideoModal = (videoId) => {
+            hideVideoModalWide();
             videoModal.classList.remove('hidden');
             setTimeout(() => { videoModal.classList.remove('opacity-0'); }, 10);
             videoModalFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube Shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
@@ -1467,23 +1516,56 @@
             }, 300);
         };
 
+        const showVideoModalWide = (videoId) => {
+            hideVideoModal();
+            videoModalWide.classList.remove('hidden');
+            setTimeout(() => { videoModalWide.classList.remove('opacity-0'); }, 10);
+            videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        };
+
+        const hideVideoModalWide = () => {
+            videoModalWide.classList.add('opacity-0');
+            setTimeout(() => {
+                videoModalWide.classList.add('hidden');
+                videoModalWideFrame.innerHTML = '';
+            }, 300);
+        };
+
         closeVideoBtn.addEventListener('click', hideVideoModal);
         videoModal.addEventListener('click', (e) => { if (e.target === videoModal) hideVideoModal(); });
+        closeVideoWideBtn.addEventListener('click', hideVideoModalWide);
+        videoModalWide.addEventListener('click', (e) => { if (e.target === videoModalWide) hideVideoModalWide(); });
         
         // Video Loader Logic (Facade Pattern)
         function loadVideo(element, videoId) {
             const isShorts = element.closest('#shorts');
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
             if (isShorts && isMobile) {
+                closeInlineVideo();
                 showVideoModal(videoId);
                 return;
             }
+            hideVideoModal();
+            hideVideoModalWide();
+            if (currentInlineVideo && currentInlineVideo !== element) {
+                closeInlineVideo();
+            }
+            element.dataset.thumb = element.querySelector('img')?.src || '';
+            element.dataset.videoId = videoId;
+            element.dataset.kind = isShorts ? 'shorts' : 'wide';
             // Replace the image/button with the actual iframe
             element.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
             // Remove click handler so clicking again doesn't reload
             element.onclick = null; 
             // Remove pointer cursor since it's now a video
             element.classList.remove('cursor-pointer', 'group'); 
+            currentInlineVideo = element;
+        }
+
+        function openWideVideo(event, videoId) {
+            event.stopPropagation();
+            closeInlineVideo();
+            showVideoModalWide(videoId);
         }
 
         // View Toggle Logic
