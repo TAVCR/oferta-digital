@@ -1510,8 +1510,10 @@
             const gallery = document.getElementById('gallery');
             const contact = document.getElementById('contact');
             const banners = document.getElementById('gallery-banners');
+            const realEstate = document.getElementById('gallery-real-estate');
             const videos = document.getElementById('videos');
             const shorts = document.getElementById('shorts');
+            const webCases = document.getElementById('web-cases-showcase');
 
             if (main && header && gallery) {
                 main.insertBefore(gallery, header.nextSibling);
@@ -1547,12 +1549,16 @@
             }
 
             if (main && contact) {
-                ['why-choose-us', 'packages', 'individual-prices', 'web-cases-showcase'].forEach((sectionId) => {
+                ['why-choose-us', 'packages', 'individual-prices'].forEach((sectionId) => {
                     const section = document.getElementById(sectionId);
                     if (section) {
                         main.insertBefore(section, contact);
                     }
                 });
+            }
+
+            if (realEstate && webCases) {
+                realEstate.insertAdjacentElement('afterend', webCases);
             }
         };
 
