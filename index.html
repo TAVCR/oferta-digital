@@ -330,14 +330,24 @@
 
         <!-- Packages -->
         <section id="packages" class="mb-24">
-            <h2 class="font-display font-bold text-4xl text-center text-white mb-12">Paquetes <span class="text-brand-orange">Estratégicos</span></h2>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4">
+                <h2 class="font-display font-bold text-4xl text-center md:text-left text-white">Paquetes <span class="text-brand-orange">Estratégicos</span></h2>
+                <div class="flex items-center justify-center md:justify-end gap-3">
+                    <span id="currency-label" class="text-[11px] uppercase tracking-widest text-neutral-400 font-bold">Moneda</span>
+                    <div id="currency-toggle" class="flex items-center gap-1 bg-neutral-800/90 border border-neutral-700 p-1 rounded-full">
+                        <button type="button" data-currency-option="usd" class="currency-option px-3 py-1 rounded-full text-xs font-bold transition bg-brand-orange text-white">USD</button>
+                        <button type="button" data-currency-option="crc" class="currency-option px-3 py-1 rounded-full text-xs font-bold transition text-neutral-300 hover:text-white">CRC</button>
+                    </div>
+                </div>
+            </div>
+            <p id="currency-rate-note" class="text-center md:text-right text-[11px] text-neutral-500 mb-8">Tipo de cambio en vivo: actualizando...</p>
 
             <div class="grid md:grid-cols-3 gap-8 items-start">
                 
                 <!-- Pack 1 (Standard) -->
                 <div class="glass-panel rounded-2xl p-8 border-t-4 border-neutral-600 flex flex-col h-full hover:border-neutral-500 transition duration-300 hover:-translate-y-2">
                     <h3 class="font-display font-bold text-2xl text-neutral-300 mb-2">Arranque Digital</h3>
-                    <div class="text-3xl font-bold text-white mb-6">₡232,000</div>
+                    <div id="price-package-starter" class="text-3xl font-bold text-white mb-6">$499</div>
                     <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
                         <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 1 Video promocional</li>
                         <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 4 Diseños al mes</li>
@@ -352,7 +362,7 @@
                 <div class="glass-panel rounded-2xl p-8 border-t-4 border-brand-orange relative transform md:-translate-y-4 z-10 shadow-2xl shadow-black/50 flex flex-col h-full transition duration-300 hover:-translate-y-2 md:hover:-translate-y-6 bg-[#1a1a1a]">
                     <div class="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-widest">Popular</div>
                     <h3 class="font-display font-bold text-3xl text-brand-orange mb-2">Impulso Pyme</h3>
-                    <div class="text-4xl font-black text-white mb-6">₡420,500</div>
+                    <div id="price-package-growth" class="text-4xl font-black text-white mb-6">$904</div>
                     <ul class="space-y-4 mb-8 text-neutral-300 flex-grow">
                         <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 2 Videos con Locución IA</li>
                         <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 8 Afiches promocionales</li>
@@ -366,7 +376,7 @@
                 <!-- Pack 3 (Premium) -->
                 <div class="glass-panel rounded-2xl p-8 border-t-4 border-neutral-400 flex flex-col h-full hover:border-white transition duration-300 hover:-translate-y-2">
                     <h3 class="font-display font-bold text-2xl text-white mb-2">Presencia Total</h3>
-                    <div class="text-3xl font-bold text-white mb-6">₡522,000</div>
+                    <div id="price-package-total" class="text-3xl font-bold text-white mb-6">$1,122</div>
                     <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
                         <li class="flex items-center"><span class="text-white mr-3">●</span> 2 Videos IA + 1 Filmado Prof.</li>
                         <li class="flex items-center"><span class="text-white mr-3">●</span> 12 Diseños mensuales</li>
@@ -388,7 +398,7 @@
                     </div>
                     <div class="text-center md:text-right bg-black/20 p-4 rounded-lg border border-neutral-800">
                         <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1">Inversión Mensual</p>
-                        <div class="text-2xl font-bold text-brand-orange">₡319,000</div>
+                        <div id="price-package-social" class="text-2xl font-bold text-brand-orange">$685</div>
                     </div>
                 </div>
             </div>
@@ -407,7 +417,7 @@
                         <h4 class="font-bold text-lg text-white group-hover:text-brand-orange transition-colors">Diseño de Logotipos</h4>
                         <p class="text-sm text-neutral-500">Personalizado según complejidad</p>
                     </div>
-                    <span class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">Desde ₡75,400</span>
+                    <span id="price-logo-design-value" class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">Desde $162</span>
                 </div>
                 
                 <!-- Item: Menús (Actualizado a Negociable) -->
@@ -425,16 +435,16 @@
                         <h4 class="font-bold text-lg text-white">Digitalización de Logos</h4>
                         <p class="text-sm text-neutral-500">Vectorización de logotipos existentes</p>
                     </div>
-                    <span class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">₡75,000</span>
+                    <span id="price-logo-digitization-value" class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">$161</span>
                 </div>
 
                 <!-- Item -->
                 <div id="price-videos" class="glass-panel p-5 rounded-lg hover:border-brand-orange/30 transition">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-2">
                          <h4 class="font-bold text-lg text-white">Videos & Reels</h4>
-                         <span class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">Desde ₡116,000</span>
+                         <span id="price-videos-base-value" class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">Desde $249</span>
                     </div>
-                    <p class="text-sm text-neutral-500">Stock + Música (1 min): ₡116,000 | Con IA + Locución: ₡166,750 | Filmación Profesional: ₡275,500</p>
+                    <p id="price-videos-breakdown" class="text-sm text-neutral-500">Stock + Música (1 min): $249 | Con IA + Locución: $358 | Filmación Profesional: $592</p>
                 </div>
 
                  <!-- Item -->
@@ -443,7 +453,7 @@
                         <h4 class="font-bold text-lg text-white">Fotografía Profesional</h4>
                         <p class="text-sm text-neutral-500">Canon Profesional + Edición (Por hora)</p>
                     </div>
-                    <span class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">₡123,250/h</span>
+                    <span id="price-photography-hourly-value" class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">$265/h</span>
                 </div>
             </div>
         </section>
@@ -1359,6 +1369,42 @@
         const copyrightText = document.getElementById('copyright-text');
         const whyDigitalYearCopy = document.getElementById('why-digital-year-copy');
         const getCurrentYear = () => new Date().getFullYear();
+        const currencyStorageKey = 'landing-currency';
+        let currentCurrency = localStorage.getItem(currencyStorageKey) === 'crc' ? 'crc' : 'usd';
+        let usdToCrcRate = null;
+        let usingFallbackFxRate = false;
+        const fallbackUsdToCrcRate = 465.359336;
+        const exchangeRateApiUrl = 'https://open.er-api.com/v6/latest/USD';
+
+        const currencyButtons = document.querySelectorAll('[data-currency-option]');
+        const currencyLabel = document.getElementById('currency-label');
+        const currencyRateNote = document.getElementById('currency-rate-note');
+
+        const priceElements = {
+            packageStarter: document.getElementById('price-package-starter'),
+            packageGrowth: document.getElementById('price-package-growth'),
+            packageTotal: document.getElementById('price-package-total'),
+            packageSocial: document.getElementById('price-package-social'),
+            logoDesignFrom: document.getElementById('price-logo-design-value'),
+            logoDigitization: document.getElementById('price-logo-digitization-value'),
+            videosBaseFrom: document.getElementById('price-videos-base-value'),
+            videosBreakdown: document.getElementById('price-videos-breakdown'),
+            photoHourly: document.getElementById('price-photography-hourly-value'),
+        };
+
+        const basePricesUsd = {
+            packageStarter: 499,
+            packageGrowth: 904,
+            packageTotal: 1122,
+            packageSocial: 685,
+            logoDesignFrom: 162,
+            logoDigitization: 161,
+            videosBaseFrom: 249,
+            videosStockMusic: 249,
+            videosAiVoice: 358,
+            videosFilming: 592,
+            photoHourly: 265,
+        };
 
         const translatableTextNodes = [];
         const translatableAttributes = [];
@@ -1404,6 +1450,136 @@
             whyDigitalYearCopy.textContent = lang === 'en'
                 ? `In ${year}, visibility is won on mobile-first platforms, short-form video, and AI-assisted discovery. Traditional media still has value, but real growth now happens in digital ecosystems where people discover, compare, and decide in real time.`
                 : `En ${year}, la visibilidad se gana en plataformas mobile-first, video corto y descubrimiento asistido por IA. Los medios tradicionales aún aportan valor, pero el crecimiento real ocurre en ecosistemas digitales donde las personas descubren, comparan y deciden en tiempo real.`;
+        };
+
+        const getCurrencyUiCopy = () => currentLanguage === 'en'
+            ? {
+                currencyLabel: 'Currency',
+                fromPrefix: 'From ',
+                rateLabel: 'Live exchange rate:',
+                rateLive: 'live',
+                rateFallback: 'reference',
+                rateLoading: 'Live exchange rate: updating...',
+                stockMusic: 'Stock + Music (1 min)',
+                aiVoice: 'With AI + Voice-over',
+                filming: 'Professional Filming',
+            }
+            : {
+                currencyLabel: 'Moneda',
+                fromPrefix: 'Desde ',
+                rateLabel: 'Tipo de cambio en vivo:',
+                rateLive: 'real',
+                rateFallback: 'referencia',
+                rateLoading: 'Tipo de cambio en vivo: actualizando...',
+                stockMusic: 'Stock + Música (1 min)',
+                aiVoice: 'Con IA + Locución',
+                filming: 'Filmación Profesional',
+            };
+
+        const formatUsdAmount = (amount) => `$${Math.round(amount).toLocaleString('en-US')}`;
+        const formatCrcAmount = (amount) => `₡${Math.round(amount).toLocaleString('es-CR')}`;
+        const formatMoney = (usdAmount) => {
+            const rate = usdToCrcRate || fallbackUsdToCrcRate;
+            return currentCurrency === 'usd'
+                ? formatUsdAmount(usdAmount)
+                : formatCrcAmount(usdAmount * rate);
+        };
+
+        const setCurrencyButtonState = () => {
+            currencyButtons.forEach((button) => {
+                const isActive = button.dataset.currencyOption === currentCurrency;
+                button.classList.toggle('bg-brand-orange', isActive);
+                button.classList.toggle('text-white', isActive);
+                button.classList.toggle('text-neutral-300', !isActive);
+                button.classList.toggle('hover:text-white', !isActive);
+            });
+        };
+
+        const renderExchangeRateNote = () => {
+            if (!currencyRateNote) return;
+            const copy = getCurrencyUiCopy();
+            const rate = usdToCrcRate || fallbackUsdToCrcRate;
+            if (!Number.isFinite(rate) || rate <= 0) {
+                currencyRateNote.textContent = copy.rateLoading;
+                return;
+            }
+            const formattedRate = `₡${rate.toLocaleString('es-CR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            })}`;
+            const source = usingFallbackFxRate ? copy.rateFallback : copy.rateLive;
+            currencyRateNote.textContent = `${copy.rateLabel} 1 USD = ${formattedRate} (${source})`;
+        };
+
+        const renderDynamicPrices = () => {
+            const copy = getCurrencyUiCopy();
+            if (currencyLabel) currencyLabel.textContent = copy.currencyLabel;
+
+            if (priceElements.packageStarter) priceElements.packageStarter.textContent = formatMoney(basePricesUsd.packageStarter);
+            if (priceElements.packageGrowth) priceElements.packageGrowth.textContent = formatMoney(basePricesUsd.packageGrowth);
+            if (priceElements.packageTotal) priceElements.packageTotal.textContent = formatMoney(basePricesUsd.packageTotal);
+            if (priceElements.packageSocial) priceElements.packageSocial.textContent = formatMoney(basePricesUsd.packageSocial);
+
+            if (priceElements.logoDesignFrom) {
+                priceElements.logoDesignFrom.textContent = `${copy.fromPrefix}${formatMoney(basePricesUsd.logoDesignFrom)}`;
+            }
+            if (priceElements.logoDigitization) priceElements.logoDigitization.textContent = formatMoney(basePricesUsd.logoDigitization);
+            if (priceElements.videosBaseFrom) {
+                priceElements.videosBaseFrom.textContent = `${copy.fromPrefix}${formatMoney(basePricesUsd.videosBaseFrom)}`;
+            }
+            if (priceElements.videosBreakdown) {
+                priceElements.videosBreakdown.textContent =
+                    `${copy.stockMusic}: ${formatMoney(basePricesUsd.videosStockMusic)} | ` +
+                    `${copy.aiVoice}: ${formatMoney(basePricesUsd.videosAiVoice)} | ` +
+                    `${copy.filming}: ${formatMoney(basePricesUsd.videosFilming)}`;
+            }
+            if (priceElements.photoHourly) {
+                priceElements.photoHourly.textContent = `${formatMoney(basePricesUsd.photoHourly)}/h`;
+            }
+
+            setCurrencyButtonState();
+            renderExchangeRateNote();
+        };
+
+        const fetchLiveExchangeRate = async () => {
+            try {
+                const response = await fetch(exchangeRateApiUrl, { cache: 'no-store' });
+                if (!response.ok) throw new Error('Failed exchange-rate request');
+                const data = await response.json();
+                const rate = Number(data?.rates?.CRC);
+                if (!Number.isFinite(rate) || rate <= 0) throw new Error('Invalid exchange rate');
+                usdToCrcRate = rate;
+                usingFallbackFxRate = false;
+                localStorage.setItem('landing-usd-crc-rate', String(rate));
+            } catch (error) {
+                const cached = Number(localStorage.getItem('landing-usd-crc-rate'));
+                if (Number.isFinite(cached) && cached > 0) {
+                    usdToCrcRate = cached;
+                } else {
+                    usdToCrcRate = fallbackUsdToCrcRate;
+                }
+                usingFallbackFxRate = true;
+            }
+            renderDynamicPrices();
+        };
+
+        const initializeCurrencySystem = () => {
+            const cached = Number(localStorage.getItem('landing-usd-crc-rate'));
+            if (Number.isFinite(cached) && cached > 0) {
+                usdToCrcRate = cached;
+                usingFallbackFxRate = true;
+            }
+
+            currencyButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    currentCurrency = button.dataset.currencyOption === 'crc' ? 'crc' : 'usd';
+                    localStorage.setItem(currencyStorageKey, currentCurrency);
+                    renderDynamicPrices();
+                });
+            });
+
+            renderDynamicPrices();
+            fetchLiveExchangeRate();
         };
 
         const setLanguageButtonState = () => {
@@ -1455,6 +1631,7 @@
             setWhatsAppLanguage(currentLanguage);
             setDynamicCopyright(currentLanguage);
             setDynamicWhyDigitalYearCopy(currentLanguage);
+            renderDynamicPrices();
             syncViewModeLabel();
             setLanguageButtonState();
             localStorage.setItem(languageStorageKey, currentLanguage);
@@ -1937,6 +2114,7 @@
         reorderLandingSections();
         setupInfiniteBottomNav();
         initializeLanguageSystem();
+        initializeCurrencySystem();
 
         // Initialize Carousels
         setupCarousel('video-carousel', 'scroll-left-btn', 'scroll-right-btn');
