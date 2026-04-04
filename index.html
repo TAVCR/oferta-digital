@@ -1029,6 +1029,51 @@
             </div>
         </section>
 
+        <!-- Published Web Cases (Final Showcase) -->
+        <section id="web-cases-showcase" class="mb-24">
+            <div class="flex items-center justify-between mb-8 border-b border-neutral-800 pb-4">
+                <h2 class="font-display font-bold text-3xl text-white">Casos Web Publicados</h2>
+                <span class="text-[10px] uppercase tracking-[0.22em] text-brand-orange/90">Selección Final</span>
+            </div>
+            <p class="text-neutral-400 text-sm md:text-base mb-8 max-w-3xl">
+                La cereza del portafolio: dos landings reales en producción, presentadas como casos selectos de estrategia, diseño y ejecución técnica.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <article class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-orange">Caso destacado</span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Sitio en producción</span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-white mb-1">AIVOXCR</h3>
+                    <p class="text-xs text-neutral-500 mb-4">aivoxcr.com</p>
+                    <p class="text-sm text-neutral-300 mb-6 leading-relaxed">
+                        Arquitectura de mensaje, identidad digital y experiencia orientada a confianza para un servicio especializado.
+                    </p>
+                    <a href="https://www.aivoxcr.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold transition">
+                        Ver sitio en vivo
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5v14h14" /></svg>
+                    </a>
+                </article>
+
+                <article class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-orange">Caso destacado</span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Sitio en producción</span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-white mb-1">Kiwi Glow CR</h3>
+                    <p class="text-xs text-neutral-500 mb-4">kiwiglowcr.com</p>
+                    <p class="text-sm text-neutral-300 mb-6 leading-relaxed">
+                        Landing de marca orientada a claridad comercial, consistencia visual y recorrido de usuario sin fricción.
+                    </p>
+                    <a href="https://kiwiglowcr.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold transition">
+                        Ver sitio en vivo
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5v14h14" /></svg>
+                    </a>
+                </article>
+            </div>
+        </section>
+
         <!-- Contact Form -->
         <section id="contact" class="mb-20 relative">
             <div class="glass-panel rounded-2xl p-8 md:p-12 max-w-2xl mx-auto border border-neutral-800 bg-neutral-900/50">
@@ -1211,6 +1256,14 @@
             "Canon Profesional + Edición (Por hora)": "Professional Canon + Editing (Per hour)",
             "Nuestro Portafolio": "Our Portfolio",
             "Creatividad & Precisión": "Creativity & Precision",
+            "Casos Web Publicados": "Published Web Cases",
+            "Selección Final": "Final Selection",
+            "La cereza del portafolio: dos landings reales en producción, presentadas como casos selectos de estrategia, diseño y ejecución técnica.": "The finishing touch of the portfolio: two real landing pages in production, presented as selected cases of strategy, design, and technical execution.",
+            "Caso destacado": "Featured case",
+            "Sitio en producción": "Live website",
+            "Arquitectura de mensaje, identidad digital y experiencia orientada a confianza para un servicio especializado.": "Messaging architecture, digital identity, and a trust-oriented experience for a specialized service.",
+            "Landing de marca orientada a claridad comercial, consistencia visual y recorrido de usuario sin fricción.": "Brand landing page focused on commercial clarity, visual consistency, and a frictionless user journey.",
+            "Ver sitio en vivo": "View live site",
             "Folletos Imprimibles": "Printable Brochures",
             "Menús Digitales & Físicos": "Digital & Printed Menus",
             "Fotografía de Producto IA": "AI Product Photography",
@@ -1494,7 +1547,7 @@
             }
 
             if (main && contact) {
-                ['why-choose-us', 'packages', 'individual-prices'].forEach((sectionId) => {
+                ['why-choose-us', 'packages', 'individual-prices', 'web-cases-showcase'].forEach((sectionId) => {
                     const section = document.getElementById(sectionId);
                     if (section) {
                         main.insertBefore(section, contact);
