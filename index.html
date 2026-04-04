@@ -335,8 +335,7 @@
                 <div class="flex items-center justify-center md:justify-end gap-3">
                     <span id="currency-label" class="text-[11px] uppercase tracking-widest text-neutral-400 font-bold">Moneda</span>
                     <div id="currency-toggle" class="flex items-center gap-1 bg-neutral-800/90 border border-neutral-700 p-1 rounded-full">
-                        <button type="button" data-currency-option="usd" class="currency-option px-3 py-1 rounded-full text-xs font-bold transition bg-brand-orange text-white">USD</button>
-                        <button type="button" data-currency-option="crc" class="currency-option px-3 py-1 rounded-full text-xs font-bold transition text-neutral-300 hover:text-white">CRC</button>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-orange text-white">USD</span>
                     </div>
                 </div>
             </div>
@@ -1369,14 +1368,11 @@
         const copyrightText = document.getElementById('copyright-text');
         const whyDigitalYearCopy = document.getElementById('why-digital-year-copy');
         const getCurrentYear = () => new Date().getFullYear();
-        const currencyStorageKey = 'landing-currency';
-        let currentCurrency = localStorage.getItem(currencyStorageKey) === 'crc' ? 'crc' : 'usd';
         let usdToCrcRate = null;
         let usingFallbackFxRate = false;
         const fallbackUsdToCrcRate = 465.359336;
         const exchangeRateApiUrl = 'https://open.er-api.com/v6/latest/USD';
 
-        const currencyButtons = document.querySelectorAll('[data-currency-option]');
         const currencyLabel = document.getElementById('currency-label');
         const currencyRateNote = document.getElementById('currency-rate-note');
 
@@ -1392,18 +1388,18 @@
             photoHourly: document.getElementById('price-photography-hourly-value'),
         };
 
-        const basePricesUsd = {
-            packageStarter: 499,
-            packageGrowth: 904,
-            packageTotal: 1122,
-            packageSocial: 685,
-            logoDesignFrom: 162,
-            logoDigitization: 161,
-            videosBaseFrom: 249,
-            videosStockMusic: 249,
-            videosAiVoice: 358,
-            videosFilming: 592,
-            photoHourly: 265,
+        const basePricesCrc = {
+            packageStarter: 232000,
+            packageGrowth: 420500,
+            packageTotal: 522000,
+            packageSocial: 319000,
+            logoDesignFrom: 75400,
+            logoDigitization: 75000,
+            videosBaseFrom: 116000,
+            videosStockMusic: 116000,
+            videosAiVoice: 166750,
+            videosFilming: 275500,
+            photoHourly: 123250,
         };
 
         const translatableTextNodes = [];
@@ -1463,6 +1459,7 @@
                 stockMusic: 'Stock + Music (1 min)',
                 aiVoice: 'With AI + Voice-over',
                 filming: 'Professional Filming',
+                pricesMode: 'Prices shown in USD',
             }
             : {
                 currencyLabel: 'Moneda',
@@ -1474,25 +1471,13 @@
                 stockMusic: 'Stock + Música (1 min)',
                 aiVoice: 'Con IA + Locución',
                 filming: 'Filmación Profesional',
+                pricesMode: 'Precios mostrados en USD',
             };
 
         const formatUsdAmount = (amount) => `$${Math.round(amount).toLocaleString('en-US')}`;
-        const formatCrcAmount = (amount) => `₡${Math.round(amount).toLocaleString('es-CR')}`;
-        const formatMoney = (usdAmount) => {
+        const formatMoney = (crcAmount) => {
             const rate = usdToCrcRate || fallbackUsdToCrcRate;
-            return currentCurrency === 'usd'
-                ? formatUsdAmount(usdAmount)
-                : formatCrcAmount(usdAmount * rate);
-        };
-
-        const setCurrencyButtonState = () => {
-            currencyButtons.forEach((button) => {
-                const isActive = button.dataset.currencyOption === currentCurrency;
-                button.classList.toggle('bg-brand-orange', isActive);
-                button.classList.toggle('text-white', isActive);
-                button.classList.toggle('text-neutral-300', !isActive);
-                button.classList.toggle('hover:text-white', !isActive);
-            });
+            return formatUsdAmount(crcAmount / rate);
         };
 
         const renderExchangeRateNote = () => {
@@ -1508,36 +1493,35 @@
                 maximumFractionDigits: 2,
             })}`;
             const source = usingFallbackFxRate ? copy.rateFallback : copy.rateLive;
-            currencyRateNote.textContent = `${copy.rateLabel} 1 USD = ${formattedRate} (${source})`;
+            currencyRateNote.textContent = `${copy.rateLabel} 1 USD = ${formattedRate} (${source}) · ${copy.pricesMode}`;
         };
 
         const renderDynamicPrices = () => {
             const copy = getCurrencyUiCopy();
             if (currencyLabel) currencyLabel.textContent = copy.currencyLabel;
 
-            if (priceElements.packageStarter) priceElements.packageStarter.textContent = formatMoney(basePricesUsd.packageStarter);
-            if (priceElements.packageGrowth) priceElements.packageGrowth.textContent = formatMoney(basePricesUsd.packageGrowth);
-            if (priceElements.packageTotal) priceElements.packageTotal.textContent = formatMoney(basePricesUsd.packageTotal);
-            if (priceElements.packageSocial) priceElements.packageSocial.textContent = formatMoney(basePricesUsd.packageSocial);
+            if (priceElements.packageStarter) priceElements.packageStarter.textContent = formatMoney(basePricesCrc.packageStarter);
+            if (priceElements.packageGrowth) priceElements.packageGrowth.textContent = formatMoney(basePricesCrc.packageGrowth);
+            if (priceElements.packageTotal) priceElements.packageTotal.textContent = formatMoney(basePricesCrc.packageTotal);
+            if (priceElements.packageSocial) priceElements.packageSocial.textContent = formatMoney(basePricesCrc.packageSocial);
 
             if (priceElements.logoDesignFrom) {
-                priceElements.logoDesignFrom.textContent = `${copy.fromPrefix}${formatMoney(basePricesUsd.logoDesignFrom)}`;
+                priceElements.logoDesignFrom.textContent = `${copy.fromPrefix}${formatMoney(basePricesCrc.logoDesignFrom)}`;
             }
-            if (priceElements.logoDigitization) priceElements.logoDigitization.textContent = formatMoney(basePricesUsd.logoDigitization);
+            if (priceElements.logoDigitization) priceElements.logoDigitization.textContent = formatMoney(basePricesCrc.logoDigitization);
             if (priceElements.videosBaseFrom) {
-                priceElements.videosBaseFrom.textContent = `${copy.fromPrefix}${formatMoney(basePricesUsd.videosBaseFrom)}`;
+                priceElements.videosBaseFrom.textContent = `${copy.fromPrefix}${formatMoney(basePricesCrc.videosBaseFrom)}`;
             }
             if (priceElements.videosBreakdown) {
                 priceElements.videosBreakdown.textContent =
-                    `${copy.stockMusic}: ${formatMoney(basePricesUsd.videosStockMusic)} | ` +
-                    `${copy.aiVoice}: ${formatMoney(basePricesUsd.videosAiVoice)} | ` +
-                    `${copy.filming}: ${formatMoney(basePricesUsd.videosFilming)}`;
+                    `${copy.stockMusic}: ${formatMoney(basePricesCrc.videosStockMusic)} | ` +
+                    `${copy.aiVoice}: ${formatMoney(basePricesCrc.videosAiVoice)} | ` +
+                    `${copy.filming}: ${formatMoney(basePricesCrc.videosFilming)}`;
             }
             if (priceElements.photoHourly) {
-                priceElements.photoHourly.textContent = `${formatMoney(basePricesUsd.photoHourly)}/h`;
+                priceElements.photoHourly.textContent = `${formatMoney(basePricesCrc.photoHourly)}/h`;
             }
 
-            setCurrencyButtonState();
             renderExchangeRateNote();
         };
 
@@ -1569,14 +1553,6 @@
                 usdToCrcRate = cached;
                 usingFallbackFxRate = true;
             }
-
-            currencyButtons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    currentCurrency = button.dataset.currencyOption === 'crc' ? 'crc' : 'usd';
-                    localStorage.setItem(currencyStorageKey, currentCurrency);
-                    renderDynamicPrices();
-                });
-            });
 
             renderDynamicPrices();
             fetchLiveExchangeRate();
