@@ -1143,14 +1143,14 @@
                 </article>
             </div>
 
-            <div id="real-production-note-section" class="mt-8">
-                <div class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800">
-                    <p id="promerica-note" class="text-neutral-500 text-xs md:text-sm leading-relaxed max-w-3xl mx-auto text-center">
-                        Experiencia en producción real: colaboramos como proveedor activo de voz con <span class="font-semibold">Banco Promerica</span> en la grabación y actualización de voz institucional para sistemas IVR en entornos de atención automatizada. Este trabajo exige precisión, claridad y consistencia para cuidar la experiencia del usuario. Por confidencialidad, no publicamos audios, guiones ni contenido interno.
-                    </p>
-                </div>
-            </div>
+        </section>
 
+        <section id="real-production-note-section" class="mb-24">
+            <div class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800">
+                <p id="promerica-note" class="text-neutral-500 text-xs md:text-sm leading-relaxed max-w-3xl mx-auto text-center">
+                    Experiencia en producción real: colaboramos como proveedor activo de voz con <span class="font-semibold">Banco Promerica</span> en la grabación y actualización de voz institucional para sistemas IVR en entornos de atención automatizada. Este trabajo exige precisión, claridad y consistencia para cuidar la experiencia del usuario. Por confidencialidad, no publicamos audios, guiones ni contenido interno.
+                </p>
+            </div>
         </section>
 
         <!-- Contact Form -->
@@ -1809,6 +1809,7 @@
             const videos = document.getElementById('videos');
             const shorts = document.getElementById('shorts');
             const webCases = document.getElementById('web-cases-showcase');
+            const realProductionNoteSection = document.getElementById('real-production-note-section');
 
             if (main && header && gallery) {
                 main.insertBefore(gallery, header.nextSibling);
@@ -1854,6 +1855,9 @@
 
             if (realEstate && webCases) {
                 realEstate.insertAdjacentElement('afterend', webCases);
+                if (realProductionNoteSection) {
+                    webCases.insertAdjacentElement('afterend', realProductionNoteSection);
+                }
             }
         };
 
