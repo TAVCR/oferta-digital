@@ -165,6 +165,31 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
         }
+
+        /* Scroll reveal animation */
+        .reveal-on-scroll {
+            opacity: 1;
+            transform: none;
+        }
+        html.reveal-ready .reveal-on-scroll {
+            opacity: 0;
+            transform: translate3d(0, 24px, 0);
+            transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform;
+        }
+        html.reveal-ready .reveal-on-scroll.reveal-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html.reveal-ready .reveal-on-scroll,
+            html.reveal-ready .reveal-on-scroll.reveal-visible {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body class="antialiased pb-24 selection:bg-brand-orange selection:text-white relative">
@@ -1925,6 +1950,58 @@
             navContainer.dataset.infiniteTrack = 'double';
         };
 
+        const initializeScrollReveal = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            const selectors = [
+                'main > section',
+                '#gallery .mb-16',
+                '#services a.glass-panel',
+                '#packages .glass-panel',
+                '#individual-prices .glass-panel',
+                '#web-cases-showcase article',
+                '#web-cases-showcase #podcast-showcase',
+                '#real-production-note-section .glass-panel',
+                '#contact .glass-panel',
+            ];
+
+            const uniqueElements = new Set();
+            selectors.forEach((selector) => {
+                document.querySelectorAll(selector).forEach((element) => uniqueElements.add(element));
+            });
+
+            const revealTargets = Array.from(uniqueElements).filter((element) => !element.classList.contains('reveal-on-scroll'));
+            if (!revealTargets.length) return;
+
+            revealTargets.forEach((element, index) => {
+                element.classList.add('reveal-on-scroll');
+                element.style.setProperty('--reveal-delay', `${(index % 4) * 70}ms`);
+            });
+
+            if (!('IntersectionObserver' in window)) {
+                revealTargets.forEach((element) => element.classList.add('reveal-visible'));
+                return;
+            }
+
+            document.documentElement.classList.add('reveal-ready');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('reveal-visible');
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -10% 0px',
+                threshold: 0.12,
+            });
+
+            revealTargets.forEach((element) => observer.observe(element));
+        };
+
         // Modal Logic
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('magnified-image');
@@ -2316,6 +2393,7 @@
         setupInfiniteBottomNav();
         initializeLanguageSystem();
         initializeCurrencySystem();
+        initializeScrollReveal();
 
         // Initialize Carousels
         setupCarousel('video-carousel', 'scroll-left-btn', 'scroll-right-btn');
