@@ -170,23 +170,27 @@
         .reveal-on-scroll {
             opacity: 1;
             transform: none;
+            filter: none;
         }
         html.reveal-ready .reveal-on-scroll {
             opacity: 0;
-            transform: translate3d(0, 24px, 0);
-            transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 56px), 0) scale(var(--reveal-scale, 0.96));
+            filter: blur(var(--reveal-blur, 7px));
+            transition: opacity 0.85s ease, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
             transition-delay: var(--reveal-delay, 0ms);
-            will-change: opacity, transform;
+            will-change: opacity, transform, filter;
         }
         html.reveal-ready .reveal-on-scroll.reveal-visible {
             opacity: 1;
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
         }
         @media (prefers-reduced-motion: reduce) {
             html.reveal-ready .reveal-on-scroll,
             html.reveal-ready .reveal-on-scroll.reveal-visible {
                 opacity: 1;
                 transform: none;
+                filter: none;
                 transition: none;
             }
         }
@@ -1976,8 +1980,19 @@
             if (!revealTargets.length) return;
 
             revealTargets.forEach((element, index) => {
+                const isCardLike = element.matches(
+                    '#services a.glass-panel, #packages .glass-panel, #individual-prices .glass-panel, #web-cases-showcase article, #gallery .grid > *, #podcast-showcase .grid > *'
+                );
+                const horizontalOffset = isCardLike ? (index % 2 === 0 ? -18 : 18) : 0;
+                const verticalOffset = isCardLike ? 48 : 64;
+                const blurAmount = isCardLike ? 6 : 8;
+                const scaleAmount = isCardLike ? 0.97 : 0.955;
                 element.classList.add('reveal-on-scroll');
-                element.style.setProperty('--reveal-delay', `${(index % 4) * 70}ms`);
+                element.style.setProperty('--reveal-delay', `${(index % 6) * 90}ms`);
+                element.style.setProperty('--reveal-x', `${horizontalOffset}px`);
+                element.style.setProperty('--reveal-y', `${verticalOffset}px`);
+                element.style.setProperty('--reveal-blur', `${blurAmount}px`);
+                element.style.setProperty('--reveal-scale', String(scaleAmount));
             });
 
             if (!('IntersectionObserver' in window)) {
@@ -1995,7 +2010,7 @@
                 });
             }, {
                 root: null,
-                rootMargin: '0px 0px -10% 0px',
+                rootMargin: '0px 0px -8% 0px',
                 threshold: 0.01,
             });
 
