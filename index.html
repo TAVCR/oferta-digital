@@ -62,14 +62,12 @@
 
         /* Fondo Profesional Sobrio */
         body {
-            background-color: #111111; 
+            background-color: #111111;
             background-image:
-                linear-gradient(to bottom, #111111, #0a0a0a),
-                linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-            background-size: 100% 100%, 38px 38px, 38px 38px;
-            background-position: center, center, center;
-            background-attachment: fixed, fixed, fixed;
+                linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+            background-size: 44px 44px;
+            background-attachment: fixed;
             color: #e5e5e5;
             transition: max-width 0.5s ease, margin 0.5s ease, border-radius 0.5s ease, border 0.5s ease;
         }
@@ -331,9 +329,6 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                background-size: 100% 100%, 30px 30px, 30px 30px;
-            }
             .glass-panel {
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
@@ -369,12 +364,6 @@
         }
         html.performance-lite .reveal-on-scroll {
             filter: none !important;
-        }
-        html.performance-lite body {
-            background-image:
-                linear-gradient(to bottom, #111111, #0a0a0a),
-                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
         }
     </style>
 </head>
