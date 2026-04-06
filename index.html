@@ -2004,14 +2004,13 @@
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (!entry.isIntersecting && entry.intersectionRatio <= 0) return;
-                    entry.target.classList.add('reveal-visible');
-                    observer.unobserve(entry.target);
+                    const shouldReveal = entry.isIntersecting && entry.intersectionRatio > 0.06;
+                    entry.target.classList.toggle('reveal-visible', shouldReveal);
                 });
             }, {
                 root: null,
                 rootMargin: '0px 0px -8% 0px',
-                threshold: 0.01,
+                threshold: [0, 0.06, 0.18],
             });
 
             revealTargets.forEach((element) => observer.observe(element));
