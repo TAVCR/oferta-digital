@@ -99,6 +99,22 @@
             display: none;
         }
 
+        /* Grid de fondo sutil: solo en el lienzo, no en el contenido */
+        .background-grid {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -20;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+            background-size: 38px 38px;
+            background-position: center;
+            opacity: 0.12;
+            -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 12%, rgba(0, 0, 0, 0.55) 72%, transparent 100%);
+            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 12%, rgba(0, 0, 0, 0.55) 72%, transparent 100%);
+        }
+
         /* Tarjetas minimalistas y elegantes */
         .glass-panel {
             background: linear-gradient(165deg, rgba(36, 36, 36, 0.68), rgba(20, 20, 20, 0.58));
@@ -325,6 +341,10 @@
         }
 
         @media (max-width: 768px) {
+            .background-grid {
+                background-size: 30px 30px;
+                opacity: 0.09;
+            }
             .glass-panel {
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
@@ -361,6 +381,9 @@
         html.performance-lite .reveal-on-scroll {
             filter: none !important;
         }
+        html.performance-lite .background-grid {
+            opacity: 0.06;
+        }
     </style>
 </head>
 <body class="antialiased pb-24 selection:bg-brand-orange selection:text-white relative">
@@ -382,6 +405,9 @@
         <button type="button" data-lang-option="es" class="lang-option px-3 py-1 rounded-full text-xs font-bold transition bg-brand-orange text-white">ES</button>
         <button type="button" data-lang-option="en" class="lang-option px-3 py-1 rounded-full text-xs font-bold transition text-neutral-300 hover:text-white">EN</button>
     </div>
+
+    <!-- Grid de fondo -->
+    <div class="background-grid" aria-hidden="true"></div>
 
     <!-- Luz ambiental muy sutil -->
     <div class="background-blob fixed top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[500px] bg-brand-orange rounded-full mix-blend-screen filter blur-[120px] opacity-[0.08] -z-10 pointer-events-none hidden md:block"></div>
