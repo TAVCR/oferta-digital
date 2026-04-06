@@ -2538,12 +2538,97 @@
             }
         };
 
+        const initializeImagePreload = () => {
+            const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+            const maxTotalPreload = isMobile ? 26 : 40;
+            const preloadedSources = new Set();
+            let preloadCount = 0;
+
+            const warmImage = (src, priority = 'low') => {
+                if (!src || preloadedSources.has(src) || preloadCount >= maxTotalPreload) return;
+                preloadedSources.add(src);
+                preloadCount += 1;
+
+                const preloadLink = document.createElement('link');
+                preloadLink.rel = 'preload';
+                preloadLink.as = 'image';
+                preloadLink.href = src;
+                preloadLink.setAttribute('fetchpriority', priority);
+                document.head.appendChild(preloadLink);
+
+                const img = new Image();
+                img.decoding = 'async';
+                img.loading = 'eager';
+                img.src = src;
+            };
+
+            const warmFromContainer = (container, limit = 6, priority = 'low') => {
+                if (!container || preloadCount >= maxTotalPreload) return;
+                let warmed = 0;
+                container.querySelectorAll('img[src]').forEach((img) => {
+                    if (warmed >= limit || preloadCount >= maxTotalPreload) return;
+                    warmImage(img.currentSrc || img.src, priority);
+                    warmed += 1;
+                });
+            };
+
+            const warmCriticalImages = () => {
+                warmFromContainer(document.querySelector('header'), 1, 'high');
+                warmFromContainer(document.getElementById('gallery'), 10, 'high');
+                warmFromContainer(document.getElementById('videos'), 4, 'low');
+                warmFromContainer(document.getElementById('shorts'), 4, 'low');
+            };
+
+            const sectionPreloadPlan = {
+                gallery: { limit: 14, priority: 'high' },
+                videos: { limit: 8, priority: 'low' },
+                shorts: { limit: 8, priority: 'low' },
+                'web-cases-showcase': { limit: 8, priority: 'low' },
+                'real-production-note-section': { limit: 2, priority: 'low' },
+                contact: { limit: 2, priority: 'low' },
+            };
+
+            if (!('IntersectionObserver' in window)) {
+                Object.entries(sectionPreloadPlan).forEach(([sectionId, options]) => {
+                    warmFromContainer(document.getElementById(sectionId), options.limit, options.priority);
+                });
+                return;
+            }
+
+            const preloadObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const sectionId = entry.target.id;
+                    const options = sectionPreloadPlan[sectionId];
+                    if (!options) return;
+                    warmFromContainer(entry.target, options.limit, options.priority);
+                    preloadObserver.unobserve(entry.target);
+                });
+            }, {
+                root: null,
+                rootMargin: '900px 0px 450px 0px',
+                threshold: 0.01,
+            });
+
+            Object.keys(sectionPreloadPlan).forEach((sectionId) => {
+                const section = document.getElementById(sectionId);
+                if (section) preloadObserver.observe(section);
+            });
+
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(() => warmCriticalImages(), { timeout: 1200 });
+            } else {
+                setTimeout(() => warmCriticalImages(), 450);
+            }
+        };
+
         // Reorder Sections + Infinite Bottom Carousel + Language System
         reorderLandingSections();
         setupInfiniteBottomNav();
         initializeLanguageSystem();
         initializeCurrencySystem();
         initializeScrollReveal();
+        initializeImagePreload();
 
         // Initialize Carousels
         setupCarousel('video-carousel', 'scroll-left-btn', 'scroll-right-btn');
