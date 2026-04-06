@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://img.youtube.com" crossorigin>
     <link rel="dns-prefetch" href="//i.postimg.cc">
     <link rel="dns-prefetch" href="//img.youtube.com">
+    <link rel="preload" as="image" href="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- Configuración Tailwind Personalizada -->
@@ -224,6 +225,15 @@
         #view-toggle svg[stroke] {
             stroke-width: 1.8;
         }
+
+        /* Render efficiency for dense media sections */
+        #gallery .mb-16,
+        #videos .snap-center,
+        #shorts .snap-center,
+        #web-cases-showcase article {
+            content-visibility: auto;
+            contain-intrinsic-size: 420px;
+        }
         
         /* Scrollbar oculta pero funcional */
         .hide-scrollbar::-webkit-scrollbar {
@@ -317,12 +327,41 @@
         }
 
         @media (max-width: 768px) {
+            .glass-panel {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
             main > section {
                 padding-top: 1rem;
             }
             main > section:not(:first-of-type)::before {
                 margin-bottom: 1rem;
             }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .glass-panel:hover {
+                transform: none;
+                box-shadow: var(--shadow-soft);
+            }
+            .gallery-item img,
+            .video-container img {
+                transition: opacity 0.35s ease, filter 0.35s ease;
+            }
+        }
+
+        html.performance-lite .glass-panel {
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow: 0 10px 26px -18px rgba(0, 0, 0, 0.7);
+        }
+        html.performance-lite .gallery-item img,
+        html.performance-lite .video-container img {
+            filter: none;
+            transition: opacity 0.35s ease, transform 0.45s ease;
+        }
+        html.performance-lite .reveal-on-scroll {
+            filter: none !important;
         }
     </style>
 </head>
@@ -1460,6 +1499,22 @@
     <script>
         // Language Logic (ES / EN)
         const htmlEl = document.documentElement;
+
+        const shouldUsePerformanceLite = () => {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const saveData = !!connection?.saveData;
+            const effectiveType = (connection?.effectiveType || '').toLowerCase();
+            const slowConnection = effectiveType.includes('2g') || effectiveType.includes('3g');
+            const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
+            const lowCpu = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+            const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            return saveData || slowConnection || lowMemory || lowCpu || reducedMotion;
+        };
+
+        if (shouldUsePerformanceLite()) {
+            htmlEl.classList.add('performance-lite');
+        }
+
         let currentLanguage = 'es';
         const languageStorageKey = 'landing-language';
         const languageButtons = document.querySelectorAll('[data-lang-option]');
@@ -1699,6 +1754,7 @@
         const translatableTextNodes = [];
         const translatableAttributes = [];
         const translatableAttributeNames = ['placeholder', 'alt', 'title', 'aria-label'];
+        let translationIndexReady = false;
 
         const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
 
@@ -1877,12 +1933,53 @@
             viewTextNode.innerText = isMobileMode ? labels.mobile : labels.desktop;
         };
 
+        const buildTranslationIndexes = () => {
+            if (translationIndexReady) return;
+
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode(node) {
+                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    if (['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+                    return NodeFilter.FILTER_ACCEPT;
+                },
+            });
+
+            while (walker.nextNode()) {
+                const node = walker.currentNode;
+                node.__i18nOriginal = node.nodeValue;
+                translatableTextNodes.push(node);
+            }
+
+            document.querySelectorAll('*').forEach((element) => {
+                translatableAttributeNames.forEach((attribute) => {
+                    if (!element.hasAttribute(attribute)) return;
+                    const original = element.getAttribute(attribute);
+                    if (!original || !original.trim()) return;
+                    translatableAttributes.push({ element, attribute, original });
+                });
+            });
+
+            headingHtmlTranslations.forEach((entry) => {
+                if (entry.element) return;
+                entry.element = document.querySelector(entry.selector);
+                entry.es = entry.element ? entry.element.innerHTML : '';
+            });
+
+            translationIndexReady = true;
+        };
+
         const applyLanguage = (lang) => {
             currentLanguage = lang === 'en' ? 'en' : 'es';
             document.documentElement.lang = currentLanguage;
             document.title = currentLanguage === 'en'
                 ? 'Interactive Dimension | Digital Solutions'
                 : 'Dimensión Interactiva | Soluciones Digitales';
+
+            if (currentLanguage === 'en' && !translationIndexReady) {
+                buildTranslationIndexes();
+            }
 
             translatableTextNodes.forEach((node) => {
                 const originalValue = node.__i18nOriginal || node.nodeValue;
@@ -1916,46 +2013,22 @@
         };
 
         const initializeLanguageSystem = () => {
-            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-                acceptNode(node) {
-                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                    const parent = node.parentElement;
-                    if (!parent) return NodeFilter.FILTER_REJECT;
-                    if (['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
-                    return NodeFilter.FILTER_ACCEPT;
-                },
-            });
-
-            while (walker.nextNode()) {
-                const node = walker.currentNode;
-                node.__i18nOriginal = node.nodeValue;
-                translatableTextNodes.push(node);
-            }
-
-            document.querySelectorAll('*').forEach((element) => {
-                translatableAttributeNames.forEach((attribute) => {
-                    if (!element.hasAttribute(attribute)) return;
-                    const original = element.getAttribute(attribute);
-                    if (!original || !original.trim()) return;
-                    translatableAttributes.push({ element, attribute, original });
-                });
-            });
-
-            headingHtmlTranslations.forEach((entry) => {
-                entry.element = document.querySelector(entry.selector);
-                entry.es = entry.element ? entry.element.innerHTML : '';
-            });
-
             if (languageToggle) {
                 languageButtons.forEach((button) => {
                     button.addEventListener('click', () => {
                         const selected = button.dataset.langOption === 'en' ? 'en' : 'es';
+                        if (selected === 'en' && !translationIndexReady) {
+                            buildTranslationIndexes();
+                        }
                         applyLanguage(selected);
                     });
                 });
             }
 
             const storedLanguage = localStorage.getItem(languageStorageKey);
+            if (storedLanguage === 'en') {
+                buildTranslationIndexes();
+            }
             applyLanguage(storedLanguage === 'en' ? 'en' : 'es');
         };
 
@@ -2089,17 +2162,28 @@
                 return;
             }
 
-            const selectors = [
-                'main > section > *',
-                '#gallery .mb-16',
-                '#services a.glass-panel',
-                '#packages .glass-panel',
-                '#individual-prices .glass-panel',
-                '#web-cases-showcase article',
-                '#web-cases-showcase #podcast-showcase',
-                '#real-production-note-section .glass-panel',
-                '#contact .glass-panel',
-            ];
+            const liteMode = document.documentElement.classList.contains('performance-lite');
+            const selectors = liteMode
+                ? [
+                    'main > section > .glass-panel',
+                    '#gallery > .mb-16',
+                    '#videos .snap-center',
+                    '#shorts .snap-center',
+                    '#web-cases-showcase article',
+                    '#real-production-note-section .glass-panel',
+                    '#contact .glass-panel',
+                ]
+                : [
+                    'main > section > *',
+                    '#gallery .mb-16',
+                    '#services a.glass-panel',
+                    '#packages .glass-panel',
+                    '#individual-prices .glass-panel',
+                    '#web-cases-showcase article',
+                    '#web-cases-showcase #podcast-showcase',
+                    '#real-production-note-section .glass-panel',
+                    '#contact .glass-panel',
+                ];
 
             const uniqueElements = new Set();
             selectors.forEach((selector) => {
@@ -2119,10 +2203,10 @@
                 const sectionIndex = section ? Math.max(0, sectionOrder.indexOf(section)) : 0;
                 const chapterDelay = sectionIndex * 22;
                 const staggerDelay = (index % 4) * 55;
-                const horizontalOffset = isCardLike ? (index % 2 === 0 ? -12 : 12) : 0;
-                const verticalOffset = isCardLike ? 34 : 44;
-                const blurAmount = isCardLike ? 2 : 3;
-                const scaleAmount = isCardLike ? 0.985 : 0.975;
+                const horizontalOffset = liteMode ? 0 : (isCardLike ? (index % 2 === 0 ? -12 : 12) : 0);
+                const verticalOffset = liteMode ? 28 : (isCardLike ? 34 : 44);
+                const blurAmount = liteMode ? 0 : (isCardLike ? 2 : 3);
+                const scaleAmount = liteMode ? 0.99 : (isCardLike ? 0.985 : 0.975);
                 element.classList.add('reveal-on-scroll');
                 element.style.setProperty('--reveal-delay', `${chapterDelay + staggerDelay}ms`);
                 element.style.setProperty('--reveal-x', `${horizontalOffset}px`);
@@ -2140,13 +2224,14 @@
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    const shouldReveal = entry.isIntersecting && entry.intersectionRatio > 0.06;
+                    const minRatio = liteMode ? 0.04 : 0.06;
+                    const shouldReveal = entry.isIntersecting && entry.intersectionRatio > minRatio;
                     entry.target.classList.toggle('reveal-visible', shouldReveal);
                 });
             }, {
                 root: null,
-                rootMargin: '0px 0px -6% 0px',
-                threshold: [0, 0.06, 0.18],
+                rootMargin: liteMode ? '0px 0px -4% 0px' : '0px 0px -6% 0px',
+                threshold: liteMode ? [0, 0.04, 0.12] : [0, 0.06, 0.18],
             });
 
             revealTargets.forEach((element) => observer.observe(element));
@@ -2219,7 +2304,7 @@
             const playSize = kind === 'shorts' ? 'w-14 h-14' : 'w-16 h-16';
             const playSvg = kind === 'shorts' ? 'w-6 h-6' : 'w-8 h-8';
             element.innerHTML = `
-                <img loading="lazy" decoding="async" src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                <img loading="lazy" decoding="async" fetchpriority="low" src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div class="${playSize} bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                         <svg class="${playSvg} text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -2538,28 +2623,64 @@
             }
         };
 
-        const initializeImagePreload = () => {
-            const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-            const maxTotalPreload = isMobile ? 26 : 40;
-            const preloadedSources = new Set();
-            let preloadCount = 0;
+        const initializeImageLoadingHints = () => {
+            document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+                if (!img.getAttribute('fetchpriority')) {
+                    img.setAttribute('fetchpriority', 'low');
+                }
+            });
+        };
 
-            const warmImage = (src, priority = 'low') => {
+        const initializeImagePreload = () => {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const effectiveType = (connection?.effectiveType || '').toLowerCase();
+            const saveData = !!connection?.saveData;
+            const slowNetwork = saveData || effectiveType.includes('2g') || effectiveType.includes('3g');
+            const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+            const maxTotalPreload = slowNetwork ? (isMobile ? 10 : 14) : (isMobile ? 24 : 38);
+            const maxConcurrentPreloads = slowNetwork ? 1 : 2;
+            const useHeadPreloadLinks = !slowNetwork;
+
+            const preloadedSources = new Set();
+            const queue = [];
+            let preloadCount = 0;
+            let activePreloads = 0;
+
+            const pumpQueue = () => {
+                while (activePreloads < maxConcurrentPreloads && queue.length > 0 && preloadCount < maxTotalPreload) {
+                    const task = queue.shift();
+                    if (!task) continue;
+                    activePreloads += 1;
+                    preloadCount += 1;
+
+                    if (useHeadPreloadLinks) {
+                        const preloadLink = document.createElement('link');
+                        preloadLink.rel = 'preload';
+                        preloadLink.as = 'image';
+                        preloadLink.href = task.src;
+                        preloadLink.setAttribute('fetchpriority', task.priority);
+                        document.head.appendChild(preloadLink);
+                    }
+
+                    const img = new Image();
+                    img.decoding = 'async';
+                    img.loading = 'eager';
+                    img.setAttribute('fetchpriority', task.priority);
+                    const finish = () => {
+                        activePreloads -= 1;
+                        pumpQueue();
+                    };
+                    img.onload = finish;
+                    img.onerror = finish;
+                    img.src = task.src;
+                }
+            };
+
+            const enqueueImageWarm = (src, priority = 'low') => {
                 if (!src || preloadedSources.has(src) || preloadCount >= maxTotalPreload) return;
                 preloadedSources.add(src);
-                preloadCount += 1;
-
-                const preloadLink = document.createElement('link');
-                preloadLink.rel = 'preload';
-                preloadLink.as = 'image';
-                preloadLink.href = src;
-                preloadLink.setAttribute('fetchpriority', priority);
-                document.head.appendChild(preloadLink);
-
-                const img = new Image();
-                img.decoding = 'async';
-                img.loading = 'eager';
-                img.src = src;
+                queue.push({ src, priority });
+                pumpQueue();
             };
 
             const warmFromContainer = (container, limit = 6, priority = 'low') => {
@@ -2567,26 +2688,34 @@
                 let warmed = 0;
                 container.querySelectorAll('img[src]').forEach((img) => {
                     if (warmed >= limit || preloadCount >= maxTotalPreload) return;
-                    warmImage(img.currentSrc || img.src, priority);
+                    enqueueImageWarm(img.currentSrc || img.src, priority);
                     warmed += 1;
                 });
             };
 
             const warmCriticalImages = () => {
                 warmFromContainer(document.querySelector('header'), 1, 'high');
-                warmFromContainer(document.getElementById('gallery'), 10, 'high');
-                warmFromContainer(document.getElementById('videos'), 4, 'low');
-                warmFromContainer(document.getElementById('shorts'), 4, 'low');
+                warmFromContainer(document.getElementById('gallery'), slowNetwork ? 5 : 10, 'high');
+                warmFromContainer(document.getElementById('videos'), slowNetwork ? 2 : 4, 'low');
+                warmFromContainer(document.getElementById('shorts'), slowNetwork ? 2 : 4, 'low');
             };
 
-            const sectionPreloadPlan = {
-                gallery: { limit: 14, priority: 'high' },
-                videos: { limit: 8, priority: 'low' },
-                shorts: { limit: 8, priority: 'low' },
-                'web-cases-showcase': { limit: 8, priority: 'low' },
-                'real-production-note-section': { limit: 2, priority: 'low' },
-                contact: { limit: 2, priority: 'low' },
-            };
+            const sectionPreloadPlan = slowNetwork
+                ? {
+                    gallery: { limit: 6, priority: 'high' },
+                    videos: { limit: 3, priority: 'low' },
+                    shorts: { limit: 3, priority: 'low' },
+                    'web-cases-showcase': { limit: 3, priority: 'low' },
+                    contact: { limit: 1, priority: 'low' },
+                }
+                : {
+                    gallery: { limit: 14, priority: 'high' },
+                    videos: { limit: 8, priority: 'low' },
+                    shorts: { limit: 8, priority: 'low' },
+                    'web-cases-showcase': { limit: 8, priority: 'low' },
+                    'real-production-note-section': { limit: 2, priority: 'low' },
+                    contact: { limit: 2, priority: 'low' },
+                };
 
             if (!('IntersectionObserver' in window)) {
                 Object.entries(sectionPreloadPlan).forEach(([sectionId, options]) => {
@@ -2606,7 +2735,7 @@
                 });
             }, {
                 root: null,
-                rootMargin: '900px 0px 450px 0px',
+                rootMargin: slowNetwork ? '420px 0px 220px 0px' : '900px 0px 450px 0px',
                 threshold: 0.01,
             });
 
@@ -2628,6 +2757,7 @@
         initializeLanguageSystem();
         initializeCurrencySystem();
         initializeScrollReveal();
+        initializeImageLoadingHints();
         initializeImagePreload();
 
         // Initialize Carousels
