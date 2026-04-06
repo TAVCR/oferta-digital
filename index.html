@@ -50,6 +50,15 @@
     </script>
 
     <style>
+        :root {
+            --radius-card: 16px;
+            --radius-panel: 22px;
+            --border-soft: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(217, 119, 6, 0.28);
+            --shadow-soft: 0 16px 38px -20px rgba(0, 0, 0, 0.72);
+            --shadow-hover: 0 22px 50px -24px rgba(0, 0, 0, 0.82);
+        }
+
         /* Fondo Profesional Sobrio */
         body {
             background-color: #111111; 
@@ -91,21 +100,129 @@
 
         /* Tarjetas minimalistas y elegantes */
         .glass-panel {
-            background: rgba(30, 30, 30, 0.6);
+            background: linear-gradient(165deg, rgba(36, 36, 36, 0.68), rgba(20, 20, 20, 0.58));
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-panel);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
         }
-        
+
         .glass-panel:hover {
-            background: rgba(40, 40, 40, 0.8);
-            border-color: rgba(217, 119, 6, 0.3);
+            background: linear-gradient(165deg, rgba(43, 43, 43, 0.76), rgba(24, 24, 24, 0.62));
+            border-color: var(--border-accent);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
         }
 
         .text-accent {
             color: #d97706;
+        }
+
+        /* Jerarquía tipográfica y ritmo */
+        section h2.font-display {
+            letter-spacing: 0.01em;
+            line-height: 1.05;
+        }
+        section h3.font-display {
+            letter-spacing: 0.01em;
+            line-height: 1.12;
+        }
+        section p {
+            text-wrap: pretty;
+        }
+        .section-eyebrow {
+            color: #737373;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Separadores de sección sutiles */
+        main > section {
+            scroll-margin-top: 6rem;
+            position: relative;
+            padding-top: 1.25rem;
+        }
+        main > section:first-of-type {
+            padding-top: 0;
+        }
+        main > section:not(:first-of-type)::before {
+            content: "";
+            display: block;
+            height: 1px;
+            margin: 0 0 1.25rem 0;
+            background: linear-gradient(90deg, rgba(217, 119, 6, 0), rgba(217, 119, 6, 0.56), rgba(217, 119, 6, 0));
+        }
+
+        /* Variación tonal muy sutil por bloque */
+        main > section:nth-of-type(odd) .glass-panel {
+            background-image: linear-gradient(165deg, rgba(37, 37, 37, 0.68), rgba(18, 18, 18, 0.58));
+        }
+        main > section:nth-of-type(even) .glass-panel {
+            background-image: linear-gradient(165deg, rgba(34, 34, 34, 0.64), rgba(16, 16, 16, 0.56));
+        }
+
+        /* Tratamiento visual homogéneo de media */
+        .gallery-item,
+        .video-container {
+            border-radius: var(--radius-card);
+            overflow: hidden;
+        }
+        .gallery-item img,
+        .video-container img {
+            filter: saturate(1.04) contrast(1.03);
+            transition: transform 0.9s ease, opacity 0.6s ease, filter 0.6s ease;
+        }
+        .gallery-item:hover img,
+        .video-container:hover img {
+            transform: scale(1.03);
+            filter: saturate(1.08) contrast(1.05);
+        }
+        #gallery .gallery-item:hover img,
+        #videos .video-container:hover img,
+        #shorts .video-container:hover img,
+        #web-cases-showcase .glass-panel:hover img {
+            transform: scale(1.028);
+        }
+
+        /* Micro tags discretos para casos */
+        .case-meta-tag {
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            padding: 0.2rem 0.55rem;
+            line-height: 1.2;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        /* Cierre visual más limpio */
+        #contact .text-neutral-700.text-xs {
+            max-width: 50rem;
+            margin-top: 0.75rem;
+            font-size: 11px;
+            line-height: 1.65;
+        }
+        .case-meta-tag-primary {
+            color: #d97706;
+            border-color: rgba(217, 119, 6, 0.45);
+            background: rgba(217, 119, 6, 0.08);
+        }
+        .case-meta-tag-secondary {
+            color: #a3a3a3;
+            border-color: rgba(163, 163, 163, 0.28);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Consistencia de íconos de trazo */
+        #main-nav svg[stroke],
+        #services svg[stroke],
+        #contact svg[stroke],
+        #view-toggle svg[stroke] {
+            stroke-width: 1.8;
         }
         
         /* Scrollbar oculta pero funcional */
@@ -198,6 +315,15 @@
                 transition: none;
             }
         }
+
+        @media (max-width: 768px) {
+            main > section {
+                padding-top: 1rem;
+            }
+            main > section:not(:first-of-type)::before {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased pb-24 selection:bg-brand-orange selection:text-white relative">
@@ -226,18 +352,18 @@
     <main class="container mx-auto px-4 md:px-6 max-w-6xl overflow-x-hidden">
         
         <!-- Header / Hero Section -->
-        <header class="pt-16 pb-20 text-center relative animate-fade-in-up">
+        <header class="pt-14 pb-24 text-center relative animate-fade-in-up">
             <div class="flex justify-center mb-10">
                 <div class="relative group max-w-full">
                     <div class="absolute -inset-4 bg-brand-orange rounded-full blur-2xl opacity-10 group-hover:opacity-20 transition duration-500"></div>
-                    <img loading="eager" fetchpriority="high" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-60 md:h-96 w-auto max-w-full object-contain">
+                    <img loading="eager" fetchpriority="high" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-64 md:h-[26rem] w-auto max-w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]">
                 </div>
             </div>
-            <h1 class="font-display font-bold text-4xl md:text-7xl tracking-tight mb-6 text-white">
+            <h1 class="font-display font-bold text-4xl md:text-8xl tracking-tight mb-6 text-white">
                 Todo empieza como un <span class="text-brand-orange">guion</span><span class="text-brand-orange">.</span>
             </h1>
             
-            <p class="text-lg text-brand-orange max-w-2xl mx-auto leading-relaxed font-light">
+            <p class="text-base md:text-lg text-brand-orange max-w-xl mx-auto leading-relaxed font-light">
                 Estrategia creativa, diseño de alto nivel y producción audiovisual construidos desde pensamiento narrativo estructurado.
             </p>
 
@@ -497,7 +623,7 @@
         <section id="gallery" class="mb-24">
             <div class="text-center mb-12">
                 <h2 class="font-display font-bold text-4xl mb-2 text-white">Nuestro Portafolio</h2>
-                <p class="text-neutral-500 uppercase tracking-widest text-xs">Creatividad & Precisión</p>
+                <p class="section-eyebrow">Creatividad & Precisión</p>
             </div>
 
             <!-- Folletos Imprimibles -->
@@ -1138,12 +1264,12 @@
             <div class="grid md:grid-cols-2 gap-6">
                 <article id="case-aivoxcr" class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-orange">Caso destacado</span>
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Sitio en producción</span>
+                        <span class="case-meta-tag case-meta-tag-primary">Caso destacado</span>
+                        <span class="case-meta-tag case-meta-tag-secondary">Sitio en producción</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-1">AIVOXCR</h3>
-                    <div class="mb-4 h-28 md:h-32 w-full rounded-lg border border-neutral-700/70 bg-black/30 flex items-center justify-center p-2 md:p-3">
-                        <img src="https://i.postimg.cc/dQTFS3B9/voxaicr_(3).png" alt="Logo AIVOXCR" class="h-full w-full object-contain" loading="lazy" decoding="async">
+                    <div class="mb-4 h-36 md:h-44 w-full rounded-xl border border-neutral-700/70 bg-black/35 flex items-center justify-center p-3 md:p-4">
+                        <img src="https://i.postimg.cc/dQTFS3B9/voxaicr_(3).png" alt="Logo AIVOXCR" class="h-full w-full object-contain scale-[1.06]" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs text-neutral-500 mb-4">aivoxcr.com</p>
                     <p class="text-sm text-neutral-300 mb-6 leading-relaxed">
@@ -1157,12 +1283,12 @@
 
                 <article id="case-kiwiglow" class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-orange">Caso destacado</span>
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Sitio en producción</span>
+                        <span class="case-meta-tag case-meta-tag-primary">Caso destacado</span>
+                        <span class="case-meta-tag case-meta-tag-secondary">Sitio en producción</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-1">Kiwi Glow CR</h3>
-                    <div class="mb-4 h-28 md:h-32 w-full rounded-lg border border-neutral-700/70 bg-black/30 flex items-center justify-center p-2 md:p-3">
-                        <img src="https://i.postimg.cc/PJ6Dc1T5/Kiwi_Glow.jpg" alt="Logo Kiwi Glow CR" class="h-full w-full object-contain rounded-md scale-110" loading="lazy" decoding="async">
+                    <div class="mb-4 h-36 md:h-44 w-full rounded-xl border border-neutral-700/70 bg-black/35 flex items-center justify-center p-3 md:p-4">
+                        <img src="https://i.postimg.cc/PJ6Dc1T5/Kiwi_Glow.jpg" alt="Logo Kiwi Glow CR" class="h-full w-full object-contain rounded-md scale-[1.22]" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs text-neutral-500 mb-4">kiwiglowcr.com</p>
                     <p class="text-sm text-neutral-300 mb-6 leading-relaxed">
@@ -1239,9 +1365,9 @@
             <!-- Footer Logo -->
             <div class="text-center pb-12">
                 <img loading="lazy" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Logo Footer" class="h-60 md:h-96 w-auto max-w-full mx-auto mb-6 opacity-80 object-contain">
-                <p class="text-neutral-600 text-sm">Cada proyecto es una historia. Contemos la tuya bien.</p>
-                <p id="copyright-text" class="text-neutral-600 text-sm">&copy; 2026 Dimensión Interactiva. Todos los derechos reservados.</p>
-                <p class="text-neutral-700 text-xs mt-2 max-w-2xl mx-auto">
+                <p class="text-neutral-500 text-sm">Cada proyecto es una historia. Contemos la tuya bien.</p>
+                <p id="copyright-text" class="text-neutral-500 text-xs mt-1">&copy; 2026 Dimensión Interactiva. Todos los derechos reservados.</p>
+                <p class="text-neutral-700 text-xs mt-2 max-w-3xl mx-auto">
                     Todas las arquitecturas narrativas, guiones originales y conceptos creativos son propiedad intelectual de Dimensión Interactiva. Esta plataforma fue desarrollada a medida y programada manualmente para garantizar una experiencia fluida y responsiva en todos los dispositivos. Garantizamos una producción integral 100% propia, fusionando copywriting estratégico con ejecución técnica de alto nivel, sin intervención de agencias externas ni terceros.
                 </p>
             </div>
@@ -1983,16 +2109,22 @@
             const revealTargets = Array.from(uniqueElements).filter((element) => !element.classList.contains('reveal-on-scroll'));
             if (!revealTargets.length) return;
 
+            const sectionOrder = Array.from(document.querySelectorAll('main > section'));
+
             revealTargets.forEach((element, index) => {
                 const isCardLike = element.matches(
                     '#services a.glass-panel, #packages .glass-panel, #individual-prices .glass-panel, #web-cases-showcase article, #gallery .grid > *, #podcast-showcase .grid > *'
                 );
+                const section = element.closest('section');
+                const sectionIndex = section ? Math.max(0, sectionOrder.indexOf(section)) : 0;
+                const chapterDelay = sectionIndex * 22;
+                const staggerDelay = (index % 4) * 55;
                 const horizontalOffset = isCardLike ? (index % 2 === 0 ? -12 : 12) : 0;
                 const verticalOffset = isCardLike ? 34 : 44;
                 const blurAmount = isCardLike ? 2 : 3;
                 const scaleAmount = isCardLike ? 0.985 : 0.975;
                 element.classList.add('reveal-on-scroll');
-                element.style.setProperty('--reveal-delay', `${(index % 5) * 70}ms`);
+                element.style.setProperty('--reveal-delay', `${chapterDelay + staggerDelay}ms`);
                 element.style.setProperty('--reveal-x', `${horizontalOffset}px`);
                 element.style.setProperty('--reveal-y', `${verticalOffset}px`);
                 element.style.setProperty('--reveal-blur', `${blurAmount}px`);
