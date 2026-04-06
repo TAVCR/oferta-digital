@@ -74,6 +74,21 @@
             transition: max-width 0.5s ease, margin 0.5s ease, border-radius 0.5s ease, border 0.5s ease;
         }
 
+        /* Desktop: stronger grid visibility on large screens */
+        @media (min-width: 1024px) {
+            body {
+                background-image:
+                    radial-gradient(1400px 900px at 80% -10%, rgba(217, 119, 6, 0.1), transparent 62%),
+                    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                    linear-gradient(rgba(217, 119, 6, 0.055) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(217, 119, 6, 0.055) 1px, transparent 1px);
+                background-size: 100% 100%, 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+                background-position: center;
+                background-attachment: fixed, fixed, fixed, fixed, fixed;
+            }
+        }
+
         /* Estilos de Simulación Móvil */
         html.simulated-mobile body {
             max-width: 390px;
