@@ -11,6 +11,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+    <link rel="preconnect" href="https://img.youtube.com" crossorigin>
+    <link rel="dns-prefetch" href="//i.postimg.cc">
+    <link rel="dns-prefetch" href="//img.youtube.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- Configuración Tailwind Personalizada -->
@@ -174,9 +178,9 @@
         }
         html.reveal-ready .reveal-on-scroll {
             opacity: 0;
-            transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 56px), 0) scale(var(--reveal-scale, 0.96));
-            filter: blur(var(--reveal-blur, 7px));
-            transition: opacity 0.85s ease, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 40px), 0) scale(var(--reveal-scale, 0.975));
+            filter: blur(var(--reveal-blur, 3px));
+            transition: opacity 0.68s ease, transform 0.76s cubic-bezier(0.22, 1, 0.36, 1), filter 0.72s cubic-bezier(0.22, 1, 0.36, 1);
             transition-delay: var(--reveal-delay, 0ms);
             will-change: opacity, transform, filter;
         }
@@ -226,7 +230,7 @@
             <div class="flex justify-center mb-10">
                 <div class="relative group max-w-full">
                     <div class="absolute -inset-4 bg-brand-orange rounded-full blur-2xl opacity-10 group-hover:opacity-20 transition duration-500"></div>
-                    <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-60 md:h-96 w-auto max-w-full object-contain">
+                    <img loading="eager" fetchpriority="high" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-60 md:h-96 w-auto max-w-full object-contain">
                 </div>
             </div>
             <h1 class="font-display font-bold text-4xl md:text-7xl tracking-tight mb-6 text-white">
@@ -503,10 +507,10 @@
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/T30Gxx7x/MONKEY_SLOTH_1_1_2.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Folleto imprimible 1">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/T30Gxx7x/MONKEY_SLOTH_1_1_2.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Folleto imprimible 1">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/0QW01zmf/TUCAN.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Folleto imprimible 2">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/0QW01zmf/TUCAN.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Folleto imprimible 2">
                     </div>
                 </div>
             </div>
@@ -519,11 +523,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Menu Image 1 HD -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/zvyGBpjR/4.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Diseño de Menú HD 1">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/zvyGBpjR/4.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Diseño de Menú HD 1">
                     </div>
                     <!-- Menu Image 2 HD -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/Gt4m2zQB/5.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Diseño de Menú HD 2">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/Gt4m2zQB/5.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Diseño de Menú HD 2">
                     </div>
                 </div>
             </div>
@@ -536,51 +540,51 @@
                 <div class="grid grid-cols-2 gap-4">
                     <!-- Photo 1 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/zf3Ms2Js/PLATOS_SEPT_(1_of_1)-3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 1">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/zf3Ms2Js/PLATOS_SEPT_(1_of_1)-3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 1">
                     </div>
                     <!-- Photo 2 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/4d90dKHh/PLATOS_SEPT_(1_of_1)-11.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 2">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/4d90dKHh/PLATOS_SEPT_(1_of_1)-11.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 2">
                     </div>
                     <!-- Photo 3 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/Hn1h7pb3/PLATOS_SEPT_(1_of_1)-14.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 3">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/Hn1h7pb3/PLATOS_SEPT_(1_of_1)-14.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 3">
                     </div>
                     <!-- Photo 4 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/0yPF8jZ3/SALMON_COMPRIMIDO.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 4">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/0yPF8jZ3/SALMON_COMPRIMIDO.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 4">
                     </div>
                     <!-- Photo 5 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/Ls7xZ8B8/PLATILLO_(1_of_1)_12.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 5">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/Ls7xZ8B8/PLATILLO_(1_of_1)_12.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 5">
                     </div>
                      <!-- Photo 6 -->
                      <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/YSJxCyML/PLATILLO-(1-of-1)-2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 6">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/YSJxCyML/PLATILLO-(1-of-1)-2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 6">
                     </div>
                     <!-- Photo 7 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/5t5bpyp2/PLATILLO_(1_of_1)_6.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 7">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/5t5bpyp2/PLATILLO_(1_of_1)_6.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 7">
                     </div>
                     <!-- Photo 8 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/9fPC1010/PLATILLO_(1_of_1)_22.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 8">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/9fPC1010/PLATILLO_(1_of_1)_22.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 8">
                     </div>
                     <!-- Photo 9 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/g0ym4j4r/PLATILLO_(1_of_1)_17.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 9">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/g0ym4j4r/PLATILLO_(1_of_1)_17.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 9">
                     </div>
                     <!-- Photo 10 (New) -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/wBY9hL57/PLATILLO_(1_of_1)_25.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 10">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/wBY9hL57/PLATILLO_(1_of_1)_25.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 10">
                     </div>
                     <!-- Photo 11 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/MGZsk24N/PLATOS_SEPT_(1_of_1)_4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 11">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/MGZsk24N/PLATOS_SEPT_(1_of_1)_4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 11">
                     </div>
                     <!-- Photo 12 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                        <img src="https://i.postimg.cc/cL0hYGsL/PLATOS-SEPT-(1-of-1)-2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 12">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/cL0hYGsL/PLATOS-SEPT-(1-of-1)-2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Foto Gastronomía 12">
                     </div>
                 </div>
             </div>
@@ -599,28 +603,28 @@
 
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/286wJ0XX/Gemini_Generated_Image_z9tvd2z9tvd2z9tv.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 1">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/286wJ0XX/Gemini_Generated_Image_z9tvd2z9tvd2z9tv.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 1">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/RVFR8gb7/Gemini_Generated_Image_ypfk3lypfk3lypfk_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 2">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/RVFR8gb7/Gemini_Generated_Image_ypfk3lypfk3lypfk_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 2">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/qMRLY1Z2/Gemini_Generated_Image_n89nk8n89nk8n89n_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 3">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/qMRLY1Z2/Gemini_Generated_Image_n89nk8n89nk8n89n_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 3">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/PrwLPZLH/Gemini-Generated-Image-lg9dtklg9dtklg9d.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 4">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/PrwLPZLH/Gemini-Generated-Image-lg9dtklg9dtklg9d.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 4">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/3RNN7DMb/Gemini_Generated_Image_ppd1b7ppd1b7ppd1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 5">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/3RNN7DMb/Gemini_Generated_Image_ppd1b7ppd1b7ppd1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 5">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/44r6LXVg/Gemini_Generated_Image_7quwo57quwo57quw.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 6">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/44r6LXVg/Gemini_Generated_Image_7quwo57quwo57quw.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 6">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/3rPXS3mH/Gemini_Generated_Image_jg49hajg49hajg49_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 7">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/3rPXS3mH/Gemini_Generated_Image_jg49hajg49hajg49_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 7">
                         </div>
                         <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-square border border-neutral-800">
-                            <img src="https://i.postimg.cc/mZ0YXTC4/Gemini_Generated_Image_jn0h4yjn0h4yjn0h_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 8">
+                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/mZ0YXTC4/Gemini_Generated_Image_jn0h4yjn0h4yjn0h_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Producto mejorado con IA 8">
                         </div>
                     </div>
                 </div>
@@ -640,39 +644,39 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <!-- 1. Guitarra (Updated) -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/Jn9xn7Vx/GUITARRA_ANTOLOGIAS_RECUPERADA.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Guitarra Antologías">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/Jn9xn7Vx/GUITARRA_ANTOLOGIAS_RECUPERADA.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Guitarra Antologías">
                     </div>
                     <!-- 2. Boyero -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/3whN30WD/LOGO_BOYERO_BARRIL_(1).png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Boyero Barril">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/3whN30WD/LOGO_BOYERO_BARRIL_(1).png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Boyero Barril">
                     </div>
                     <!-- 3. Antologias Clásico 1 -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/XqZRRPjF/LOGO-ANTOLOGIAS-CLASICO.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Antologías Clásico">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/XqZRRPjF/LOGO-ANTOLOGIAS-CLASICO.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Antologías Clásico">
                     </div>
                     <!-- 4. Antologias Clásico 2 (Inserted as 4th) -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/50Zg09d3/LOGO_ANTOLOGIAS_CLASICO_(2).png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Antologías Clásico 2">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/50Zg09d3/LOGO_ANTOLOGIAS_CLASICO_(2).png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Antologías Clásico 2">
                     </div>
                     
                     <!-- Row 2 Starts -->
                     
                     <!-- 5. Untitled Design (Shifted from pos 4) -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/rsX6LJKb/Untitled-design.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Nuevo Diseño">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/rsX6LJKb/Untitled-design.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Nuevo Diseño">
                     </div>
                     <!-- 6. VoxAI CR -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/dQTFS3B9/voxaicr_(3).png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo VoxAI CR">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/dQTFS3B9/voxaicr_(3).png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo VoxAI CR">
                     </div>
                     <!-- 7. Retro Party (moved from 6) -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/PJ6Dc1T5/Kiwi_Glow.jpg" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Retro Party">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/PJ6Dc1T5/Kiwi_Glow.jpg" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Retro Party">
                     </div>
                     
                     <!-- 8. Flashback -->
                     <div class="gallery-item aspect-square glass-panel rounded-lg p-6 flex items-center justify-center overflow-hidden hover:bg-white/5 transition cursor-pointer">
-                        <img src="https://i.postimg.cc/ZK9CHh10/ALJIME.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Flashback">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/ZK9CHh10/ALJIME.png" class="w-full h-full object-contain hover:scale-105 transition duration-500 filter drop-shadow-lg" alt="Logo Flashback">
                     </div>
                 </div>
             </div>
@@ -685,27 +689,27 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <!-- Banner Existing 1 -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/WpK4CxsL/MUSIC-AVENUE-PC-GEN.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Music Avenue">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/WpK4CxsL/MUSIC-AVENUE-PC-GEN.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Music Avenue">
                     </div>
                     <!-- Banner New Insertion (Karol Fonseca) -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/qRGqtz2V/KAROL-FONSECA-BANNAR-45.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Karol Fonseca">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/qRGqtz2V/KAROL-FONSECA-BANNAR-45.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Karol Fonseca">
                     </div>
                     <!-- Banner Existing 2 -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/L5jJ4VV5/ROCK-DE-TERROR.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Rock">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/L5jJ4VV5/ROCK-DE-TERROR.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Rock">
                     </div>
                     <!-- Banner Existing 3 -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/3RsyHq2y/SPINS-01-NOV-1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Spins">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/3RsyHq2y/SPINS-01-NOV-1.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Spins">
                     </div>
                     <!-- Banner New 1 -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/BbRYF01R/Copia_de_JAKAMO_BARCELO_ANNY_PICADO.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Jakamo">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/BbRYF01R/Copia_de_JAKAMO_BARCELO_ANNY_PICADO.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Jakamo">
                     </div>
                     <!-- Banner New 2 -->
                     <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                        <img src="https://i.postimg.cc/tgzcZjv0/ALMUERZO_EJECUTIVO_ANTO_NUEVO_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Almuerzo">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/tgzcZjv0/ALMUERZO_EJECUTIVO_ANTO_NUEVO_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Almuerzo">
                     </div>
                 </div>
             </div>
@@ -718,27 +722,27 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <!-- Photo 1 (Previously 2nd) -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-[3/4] border border-neutral-800">
-                        <img src="https://i.postimg.cc/W4sQbmMp/MONT-PARA-SUBIR-1-of-1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 1">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/W4sQbmMp/MONT-PARA-SUBIR-1-of-1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 1">
                     </div>
                     <!-- Photo 2 (Corrected Insertion) -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-[3/4] border border-neutral-800">
-                        <img src="https://i.postimg.cc/02qxTMBd/OTO0592.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 2">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/02qxTMBd/OTO0592.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 2">
                     </div>
                     <!-- New Photo 1 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-[3/4] border border-neutral-800">
-                        <img src="https://i.postimg.cc/Gp4Z8d5W/MONTSERRAT_95.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 3">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/Gp4Z8d5W/MONTSERRAT_95.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 3">
                     </div>
                     <!-- New Photo 2 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-[3/4] border border-neutral-800">
-                        <img src="https://i.postimg.cc/Gm7WmHq6/MONTSERRAT_32.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 4">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/Gm7WmHq6/MONTSERRAT_32.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 4">
                     </div>
                     <!-- New Photo 3 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-[3/4] border border-neutral-800">
-                        <img src="https://i.postimg.cc/hGwRpfmh/OTO0849.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 5">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/hGwRpfmh/OTO0849.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 5">
                     </div>
                     <!-- New Photo 4 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-[3/4] border border-neutral-800">
-                        <img src="https://i.postimg.cc/xdqSvKXJ/OTO0840.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 6">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/xdqSvKXJ/OTO0840.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Persona 6">
                     </div>
                 </div>
             </div>
@@ -751,15 +755,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Photo 1 (Kept) -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/jdZ7DMby/VARGAS-RESTAURACION.jpg" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Restauración 1">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/jdZ7DMby/VARGAS-RESTAURACION.jpg" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Restauración 1">
                     </div>
                     <!-- Photo 2 (Kept) -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/JhnkC3X7/Add-a-heading-(1).png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Restauración 2">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/JhnkC3X7/Add-a-heading-(1).png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Restauración 2">
                     </div>
                     <!-- Photo 3 (Corrected Insertion) -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                        <img src="https://i.postimg.cc/G3xRGgMV/Celebra_el_Día_del_Padre_(1920_x_1080_px).png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Restauración 3">
+                        <img loading="lazy" decoding="async" src="https://i.postimg.cc/G3xRGgMV/Celebra_el_Día_del_Padre_(1920_x_1080_px).png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Restauración 3">
                     </div>
                 </div>
             </div>
@@ -771,22 +775,22 @@
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/KjW7WDGT/ANTO_SPECIAL_PICTURES_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 1">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/KjW7WDGT/ANTO_SPECIAL_PICTURES_(1).png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 1">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/hvvbM5Bg/ANTO_SPECIAL_PICTURES.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 2">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/hvvbM5Bg/ANTO_SPECIAL_PICTURES.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 2">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/PrTG64gy/REVELADO_13.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 3">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/PrTG64gy/REVELADO_13.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 3">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/1XKdxkkM/REVELADO_38.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 4">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/1XKdxkkM/REVELADO_38.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 4">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/3wyzybvf/REVELADO_23.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 5">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/3wyzybvf/REVELADO_23.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 5">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/HkKdPM4k/REVELADO_4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 6">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/HkKdPM4k/REVELADO_4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Vehiculo 6">
                     </div>
                 </div>
             </div>
@@ -799,26 +803,26 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <!-- Existing Real Estate Image -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/kgDGH9tT/APTO-3-RIOS-1-of-1-28.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 1">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/kgDGH9tT/APTO-3-RIOS-1-of-1-28.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 1">
                     </div>
                     <!-- New Real Estate Images -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/Kcd4sSQY/APTO_3_RIOS_(1_of_1)_29.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 2">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/Kcd4sSQY/APTO_3_RIOS_(1_of_1)_29.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 2">
                     </div>
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/HWfjPD31/APTO_3_RIOS_(1_of_1)_5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 3">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/HWfjPD31/APTO_3_RIOS_(1_of_1)_5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 3">
                     </div>
                     <!-- New Real Estate 4 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/hv7MsN1X/APTO_3_RIOS_(1_of_1)-13.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 4">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/hv7MsN1X/APTO_3_RIOS_(1_of_1)-13.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 4">
                     </div>
                     <!-- New Real Estate 5 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/TwsCrTgX/APTO_3_RIOS_(1_of_1)-11.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 5">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/TwsCrTgX/APTO_3_RIOS_(1_of_1)-11.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 5">
                     </div>
                     <!-- New Real Estate 6 -->
                     <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group aspect-video border border-neutral-800">
-                         <img src="https://i.postimg.cc/kXsRZfY5/APTO_3_RIOS_(1_of_1)-3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 6">
+                         <img loading="lazy" decoding="async" src="https://i.postimg.cc/kXsRZfY5/APTO_3_RIOS_(1_of_1)-3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Real Estate 6">
                     </div>
                 </div>
             </div>
@@ -843,7 +847,7 @@
                     <!-- Video 1 (Existing) -->
                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openWideVideo(event, 'HpMxXIUSl6w')">
-                            <img src="https://img.youtube.com/vi/HpMxXIUSl6w/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/HpMxXIUSl6w/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -858,7 +862,7 @@
                     <!-- Video 2 (New Insertion) -->
                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openWideVideo(event, 't3WMFjvSUJA')">
-                            <img src="https://img.youtube.com/vi/t3WMFjvSUJA/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/t3WMFjvSUJA/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -873,7 +877,7 @@
                     <!-- Video 3 (New Insertion) -->
                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openWideVideo(event, '8ANdWC3PlS8')">
-                            <img src="https://img.youtube.com/vi/8ANdWC3PlS8/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/8ANdWC3PlS8/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -888,7 +892,7 @@
                     <!-- Video 4 (Previously 2nd) -->
                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openWideVideo(event, 'hcA54EHCjKU')">
-                            <img src="https://img.youtube.com/vi/hcA54EHCjKU/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/hcA54EHCjKU/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -926,7 +930,7 @@
                     <!-- Short 1 (Requested order) -->
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('jjj5Px0CaL4')">
-                            <img src="https://img.youtube.com/vi/jjj5Px0CaL4/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/jjj5Px0CaL4/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -941,7 +945,7 @@
                     <!-- Short 2 (Requested order) -->
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('1WOoFSZVsCc')">
-                            <img src="https://img.youtube.com/vi/1WOoFSZVsCc/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/1WOoFSZVsCc/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -956,7 +960,7 @@
                     <!-- Short 3 (Requested order) -->
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('a16ScScX61c')">
-                            <img src="https://img.youtube.com/vi/a16ScScX61c/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/a16ScScX61c/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -971,7 +975,7 @@
                     <!-- Short 4 (Requested order) -->
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('B0TresRHiVk')">
-                            <img src="https://img.youtube.com/vi/B0TresRHiVk/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/B0TresRHiVk/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -986,7 +990,7 @@
                     <!-- Additional shorts -->
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('yldRXQVPxlI')">
-                            <img src="https://img.youtube.com/vi/yldRXQVPxlI/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/yldRXQVPxlI/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1000,7 +1004,7 @@
 
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('rQxfArcj3fM')">
-                            <img src="https://img.youtube.com/vi/rQxfArcj3fM/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/rQxfArcj3fM/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1014,7 +1018,7 @@
 
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('_TBxXnt9wrY')">
-                            <img src="https://img.youtube.com/vi/_TBxXnt9wrY/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/_TBxXnt9wrY/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1028,7 +1032,7 @@
 
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('8L4AwQQdoMY')">
-                            <img src="https://img.youtube.com/vi/8L4AwQQdoMY/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/8L4AwQQdoMY/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1042,7 +1046,7 @@
 
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('70j_FFoIGIQ')">
-                            <img src="https://img.youtube.com/vi/70j_FFoIGIQ/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/70j_FFoIGIQ/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1056,7 +1060,7 @@
 
                     <div class="snap-center flex-shrink-0 w-48 md:w-64 glass-panel p-3 rounded-xl border border-neutral-800">
                         <div class="video-container relative aspect-[9/16] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openShortsVideoFromCard('-ENgDZzT4a4')">
-                            <img src="https://img.youtube.com/vi/-ENgDZzT4a4/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
+                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/-ENgDZzT4a4/maxresdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Short Preview">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1234,7 +1238,7 @@
 
             <!-- Footer Logo -->
             <div class="text-center pb-12">
-                <img src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Logo Footer" class="h-60 md:h-96 w-auto max-w-full mx-auto mb-6 opacity-80 object-contain">
+                <img loading="lazy" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Logo Footer" class="h-60 md:h-96 w-auto max-w-full mx-auto mb-6 opacity-80 object-contain">
                 <p class="text-neutral-600 text-sm">Cada proyecto es una historia. Contemos la tuya bien.</p>
                 <p id="copyright-text" class="text-neutral-600 text-sm">&copy; 2026 Dimensión Interactiva. Todos los derechos reservados.</p>
                 <p class="text-neutral-700 text-xs mt-2 max-w-2xl mx-auto">
@@ -1251,7 +1255,7 @@
             <button id="close-modal" class="fixed top-4 right-4 z-[70] text-white bg-black/70 hover:bg-black/90 rounded-md p-2 transition">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <img id="magnified-image" src="" alt="Ampliada" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl border border-neutral-800">
+            <img loading="lazy" decoding="async" id="magnified-image" src="" alt="Ampliada" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl border border-neutral-800">
         </div>
     </div>
 
@@ -1286,7 +1290,7 @@
         </button>
         <div class="w-full max-w-md mx-auto">
             <div class="glass-panel rounded-2xl p-5 border border-neutral-800 bg-neutral-900/95">
-                <img id="audio-modal-cover" src="" alt="Portada de podcast" class="w-full h-auto max-h-[52vh] object-contain rounded-xl border border-neutral-700 bg-black">
+                <img loading="lazy" decoding="async" id="audio-modal-cover" src="" alt="Portada de podcast" class="w-full h-auto max-h-[52vh] object-contain rounded-xl border border-neutral-700 bg-black">
                 <p id="audio-modal-title" class="mt-4 text-center text-white font-semibold text-sm md:text-base"></p>
                 <audio id="audio-modal-player" controls playsinline preload="none" class="w-full mt-4"></audio>
             </div>
@@ -1983,12 +1987,12 @@
                 const isCardLike = element.matches(
                     '#services a.glass-panel, #packages .glass-panel, #individual-prices .glass-panel, #web-cases-showcase article, #gallery .grid > *, #podcast-showcase .grid > *'
                 );
-                const horizontalOffset = isCardLike ? (index % 2 === 0 ? -18 : 18) : 0;
-                const verticalOffset = isCardLike ? 48 : 64;
-                const blurAmount = isCardLike ? 6 : 8;
-                const scaleAmount = isCardLike ? 0.97 : 0.955;
+                const horizontalOffset = isCardLike ? (index % 2 === 0 ? -12 : 12) : 0;
+                const verticalOffset = isCardLike ? 34 : 44;
+                const blurAmount = isCardLike ? 2 : 3;
+                const scaleAmount = isCardLike ? 0.985 : 0.975;
                 element.classList.add('reveal-on-scroll');
-                element.style.setProperty('--reveal-delay', `${(index % 6) * 90}ms`);
+                element.style.setProperty('--reveal-delay', `${(index % 5) * 70}ms`);
                 element.style.setProperty('--reveal-x', `${horizontalOffset}px`);
                 element.style.setProperty('--reveal-y', `${verticalOffset}px`);
                 element.style.setProperty('--reveal-blur', `${blurAmount}px`);
@@ -2009,7 +2013,7 @@
                 });
             }, {
                 root: null,
-                rootMargin: '0px 0px -8% 0px',
+                rootMargin: '0px 0px -6% 0px',
                 threshold: [0, 0.06, 0.18],
             });
 
@@ -2083,7 +2087,7 @@
             const playSize = kind === 'shorts' ? 'w-14 h-14' : 'w-16 h-16';
             const playSvg = kind === 'shorts' ? 'w-6 h-6' : 'w-8 h-8';
             element.innerHTML = `
-                <img src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
+                <img loading="lazy" decoding="async" src="${thumb}" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Video Preview">
                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div class="${playSize} bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                         <svg class="${playSvg} text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
