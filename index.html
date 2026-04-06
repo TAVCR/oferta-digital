@@ -1812,12 +1812,29 @@
             "Diseño de Menú HD 2": "HD Menu Design 2"
         };
 
+        const reverseTextTranslations = (() => {
+            const reversed = {};
+            Object.entries(textTranslations).forEach(([spanish, english]) => {
+                if (!english || reversed[english]) return;
+                reversed[english] = spanish;
+            });
+            return reversed;
+        })();
+
         const dynamicPatternTranslations = [
             { regex: /^Producto mejorado con IA (\d+)$/i, fn: (n) => `AI-enhanced product ${n}` },
             { regex: /^Foto Gastronomía (\d+)$/i, fn: (n) => `Food photo ${n}` },
             { regex: /^Persona (\d+)$/i, fn: (n) => `Person ${n}` },
             { regex: /^Restauración (\d+)$/i, fn: (n) => `Restoration ${n}` },
             { regex: /^Vehiculo (\d+)$/i, fn: (n) => `Vehicle ${n}` },
+        ];
+
+        const reverseDynamicPatternTranslations = [
+            { regex: /^AI-enhanced product (\d+)$/i, fn: (n) => `Producto mejorado con IA ${n}` },
+            { regex: /^Food photo (\d+)$/i, fn: (n) => `Foto Gastronomía ${n}` },
+            { regex: /^Person (\d+)$/i, fn: (n) => `Persona ${n}` },
+            { regex: /^Restoration (\d+)$/i, fn: (n) => `Restauración ${n}` },
+            { regex: /^Vehicle (\d+)$/i, fn: (n) => `Vehiculo ${n}` },
         ];
 
         const headingHtmlTranslations = [
@@ -1893,8 +1910,9 @@
 
         const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
 
-        const translateWithPattern = (normalizedText) => {
-            for (const pattern of dynamicPatternTranslations) {
+        const translateWithPattern = (normalizedText, lang) => {
+            const patterns = lang === 'en' ? dynamicPatternTranslations : reverseDynamicPatternTranslations;
+            for (const pattern of patterns) {
                 const match = normalizedText.match(pattern.regex);
                 if (match) {
                     return pattern.fn(match[1]);
@@ -1904,10 +1922,12 @@
         };
 
         const translateCore = (value, lang) => {
-            if (lang === 'es') return value;
             const normalized = normalizeText(value);
             if (!normalized) return value;
-            return textTranslations[normalized] || translateWithPattern(normalized) || value;
+            if (lang === 'en') {
+                return textTranslations[normalized] || translateWithPattern(normalized, 'en') || value;
+            }
+            return reverseTextTranslations[normalized] || translateWithPattern(normalized, 'es') || value;
         };
 
         const setWhatsAppLanguage = (lang) => {
@@ -2148,22 +2168,18 @@
         };
 
         const initializeLanguageSystem = () => {
+            buildTranslationIndexes();
+
             if (languageToggle) {
                 languageButtons.forEach((button) => {
                     button.addEventListener('click', () => {
                         const selected = button.dataset.langOption === 'en' ? 'en' : 'es';
-                        if (selected === 'en' && !translationIndexReady) {
-                            buildTranslationIndexes();
-                        }
                         applyLanguage(selected);
                     });
                 });
             }
 
             const storedLanguage = localStorage.getItem(languageStorageKey);
-            if (storedLanguage === 'en') {
-                buildTranslationIndexes();
-            }
             applyLanguage(storedLanguage === 'en' ? 'en' : 'es');
         };
 
