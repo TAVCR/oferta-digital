@@ -125,6 +125,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-soft);
+            border-color: var(--border-soft) !important;
             border-radius: var(--radius-panel);
             box-shadow: var(--shadow-soft);
             transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
@@ -132,7 +133,7 @@
 
         .glass-panel:hover {
             background: linear-gradient(165deg, rgba(43, 43, 43, 0.76), rgba(24, 24, 24, 0.62));
-            border-color: var(--border-accent);
+            border-color: var(--border-accent) !important;
             box-shadow: var(--shadow-hover);
             transform: translateY(-2px);
         }
