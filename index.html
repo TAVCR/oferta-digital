@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimensión Interactiva | Soluciones Digitales</title>
+    <title>Dimensión Interactiva | Producción Creativa Digital</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -189,6 +189,17 @@
             letter-spacing: 0.22em;
             font-size: 11px;
             font-weight: 600;
+        }
+
+        .collapsible-content {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.45s ease, opacity 0.35s ease;
+        }
+
+        .collapsible-toggle[aria-expanded="true"] .collapsible-chevron {
+            transform: rotate(180deg);
         }
 
         /* Separadores de sección sutiles */
@@ -488,6 +499,9 @@
             <p class="text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2">
                 Dimensión Interactiva es una práctica creativa independiente dirigida por una sola persona.
             </p>
+            <p class="text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2">
+                Este sitio fue diseñado y desarrollado íntegramente por Dimensión Interactiva.
+            </p>
 
         </header>
 
@@ -604,74 +618,82 @@
 
         <!-- Packages -->
         <section id="packages" class="mb-14 md:mb-24">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4">
-                <h2 class="font-display font-bold text-4xl text-center md:text-left text-white">Paquetes <span class="text-brand-orange">Estratégicos</span></h2>
-                <div class="flex items-center justify-center md:justify-end gap-3">
-                    <span id="currency-label" class="text-[11px] uppercase tracking-widest text-neutral-400 font-bold">Moneda</span>
-                    <div id="currency-toggle" class="flex items-center gap-1 bg-neutral-800/90 border border-neutral-700 p-1 rounded-full">
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-orange text-white">USD</span>
-                    </div>
-                </div>
-            </div>
-            <p id="currency-rate-note" class="text-center md:text-right text-[11px] text-neutral-500 mb-8">Tipo de cambio en vivo: actualizando...</p>
+            <button id="packages-toggle" type="button" class="collapsible-toggle glass-panel w-full p-5 sm:p-6 rounded-2xl flex items-center justify-between text-left" aria-expanded="false" aria-controls="packages-content">
+                <h2 class="packages-title font-display font-bold text-3xl md:text-4xl text-white">Paquetes <span class="text-brand-orange">Estratégicos</span></h2>
+                <svg id="packages-chevron" class="collapsible-chevron w-6 h-6 text-neutral-300 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
 
-            <div class="grid md:grid-cols-3 gap-8 items-start">
+            <div id="packages-content" class="collapsible-content" aria-hidden="true">
+                <div class="pt-5">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4">
+                        <div class="flex items-center justify-center md:justify-end gap-3 md:ml-auto">
+                            <span id="currency-label" class="text-[11px] uppercase tracking-widest text-neutral-400 font-bold">Moneda</span>
+                            <div id="currency-toggle" class="flex items-center gap-1 bg-neutral-800/90 border border-neutral-700 p-1 rounded-full">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-orange text-white">USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="currency-rate-note" class="text-center md:text-right text-[11px] text-neutral-500 mb-8">Tipo de cambio en vivo: actualizando...</p>
+
+                    <div class="grid md:grid-cols-3 gap-8 items-start">
                 
-                <!-- Pack 1 (Standard) -->
-                <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-600 flex flex-col h-full hover:border-neutral-500 transition duration-300 hover:-translate-y-2">
-                    <h3 class="font-display font-bold text-2xl text-neutral-300 mb-2">Arranque Digital<br>Para marcas que están listas para ser vistas.</h3>
-                    <div id="price-package-starter" class="text-3xl font-bold text-white mb-6">$499</div>
-                    <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
-                        <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 1 Video promocional</li>
-                        <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 4 Diseños al mes</li>
-                        <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> Adaptación formatos RRSS</li>
-                    </ul>
-                    <a id="wa-package-starter" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Arranque%20Digital" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-all mt-auto border border-neutral-700 active:scale-[0.97] active:opacity-90">
-                        Consultar
-                    </a>
-                </div>
+                        <!-- Pack 1 (Standard) -->
+                        <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-600 flex flex-col h-full hover:border-neutral-500 transition duration-300 hover:-translate-y-2">
+                            <h3 class="font-display font-bold text-2xl text-neutral-300 mb-2">Arranque Digital<br>Para marcas que están listas para ser vistas.</h3>
+                            <div id="price-package-starter" class="text-3xl font-bold text-white mb-6">$499</div>
+                            <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
+                                <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 1 Video promocional</li>
+                                <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> 4 Diseños al mes</li>
+                                <li class="flex items-center"><span class="text-brand-orange mr-3">●</span> Adaptación formatos RRSS</li>
+                            </ul>
+                            <a id="wa-package-starter" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Arranque%20Digital" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-all mt-auto border border-neutral-700 active:scale-[0.97] active:opacity-90">
+                                Consultar
+                            </a>
+                        </div>
 
-                <!-- Pack 2 (Featured) -->
-                <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-brand-orange relative transform md:-translate-y-4 z-10 shadow-2xl shadow-black/50 flex flex-col h-full transition duration-300 hover:-translate-y-2 md:hover:-translate-y-6 bg-[#1a1a1a]">
-                    <div class="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-widest">Popular</div>
-                    <h3 class="font-display font-bold text-3xl text-brand-orange mb-2">Impulso Pyme<br>Para marcas que ya existen pero merecen brillar más.</h3>
-                    <div id="price-package-growth" class="text-4xl font-black text-white mb-6">$904</div>
-                    <ul class="space-y-4 mb-8 text-neutral-300 flex-grow">
-                        <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 2 Videos con Locución IA</li>
-                        <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 8 Afiches promocionales</li>
-                        <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> Formatos Feed/Stories/Reels</li>
-                    </ul>
-                    <a id="wa-package-growth" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Impulso%20Pyme" target="_blank" class="block w-full py-4 btn-primary text-white font-bold text-center rounded-lg transition-all mt-auto active:scale-[0.97] active:opacity-90">
-                        Consultar
-                    </a>
-                </div>
+                        <!-- Pack 2 (Featured) -->
+                        <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-brand-orange relative transform md:-translate-y-4 z-10 shadow-2xl shadow-black/50 flex flex-col h-full transition duration-300 hover:-translate-y-2 md:hover:-translate-y-6 bg-[#1a1a1a]">
+                            <div class="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-widest">Popular</div>
+                            <h3 class="font-display font-bold text-3xl text-brand-orange mb-2">Impulso Pyme<br>Para marcas que ya existen pero merecen brillar más.</h3>
+                            <div id="price-package-growth" class="text-4xl font-black text-white mb-6">$904</div>
+                            <ul class="space-y-4 mb-8 text-neutral-300 flex-grow">
+                                <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 2 Videos con Locución IA</li>
+                                <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> 8 Afiches promocionales</li>
+                                <li class="flex items-center"><span class="text-brand-orange mr-3">✔</span> Formatos Feed/Stories/Reels</li>
+                            </ul>
+                            <a id="wa-package-growth" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Impulso%20Pyme" target="_blank" class="block w-full py-4 btn-primary text-white font-bold text-center rounded-lg transition-all mt-auto active:scale-[0.97] active:opacity-90">
+                                Consultar
+                            </a>
+                        </div>
 
-                <!-- Pack 3 (Premium) -->
-                <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-400 flex flex-col h-full hover:border-white transition duration-300 hover:-translate-y-2">
-                    <h3 class="font-display font-bold text-2xl text-white mb-2">Presencia Total<br>Para marcas que no quieren dejar nada al azar.</h3>
-                    <div id="price-package-total" class="text-3xl font-bold text-white mb-6">$1,122</div>
-                    <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
-                        <li class="flex items-center"><span class="text-white mr-3">●</span> 2 Videos IA + 1 Filmado Prof.</li>
-                        <li class="flex items-center"><span class="text-white mr-3">●</span> 12 Diseños mensuales</li>
-                        <li class="flex items-center"><span class="text-white mr-3">●</span> Cobertura total plataformas</li>
-                    </ul>
-                    <a id="wa-package-total" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Presencia%20Total" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-all mt-auto border border-neutral-700 active:scale-[0.97] active:opacity-90">
-                        Consultar
-                    </a>
-                </div>
+                        <!-- Pack 3 (Premium) -->
+                        <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-400 flex flex-col h-full hover:border-white transition duration-300 hover:-translate-y-2">
+                            <h3 class="font-display font-bold text-2xl text-white mb-2">Presencia Total<br>Para marcas que no quieren dejar nada al azar.</h3>
+                            <div id="price-package-total" class="text-3xl font-bold text-white mb-6">$1,122</div>
+                            <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
+                                <li class="flex items-center"><span class="text-white mr-3">●</span> 2 Videos IA + 1 Filmado Prof.</li>
+                                <li class="flex items-center"><span class="text-white mr-3">●</span> 12 Diseños mensuales</li>
+                                <li class="flex items-center"><span class="text-white mr-3">●</span> Cobertura total plataformas</li>
+                            </ul>
+                            <a id="wa-package-total" href="https://wa.me/50685020909?text=Hola,%20me%20interesa%20el%20paquete%20Presencia%20Total" target="_blank" class="block w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-center rounded-lg transition-all mt-auto border border-neutral-700 active:scale-[0.97] active:opacity-90">
+                                Consultar
+                            </a>
+                        </div>
 
-            </div>
-            
-            <!-- Social Media Management Special Card -->
-            <div id="package-social-media-management" class="mt-8 glass-panel rounded-2xl p-8 border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-6 md:mb-0 text-left">
-                        <h3 class="font-display font-bold text-2xl text-white mb-2">Administración de Redes Sociales</h3>
-                        <p class="text-neutral-400 max-w-xl text-sm">Manejo integral de Facebook, Instagram, TikTok y WhatsApp. Incluye respuesta a clientes e informes mensuales.</p>
                     </div>
-                    <div class="text-center md:text-right bg-black/20 p-4 rounded-lg border border-neutral-800">
-                        <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1">Inversión Mensual</p>
-                        <div id="price-package-social" class="text-2xl font-bold text-brand-orange">$685</div>
+            
+                    <!-- Social Media Management Special Card -->
+                    <div id="package-social-media-management" class="mt-8 glass-panel rounded-2xl p-8 border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-800">
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="mb-6 md:mb-0 text-left">
+                                <h3 class="font-display font-bold text-2xl text-white mb-2">Administración de Redes Sociales</h3>
+                                <p class="text-neutral-400 max-w-xl text-sm">Manejo integral de Facebook, Instagram, TikTok y WhatsApp. Incluye respuesta a clientes e informes mensuales.</p>
+                            </div>
+                            <div class="text-center md:text-right bg-black/20 p-4 rounded-lg border border-neutral-800">
+                                <p class="text-xs text-neutral-500 uppercase tracking-wider mb-1">Inversión Mensual</p>
+                                <div id="price-package-social" class="text-2xl font-bold text-brand-orange">$685</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -679,11 +701,14 @@
 
         <!-- Individual Prices -->
         <section id="individual-prices" class="mb-14 md:mb-24">
-             <div class="flex items-center justify-between mb-8 border-b border-brand-orange/20 pb-4">
+            <button id="individual-prices-toggle" type="button" class="collapsible-toggle glass-panel w-full p-5 sm:p-6 rounded-2xl flex items-center justify-between text-left" aria-expanded="false" aria-controls="individual-prices-content">
                 <h2 class="font-display font-bold text-3xl text-white">Servicios Individuales</h2>
-            </div>
-            
-            <div class="grid gap-3">
+                <svg id="individual-prices-chevron" class="collapsible-chevron w-6 h-6 text-neutral-300 transition-transform duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div id="individual-prices-content" class="collapsible-content" aria-hidden="true">
+                <div class="pt-5">
+                    <div class="grid gap-3">
                 <!-- Item: Logos -->
                 <div id="price-logo-design" class="glass-panel p-5 rounded-lg flex flex-col md:flex-row justify-between items-center group hover:border-brand-orange/30 transition">
                     <div class="mb-2 md:mb-0">
@@ -737,6 +762,8 @@
                         <p class="text-sm text-neutral-500">Canon Profesional + Edición (Por hora)</p>
                     </div>
                     <span id="price-photography-hourly-value" class="font-mono text-neutral-300 font-bold border border-neutral-800 px-3 py-1 rounded bg-black/20">$265/h</span>
+                </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1677,6 +1704,11 @@
         </div>
     </div>
 
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/50685020909" target="_blank" rel="noopener noreferrer" class="fixed right-4 bottom-[80px] md:bottom-7 z-40 block leading-none">
+        <img loading="lazy" decoding="async" src="https://i.postimg.cc/tJZZ6vjj/GOLDEN-WHATSAPP.png" alt="WhatsApp" class="w-[52px] h-[52px] object-contain">
+    </a>
+
     <!-- Navbar -->
     <nav id="main-nav" class="fixed bottom-0 left-0 w-full bg-[#111111]/95 backdrop-blur-md border-t border-neutral-800 z-50 pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.8)] transition-all duration-500">
         <div class="fixed-nav-container w-full flex overflow-x-auto hide-scrollbar py-3 px-4 space-x-4 snap-x justify-start md:justify-center">
@@ -1752,6 +1784,7 @@
             "Estrategia creativa, diseño de alto nivel y producción audiovisual construidos desde pensamiento narrativo estructurado.": "Creative strategy, high-end design, and audiovisual production built from structured narrative thinking.",
             "Práctica creativa independiente. Visión unificada. Ejecución senior de principio a fin.": "Independent creative practice. Unified vision. Senior-level execution, end to end.",
             "Dimensión Interactiva es una práctica creativa independiente dirigida por una sola persona.": "Dimensión Interactiva is an independent creative practice led by one person.",
+            "Este sitio fue diseñado y desarrollado íntegramente por Dimensión Interactiva.": "This site was entirely designed and developed by Dimensión Interactiva.",
             "Ver Servicios": "View Services",
             "Contacto": "Contact",
             "Enfoque de trabajo": "Working approach",
@@ -1930,7 +1963,7 @@
 
         const headingHtmlTranslations = [
             { selector: '#services h2', en: 'Professional <span class="text-brand-orange">Services</span>' },
-            { selector: '#packages > h2', en: 'Strategic <span class="text-brand-orange">Packages</span>' },
+            { selector: '#packages-toggle .packages-title', en: 'Strategic <span class="text-brand-orange">Packages</span>' },
         ];
 
         const submitStates = {
@@ -2220,8 +2253,8 @@
             currentLanguage = lang === 'en' ? 'en' : 'es';
             document.documentElement.lang = currentLanguage;
             document.title = currentLanguage === 'en'
-                ? 'Interactive Dimension | Digital Solutions'
-                : 'Dimensión Interactiva | Soluciones Digitales';
+                ? 'Interactive Dimension | Creative Digital Production'
+                : 'Dimensión Interactiva | Producción Creativa Digital';
 
             if (currentLanguage === 'en' && !translationIndexReady) {
                 buildTranslationIndexes();
@@ -2865,6 +2898,34 @@
             }
         };
 
+        const setupCollapsibleSection = (toggleId, contentId) => {
+            const toggle = document.getElementById(toggleId);
+            const content = document.getElementById(contentId);
+            if (!toggle || !content) return;
+
+            let isExpanded = false;
+
+            const applyState = () => {
+                toggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                content.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+                content.style.opacity = isExpanded ? '1' : '0';
+                content.style.maxHeight = isExpanded ? `${content.scrollHeight}px` : '0px';
+            };
+
+            toggle.addEventListener('click', () => {
+                isExpanded = !isExpanded;
+                applyState();
+            });
+
+            window.addEventListener('resize', () => {
+                if (isExpanded) {
+                    content.style.maxHeight = `${content.scrollHeight}px`;
+                }
+            });
+
+            applyState();
+        };
+
         const initializeImageLoadingHints = () => {
             document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
                 if (!img.getAttribute('fetchpriority')) {
@@ -3001,6 +3062,8 @@
         initializeScrollReveal();
         initializeImageLoadingHints();
         initializeImagePreload();
+        setupCollapsibleSection('packages-toggle', 'packages-content');
+        setupCollapsibleSection('individual-prices-toggle', 'individual-prices-content');
 
         // Initialize Carousels
         setupCarousel('video-carousel', 'scroll-left-btn', 'scroll-right-btn');
