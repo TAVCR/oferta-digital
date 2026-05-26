@@ -65,11 +65,10 @@
             background-color: #111111;
             background-image:
                 radial-gradient(1200px 800px at 80% -10%, rgba(217, 119, 6, 0.08), transparent 60%),
-                linear-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.075) 1px, transparent 1px);
-            background-size: 100% 100%, 42px 42px, 42px 42px;
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='72' viewBox='0 0 42 72'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.075)' stroke-width='1' d='M21 .5L41.5 12.5V36.5L21 48.5L.5 36.5V12.5Z M21 48.5V71.5M.5 36.5V59.5L21 71.5L41.5 59.5V36.5'/%3E%3C/svg%3E");
+            background-size: 100% 100%, 42px 72px;
             background-position: center;
-            background-attachment: fixed, fixed, fixed;
+            background-attachment: fixed, fixed;
             color: #e5e5e5;
             transition: max-width 0.5s ease, margin 0.5s ease, border-radius 0.5s ease, border 0.5s ease;
         }
@@ -79,12 +78,11 @@
             body {
                 background-image:
                     radial-gradient(1400px 900px at 80% -10%, rgba(217, 119, 6, 0.028), transparent 62%),
-                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.033) 0 1px, transparent 1px 42px),
-                    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.033) 0 1px, transparent 1px 42px),
-                    repeating-linear-gradient(0deg, rgba(217, 119, 6, 0.011) 0 1px, transparent 1px 210px),
-                    repeating-linear-gradient(90deg, rgba(217, 119, 6, 0.011) 0 1px, transparent 1px 210px);
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='72' viewBox='0 0 42 72'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.033)' stroke-width='1' d='M21 .5L41.5 12.5V36.5L21 48.5L.5 36.5V12.5Z M21 48.5V71.5M.5 36.5V59.5L21 71.5L41.5 59.5V36.5'/%3E%3C/svg%3E"),
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='360' viewBox='0 0 210 360'%3E%3Cpath fill='none' stroke='rgba(217,119,6,0.011)' stroke-width='1' d='M105 2.5L207.5 62.5V182.5L105 242.5L2.5 182.5V62.5Z M105 242.5V357.5M2.5 182.5V297.5L105 357.5L207.5 297.5V182.5'/%3E%3C/svg%3E");
+                background-size: 100% 100%, 42px 72px, 210px 360px;
                 background-position: center;
-                background-attachment: scroll, scroll, scroll, scroll, scroll;
+                background-attachment: scroll, scroll, scroll;
             }
         }
 
@@ -389,9 +387,8 @@
             body {
                 background-image:
                     radial-gradient(1200px 800px at 80% -10%, rgba(217, 119, 6, 0.08), transparent 60%),
-                    linear-gradient(rgba(255, 255, 255, 0.031) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.031) 1px, transparent 1px);
-                background-size: 100% 100%, 34px 34px, 34px 34px;
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='58' viewBox='0 0 34 58'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.031)' stroke-width='1' d='M17 .5L33.5 10V29L17 38.5L.5 29V10Z M17 38.5V57.5M.5 29V48L17 57.5L33.5 48V29'/%3E%3C/svg%3E");
+                background-size: 100% 100%, 34px 58px;
             }
             .glass-panel {
                 backdrop-filter: blur(10px);
@@ -1549,12 +1546,12 @@
                 <h2 class="font-display font-bold text-3xl text-white">Casos Web Publicados</h2>
             </div>
             <p class="text-neutral-400 text-sm md:text-base mb-8 max-w-3xl">
-                Dos implementaciones web en producción desarrolladas para clientes, con un enfoque estratégico, creativo y técnico.
+                Tres implementaciones web en producción desarrolladas para clientes, con un enfoque estratégico, creativo y técnico.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <article id="case-aivoxcr" class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
-                    <div class="flex items-center justify-between mb-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                         <span class="case-meta-tag case-meta-tag-primary">Caso destacado</span>
                         <span class="case-meta-tag case-meta-tag-secondary">Sitio en producción</span>
                     </div>
@@ -1573,7 +1570,7 @@
                 </article>
 
                 <article id="case-kiwiglow" class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
-                    <div class="flex items-center justify-between mb-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                         <span class="case-meta-tag case-meta-tag-primary">Caso destacado</span>
                         <span class="case-meta-tag case-meta-tag-secondary">Sitio en producción</span>
                     </div>
@@ -1586,6 +1583,25 @@
                         Diseñamos esta landing de marca con enfoque en claridad comercial, consistencia visual y recorrido de usuario sin fricción.
                     </p>
                     <a href="https://kiwiglowcr.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold transition">
+                        Ver sitio en vivo
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5v14h14" /></svg>
+                    </a>
+                </article>
+
+                <article id="case-pawdrinos" class="glass-panel rounded-2xl p-6 md:p-7 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                        <span class="case-meta-tag case-meta-tag-primary">Caso destacado</span>
+                        <span class="case-meta-tag case-meta-tag-secondary">Sitio en producción</span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-white mb-1">PAWDRINOS</h3>
+                    <div class="mb-4 h-36 md:h-44 w-full rounded-xl border border-neutral-700/70 bg-black/35 overflow-hidden">
+                        <img src="https://pawdrinos.pet/assets/hero-sabi-v2.webp" alt="Vista principal de PAWDRINOS" class="h-full w-full object-cover object-center opacity-90 group-hover:opacity-100 transition" loading="lazy" decoding="async">
+                    </div>
+                    <p class="text-xs text-neutral-500 mb-4">pawdrinos.pet</p>
+                    <p class="text-sm text-neutral-300 mb-6 leading-relaxed">
+                        Construimos una presencia web premium para entrenamiento canino, integrando narrativa de marca, SEO local y una experiencia clara para convertir visitas en consultas.
+                    </p>
+                    <a href="https://pawdrinos.pet/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold transition">
                         Ver sitio en vivo
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5v14h14" /></svg>
                     </a>
@@ -1745,6 +1761,10 @@
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
                 <span class="text-[10px] font-medium uppercase">KIWI</span>
             </a>
+            <a href="#case-pawdrinos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-7-4.35-7-10a4 4 0 017-2.65A4 4 0 0119 11c0 5.65-7 10-7 10z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">PAW</span>
+            </a>
             <a href="#podcast-showcase" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Podcast</span>
@@ -1862,7 +1882,7 @@
             "Fotografía de Producto IA: Transformando píxeles en experiencias de alto nivel": "AI Product Photography: Transforming pixels into high-end experiences",
             "Casos Web Publicados": "Published Web Cases",
             "Selección Final": "Final Selection",
-            "Dos implementaciones web en producción desarrolladas para clientes, con un enfoque estratégico, creativo y técnico.": "Two live web implementations developed for clients, with a strategic, creative, and technical approach.",
+            "Tres implementaciones web en producción desarrolladas para clientes, con un enfoque estratégico, creativo y técnico.": "Three live web implementations developed for clients, with a strategic, creative, and technical approach.",
             "Más allá de lo visual: Ingeniería de audio y narrativa de largo formato": "Beyond the Visuals: Audio Engineering & Long-form Narrative",
             "Exploración de diseño sonoro profundo y estructuras de guion complejas en narrativa de largo formato.": "Exploration of deep sound design and complex script structures in long-form narrative.",
             "Nuestros podcasts y guiones son obra original de Dimensión Interactiva.": "Our podcasts and scripts are original work by Dimensión Interactiva.",
@@ -1870,6 +1890,8 @@
             "Sitio en producción": "Live website",
             "Desarrollamos la arquitectura de mensaje, identidad digital y experiencia orientada a confianza para este servicio especializado.": "We developed the messaging architecture, digital identity, and a trust-oriented experience for this specialized service.",
             "Diseñamos esta landing de marca con enfoque en claridad comercial, consistencia visual y recorrido de usuario sin fricción.": "We designed this brand landing page with a focus on commercial clarity, visual consistency, and a frictionless user journey.",
+            "Construimos una presencia web premium para entrenamiento canino, integrando narrativa de marca, SEO local y una experiencia clara para convertir visitas en consultas.": "We built a premium web presence for canine training, integrating brand narrative, local SEO, and a clear experience designed to turn visits into inquiries.",
+            "Vista principal de PAWDRINOS": "PAWDRINOS main view",
             "Ver sitio en vivo": "View live site",
             "Escuchar Crónicas de Guerra en Apple Podcasts": "Listen to Crónicas de Guerra on Apple Podcasts",
             "Reproducir primer episodio de Crónicas de Guerra": "Play first episode of Crónicas de Guerra",
