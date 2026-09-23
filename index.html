@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dimensión Interactiva | Producción Creativa Digital</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Prebuilt Tailwind CSS: avoids compiling the framework in every visitor's browser. -->
+    <link rel="stylesheet" href="assets/tailwind.min.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,38 +17,6 @@
     <link rel="dns-prefetch" href="//img.youtube.com">
     <link rel="preload" as="image" href="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=League+Spartan:wght@600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Configuración Tailwind Personalizada -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            orange: '#d97706', 
-                            gold: '#f59e0b',
-                            dark: '#111111',   
-                            surface: '#1a1a1a', 
-                            subtle: '#262626',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['League Spartan', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
         :root {
@@ -2982,7 +2950,9 @@
             const saveData = !!connection?.saveData;
             const slowNetwork = saveData || effectiveType.includes('2g') || effectiveType.includes('3g');
             const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-            const maxTotalPreload = slowNetwork ? (isMobile ? 10 : 14) : (isMobile ? 24 : 38);
+            // Keep the first interaction responsive. Native lazy loading handles the
+            // gallery; this queue only warms a small number of near-term images.
+            const maxTotalPreload = slowNetwork ? 4 : 6;
             const maxConcurrentPreloads = slowNetwork ? 1 : 2;
             const useHeadPreloadLinks = !slowNetwork;
 
@@ -3040,24 +3010,21 @@
 
             const warmCriticalImages = () => {
                 warmFromContainer(document.querySelector('header'), 1, 'high');
-                warmFromContainer(document.getElementById('gallery'), slowNetwork ? 5 : 10, 'high');
-                warmFromContainer(document.getElementById('videos'), slowNetwork ? 2 : 4, 'low');
-                warmFromContainer(document.getElementById('shorts'), slowNetwork ? 2 : 4, 'low');
             };
 
             const sectionPreloadPlan = slowNetwork
                 ? {
-                    gallery: { limit: 6, priority: 'high' },
-                    videos: { limit: 3, priority: 'low' },
-                    shorts: { limit: 3, priority: 'low' },
+                    gallery: { limit: 3, priority: 'low' },
+                    videos: { limit: 2, priority: 'low' },
+                    shorts: { limit: 2, priority: 'low' },
                     'web-cases-showcase': { limit: 3, priority: 'low' },
                     contact: { limit: 1, priority: 'low' },
                 }
                 : {
-                    gallery: { limit: 14, priority: 'high' },
-                    videos: { limit: 8, priority: 'low' },
-                    shorts: { limit: 8, priority: 'low' },
-                    'web-cases-showcase': { limit: 8, priority: 'low' },
+                    gallery: { limit: 6, priority: 'low' },
+                    videos: { limit: 3, priority: 'low' },
+                    shorts: { limit: 3, priority: 'low' },
+                    'web-cases-showcase': { limit: 4, priority: 'low' },
                     'real-production-note-section': { limit: 2, priority: 'low' },
                     contact: { limit: 2, priority: 'low' },
                 };
