@@ -351,6 +351,61 @@
             }
         }
 
+        /* Hero builds itself in small narrative beats as it enters the viewport. */
+        html.reveal-ready header .hero-reveal {
+            opacity: 0;
+            transform: translate3d(0, 24px, 0);
+            filter: blur(7px);
+            transition: opacity 0.7s ease, transform 0.82s cubic-bezier(0.22, 1, 0.36, 1), filter 0.72s ease;
+            transition-delay: var(--hero-delay, 0ms);
+        }
+        html.reveal-ready header .hero-reveal.reveal-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            filter: blur(0);
+        }
+        html.reveal-ready header .hero-focus-logo.reveal-visible {
+            animation: hero-rack-focus-logo 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        html.reveal-ready header .hero-focus-title.reveal-visible {
+            animation: hero-rack-focus-title 1.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        html.reveal-ready header .hero-focus-title.reveal-visible .hero-focus-breath {
+            display: inline-block;
+            animation: hero-rack-focus-breath 6.8s ease-in-out 1.75s infinite;
+            will-change: filter, opacity, transform, text-shadow;
+        }
+        @keyframes hero-rack-focus-logo {
+            0% { filter: blur(9px); opacity: 0.35; transform: scale(1.028); }
+            60% { filter: blur(1.5px); opacity: 0.92; transform: scale(1.008); }
+            100% { filter: blur(0); opacity: 1; transform: scale(1); }
+        }
+        @keyframes hero-rack-focus-title {
+            0% { filter: blur(12px); opacity: 0.2; transform: translate3d(0, 14px, 0) scale(1.028); text-shadow: 0 0 26px rgba(217, 119, 6, 0.38); }
+            62% { filter: blur(1.5px); opacity: 0.9; transform: translate3d(0, 2px, 0) scale(1.006); text-shadow: 0 0 11px rgba(217, 119, 6, 0.18); }
+            100% { filter: blur(0); opacity: 1; transform: translate3d(0, 0, 0) scale(1); text-shadow: none; }
+        }
+        @keyframes hero-rack-focus-breath {
+            0%, 100% { filter: blur(0); opacity: 1; transform: scale(1); text-shadow: 0 0 0 rgba(217, 119, 6, 0); }
+            50% { filter: blur(2.2px); opacity: 0.82; transform: scale(1.018); text-shadow: 0 0 18px rgba(217, 119, 6, 0.34); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html.reveal-ready header .hero-reveal,
+            html.reveal-ready header .hero-reveal.reveal-visible {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                transition: none;
+            }
+            html.reveal-ready header .hero-focus-logo.reveal-visible,
+            html.reveal-ready header .hero-focus-title.reveal-visible {
+                animation: none;
+            }
+            html.reveal-ready header .hero-focus-title.reveal-visible .hero-focus-breath {
+                animation: none;
+            }
+        }
+
         @media (max-width: 768px) {
             body {
                 background-image:
@@ -416,6 +471,24 @@
         html.performance-lite .reveal-on-scroll {
             filter: none !important;
         }
+
+        /* Experiment: staggered program cards inspired by the supplied reveals. */
+        html.reveal-ready #packages .program-card.reveal-on-scroll {
+            transform: translate3d(0, -20px, 0) scale(0.985);
+            filter: blur(10px);
+            transition-duration: 0.56s, 0.7s, 0.62s;
+        }
+        html.reveal-ready #packages .program-card.reveal-on-scroll.reveal-visible {
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html.reveal-ready #packages .program-card.reveal-on-scroll,
+            html.reveal-ready #packages .program-card.reveal-on-scroll.reveal-visible {
+                transform: none;
+                filter: none;
+            }
+        }
     </style>
 </head>
 <body class="antialiased pb-24 selection:bg-brand-orange selection:text-white relative">
@@ -445,26 +518,26 @@
         
         <!-- Header / Hero Section -->
         <header class="pt-14 pb-12 md:pb-24 text-center relative animate-fade-in-up">
-            <div class="flex justify-center mb-10">
+            <div class="hero-reveal hero-focus-logo flex justify-center mb-10" data-hero-delay="0">
                 <div class="relative group max-w-full">
                     <div class="absolute -inset-4 bg-brand-orange rounded-full blur-2xl opacity-10 group-hover:opacity-20 transition duration-500"></div>
                     <img loading="eager" fetchpriority="high" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-64 md:h-[26rem] w-auto max-w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]">
                 </div>
             </div>
-            <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 text-white">
-                Todo empieza como un <span class="text-brand-orange">guion</span><span class="text-brand-orange">.</span>
+            <h1 class="hero-reveal hero-focus-title font-display font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 text-white" data-hero-delay="120">
+                <span class="hero-focus-breath">Todo empieza como un <span class="text-brand-orange">guion</span><span class="text-brand-orange">.</span></span>
             </h1>
             
-            <p class="text-base md:text-lg text-brand-orange max-w-xl mx-auto leading-relaxed font-light">
+            <p class="hero-reveal text-base md:text-lg text-brand-orange max-w-xl mx-auto leading-relaxed font-light" data-hero-delay="260">
                 Estrategia creativa, diseño de alto nivel y producción audiovisual construidos desde pensamiento narrativo estructurado.
             </p>
-            <p class="text-base md:text-lg text-white max-w-xl mx-auto leading-relaxed font-light mt-3">
+            <p class="hero-reveal text-base md:text-lg text-white max-w-xl mx-auto leading-relaxed font-light mt-3" data-hero-delay="380">
                 Práctica creativa independiente. Visión unificada. Ejecución senior de principio a fin.
             </p>
-            <p class="text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2">
+            <p class="hero-reveal text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2" data-hero-delay="500">
                 Dimensión Interactiva es una práctica creativa independiente dirigida por una sola persona.
             </p>
-            <p class="text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2">
+            <p class="hero-reveal text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2" data-hero-delay="620">
                 Este sitio fue diseñado y desarrollado íntegramente por Dimensión Interactiva.
             </p>
 
@@ -603,7 +676,7 @@
                     <div class="grid md:grid-cols-3 gap-8 items-start">
                 
                         <!-- Pack 1 (Standard) -->
-                        <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-600 flex flex-col h-full hover:border-neutral-500 transition duration-300 hover:-translate-y-2">
+                        <div class="program-card glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-600 flex flex-col h-full hover:border-neutral-500 transition duration-300 hover:-translate-y-2">
                             <h3 class="font-display font-bold text-2xl text-neutral-300 mb-2">Arranque Digital<br>Para marcas que están listas para ser vistas.</h3>
                             <div id="price-package-starter" class="text-3xl font-bold text-white mb-6">$499</div>
                             <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
@@ -617,7 +690,7 @@
                         </div>
 
                         <!-- Pack 2 (Featured) -->
-                        <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-brand-orange relative transform md:-translate-y-4 z-10 shadow-2xl shadow-black/50 flex flex-col h-full transition duration-300 hover:-translate-y-2 md:hover:-translate-y-6 bg-[#1a1a1a]">
+                        <div class="program-card glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-brand-orange relative transform md:-translate-y-4 z-10 shadow-2xl shadow-black/50 flex flex-col h-full transition duration-300 hover:-translate-y-2 md:hover:-translate-y-6 bg-[#1a1a1a]">
                             <div class="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-widest">Popular</div>
                             <h3 class="font-display font-bold text-3xl text-brand-orange mb-2">Impulso Pyme<br>Para marcas que ya existen pero merecen brillar más.</h3>
                             <div id="price-package-growth" class="text-4xl font-black text-white mb-6">$904</div>
@@ -632,7 +705,7 @@
                         </div>
 
                         <!-- Pack 3 (Premium) -->
-                        <div class="glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-400 flex flex-col h-full hover:border-white transition duration-300 hover:-translate-y-2">
+                        <div class="program-card glass-panel rounded-2xl p-5 sm:p-8 border-t-4 border-neutral-400 flex flex-col h-full hover:border-white transition duration-300 hover:-translate-y-2">
                             <h3 class="font-display font-bold text-2xl text-white mb-2">Presencia Total<br>Para marcas que no quieren dejar nada al azar.</h3>
                             <div id="price-package-total" class="text-3xl font-bold text-white mb-6">$1,122</div>
                             <ul class="space-y-4 mb-8 text-sm text-neutral-400 flex-grow">
@@ -2457,6 +2530,7 @@
                     '#web-cases-showcase article',
                     '#real-production-note-section .glass-panel',
                     '#contact .glass-panel',
+                    'header .hero-reveal',
                 ]
                 : [
                     'main > section > *',
@@ -2468,6 +2542,7 @@
                     '#web-cases-showcase #podcast-showcase',
                     '#real-production-note-section .glass-panel',
                     '#contact .glass-panel',
+                    'header .hero-reveal',
                 ];
 
             const uniqueElements = new Set();
@@ -2480,24 +2555,31 @@
 
             const sectionOrder = Array.from(document.querySelectorAll('main > section'));
 
+            let programCardIndex = 0;
             revealTargets.forEach((element, index) => {
+                const isHeroReveal = element.matches('header .hero-reveal');
+                const isProgramCard = element.matches('#packages .program-card');
                 const isCardLike = element.matches(
                     '#services a.glass-panel, #packages .glass-panel, #individual-prices .glass-panel, #web-cases-showcase article, #gallery .grid > *, #podcast-showcase .grid > *'
                 );
                 const section = element.closest('section');
                 const sectionIndex = section ? Math.max(0, sectionOrder.indexOf(section)) : 0;
                 const chapterDelay = sectionIndex * 22;
-                const staggerDelay = (index % 4) * 55;
+                const staggerDelay = isProgramCard ? programCardIndex++ * 140 : (index % 4) * 55;
                 const horizontalOffset = liteMode ? 0 : (isCardLike ? (index % 2 === 0 ? -12 : 12) : 0);
                 const verticalOffset = liteMode ? 28 : (isCardLike ? 34 : 44);
                 const blurAmount = liteMode ? 0 : (isCardLike ? 2 : 3);
                 const scaleAmount = liteMode ? 0.99 : (isCardLike ? 0.985 : 0.975);
-                element.classList.add('reveal-on-scroll');
-                element.style.setProperty('--reveal-delay', `${chapterDelay + staggerDelay}ms`);
-                element.style.setProperty('--reveal-x', `${horizontalOffset}px`);
-                element.style.setProperty('--reveal-y', `${verticalOffset}px`);
-                element.style.setProperty('--reveal-blur', `${blurAmount}px`);
-                element.style.setProperty('--reveal-scale', String(scaleAmount));
+                if (isHeroReveal) {
+                    element.style.setProperty('--hero-delay', `${element.dataset.heroDelay || 0}ms`);
+                } else {
+                    element.classList.add('reveal-on-scroll');
+                    element.style.setProperty('--reveal-delay', `${chapterDelay + staggerDelay}ms`);
+                    element.style.setProperty('--reveal-x', `${horizontalOffset}px`);
+                    element.style.setProperty('--reveal-y', `${verticalOffset}px`);
+                    element.style.setProperty('--reveal-blur', `${blurAmount}px`);
+                    element.style.setProperty('--reveal-scale', String(scaleAmount));
+                }
             });
 
             if (!('IntersectionObserver' in window)) {
