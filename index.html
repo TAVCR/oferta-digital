@@ -54,37 +54,6 @@
             }
         }
 
-        /* Estilos de Simulación Móvil */
-        html.simulated-mobile body {
-            max-width: 390px;
-            margin: 2rem auto;
-            border: 12px solid #262626;
-            border-radius: 40px;
-            overflow-x: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            min-height: calc(100vh - 4rem);
-            position: relative;
-            background-color: #111111;
-        }
-        
-        html.simulated-mobile #main-nav {
-            width: 100%;
-            max-width: 366px;
-        }
-        
-        html.simulated-mobile .fixed-nav-container {
-            max-width: 366px;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 2.5rem; 
-            border-radius: 999px;
-            justify-content: flex-start !important; 
-        }
-
-        html.simulated-mobile .background-blob {
-            display: none;
-        }
-
         /* Tarjetas minimalistas y elegantes */
         .glass-panel {
             background: linear-gradient(165deg, rgba(36, 36, 36, 0.68), rgba(20, 20, 20, 0.58));
@@ -248,9 +217,44 @@
         /* Consistencia de íconos de trazo */
         #main-nav svg[stroke],
         #services svg[stroke],
-        #contact svg[stroke],
-        #view-toggle svg[stroke] {
+        #contact svg[stroke] {
             stroke-width: 1.8;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 1.25rem;
+            bottom: calc(5.5rem + env(safe-area-inset-bottom));
+            z-index: 60;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.9rem;
+            height: 3.9rem;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: #f5f5f5;
+            box-shadow: none;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-2px);
+            box-shadow: none;
+        }
+        .whatsapp-float:focus-visible {
+            outline: 2px solid #d97706;
+            outline-offset: 3px;
+        }
+        .whatsapp-float .whatsapp-mark {
+            display: block;
+            width: 4.225rem;
+            height: 4.225rem;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .whatsapp-float { transition: none; }
+            .whatsapp-float:hover { transform: none; }
         }
 
         /* Render efficiency for dense media sections */
@@ -367,29 +371,28 @@
         html.reveal-ready header .hero-focus-logo.reveal-visible {
             animation: hero-rack-focus-logo 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
-        html.reveal-ready header .hero-focus-title.reveal-visible {
-            animation: hero-rack-focus-title 1.75s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        html.reveal-ready header .hero-focus-title.reveal-visible .hero-focus-breath {
-            display: inline-block;
-            animation: hero-rack-focus-breath 6.8s ease-in-out 1.75s infinite;
-            will-change: filter, opacity, transform, text-shadow;
+        .hero-focus-title {
+            animation: hero-slide-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+            will-change: clip-path, opacity, transform;
         }
         @keyframes hero-rack-focus-logo {
             0% { filter: blur(9px); opacity: 0.35; transform: scale(1.028); }
             60% { filter: blur(1.5px); opacity: 0.92; transform: scale(1.008); }
             100% { filter: blur(0); opacity: 1; transform: scale(1); }
         }
-        @keyframes hero-rack-focus-title {
-            0% { filter: blur(12px); opacity: 0.2; transform: translate3d(0, 14px, 0) scale(1.028); text-shadow: 0 0 26px rgba(217, 119, 6, 0.38); }
-            62% { filter: blur(1.5px); opacity: 0.9; transform: translate3d(0, 2px, 0) scale(1.006); text-shadow: 0 0 11px rgba(217, 119, 6, 0.18); }
-            100% { filter: blur(0); opacity: 1; transform: translate3d(0, 0, 0) scale(1); text-shadow: none; }
-        }
-        @keyframes hero-rack-focus-breath {
-            0%, 100% { filter: blur(0); opacity: 1; transform: scale(1); text-shadow: 0 0 0 rgba(217, 119, 6, 0); }
-            50% { filter: blur(2.2px); opacity: 0.82; transform: scale(1.018); text-shadow: 0 0 18px rgba(217, 119, 6, 0.34); }
+        @keyframes hero-slide-reveal {
+            0% { clip-path: inset(0 100% 0 0); opacity: 0; transform: translate3d(-16px, 0, 0); }
+            65% { opacity: 1; transform: translate3d(0, 0, 0); }
+            100% { clip-path: inset(0 0 0 0); opacity: 1; transform: translate3d(0, 0, 0); }
         }
         @media (prefers-reduced-motion: reduce) {
+            .hero-focus-title {
+                opacity: 1;
+                transform: none;
+                clip-path: none;
+                animation: none;
+                will-change: auto;
+            }
             html.reveal-ready header .hero-reveal,
             html.reveal-ready header .hero-reveal.reveal-visible {
                 opacity: 1;
@@ -397,11 +400,7 @@
                 filter: none;
                 transition: none;
             }
-            html.reveal-ready header .hero-focus-logo.reveal-visible,
-            html.reveal-ready header .hero-focus-title.reveal-visible {
-                animation: none;
-            }
-            html.reveal-ready header .hero-focus-title.reveal-visible .hero-focus-breath {
+            html.reveal-ready header .hero-focus-logo.reveal-visible {
                 animation: none;
             }
         }
@@ -493,23 +492,17 @@
 </head>
 <body class="antialiased pb-24 selection:bg-brand-orange selection:text-white relative">
 
-    <!-- Toggle View Button (Desktop Only) -->
-    <button id="view-toggle" class="fixed top-6 right-6 z-50 hidden md:flex items-center gap-3 bg-neutral-800/90 backdrop-blur-md border border-neutral-700 p-2 pr-4 rounded-full shadow-2xl hover:bg-neutral-700 transition-all group cursor-pointer">
-        <div class="p-2 bg-brand-orange rounded-full text-white shadow-lg">
-            <svg id="icon-desktop" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            <svg id="icon-mobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-        </div>
-        <div class="flex flex-col items-start">
-            <span class="text-[10px] uppercase tracking-wider text-neutral-400 font-bold">Modo Vista</span>
-            <span id="view-text" class="text-sm font-semibold text-white leading-none">Escritorio</span>
-        </div>
-    </button>
-
     <!-- Language Toggle -->
     <div id="language-toggle" class="fixed top-6 left-6 z-50 flex items-center gap-1 bg-neutral-800/90 backdrop-blur-md border border-neutral-700 p-1 rounded-full shadow-2xl">
         <button type="button" data-lang-option="es" class="lang-option px-3 py-1 rounded-full text-xs font-bold transition bg-brand-orange text-white">ES</button>
         <button type="button" data-lang-option="en" class="lang-option px-3 py-1 rounded-full text-xs font-bold transition text-neutral-300 hover:text-white">EN</button>
     </div>
+
+    <a class="whatsapp-float" href="https://wa.me/50685020909" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp al +506 8502-0909" title="WhatsApp +506 8502-0909">
+        <svg class="whatsapp-mark" viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
+            <path fill="#d97706" d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"/>
+        </svg>
+    </a>
 
     <!-- Luz ambiental muy sutil -->
     <div class="background-blob fixed top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[500px] bg-brand-orange rounded-full mix-blend-screen filter blur-[120px] opacity-[0.08] -z-10 pointer-events-none hidden md:block"></div>
@@ -524,15 +517,15 @@
                     <img loading="eager" fetchpriority="high" decoding="async" src="https://i.postimg.cc/BvBjJLbV/Soluciones-Digitales-Creativas-1.png" alt="Dimensión Interactiva Logo" class="relative h-64 md:h-[26rem] w-auto max-w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]">
                 </div>
             </div>
-            <h1 class="hero-reveal hero-focus-title font-display font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 text-white" data-hero-delay="120">
+            <h1 class="hero-focus-title font-display font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 text-white">
                 <span class="hero-focus-breath">Todo empieza como un <span class="text-brand-orange">guion</span><span class="text-brand-orange">.</span></span>
             </h1>
             
             <p class="hero-reveal text-base md:text-lg text-brand-orange max-w-xl mx-auto leading-relaxed font-light" data-hero-delay="260">
-                Estrategia creativa, diseño de alto nivel y producción audiovisual construidos desde pensamiento narrativo estructurado.
+                Soluciones creativas con IA integrada: diseño gráfico, landing pages y videos para redes sociales.
             </p>
             <p class="hero-reveal text-base md:text-lg text-white max-w-xl mx-auto leading-relaxed font-light mt-3" data-hero-delay="380">
-                Práctica creativa independiente. Visión unificada. Ejecución senior de principio a fin.
+                De la estrategia a la producción, integramos herramientas de vanguardia con dirección creativa y criterio profesional.
             </p>
             <p class="hero-reveal text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed font-light mt-2" data-hero-delay="500">
                 Dimensión Interactiva es una práctica creativa independiente dirigida por una sola persona.
@@ -556,10 +549,13 @@
                         </div>
 
                         <p class="text-neutral-400 text-sm md:text-base text-center max-w-2xl mx-auto mb-8">
-                            Una visión. Diseño, fotografía y video bajo un mismo criterio creativo.
+                            Una visión creativa. Inteligencia artificial integrada en el proceso, del concepto a la ejecución.
                         </p>
                         
                         <div class="text-neutral-300 space-y-6 text-left leading-relaxed mb-10 font-light">
+                            <p>
+                                En diseño gráfico, fotografía, producción audiovisual y desarrollo de landing pages, integramos herramientas de inteligencia artificial a lo largo del proceso y en las etapas donde aportan valor: desde la exploración de ideas y la creación de recursos hasta la producción y adaptación de formatos. La dirección creativa y la revisión profesional guían cada decisión según las necesidades de cada marca.
+                            </p>
                             <p id="why-digital-year-copy">
                                 En 2026, la visibilidad se gana en plataformas mobile-first, video corto y descubrimiento asistido por IA. Los medios tradicionales aún aportan valor, pero el crecimiento real ocurre en ecosistemas digitales donde las personas descubren, comparan y deciden en tiempo real.
                             </p>
@@ -1051,9 +1047,9 @@
                         <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
                             <img loading="lazy" decoding="async" src="https://i.postimg.cc/qRGqtz2V/KAROL-FONSECA-BANNAR-45.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Karol Fonseca">
                         </div>
-                        <!-- Banner Existing 2 -->
+                        <!-- Banner Oldies Forever -->
                         <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/L5jJ4VV5/ROCK-DE-TERROR.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Rock">
+                            <img loading="lazy" decoding="async" src="assets/oldies-forever.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Banner Oldies Forever">
                         </div>
                         <!-- Banner Existing 3 -->
                         <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
@@ -1848,28 +1844,22 @@
         const languageButtons = document.querySelectorAll('[data-lang-option]');
         const languageToggle = document.getElementById('language-toggle');
 
-        const modeLabels = {
-            es: { mobile: 'Móvil', desktop: 'Escritorio' },
-            en: { mobile: 'Mobile', desktop: 'Desktop' },
-        };
-
         const textTranslations = {
-            "Modo Vista": "View Mode",
-            "Escritorio": "Desktop",
             "Todo empieza como un": "Everything starts as a",
             "guion": "script",
             "Elevamos tu": "We elevate your",
             "Marca": "Brand",
             "a la": "to the",
             "Dimensión Digital": "Digital Dimension",
-            "Estrategia creativa, diseño de alto nivel y producción audiovisual construidos desde pensamiento narrativo estructurado.": "Creative strategy, high-end design, and audiovisual production built from structured narrative thinking.",
-            "Práctica creativa independiente. Visión unificada. Ejecución senior de principio a fin.": "Independent creative practice. Unified vision. Senior-level execution, end to end.",
+            "Soluciones creativas con IA integrada: diseño gráfico, landing pages y videos para redes sociales.": "Creative solutions with integrated AI: graphic design, landing pages, and social media videos.",
+            "De la estrategia a la producción, integramos herramientas de vanguardia con dirección creativa y criterio profesional.": "From strategy through production, we integrate cutting-edge tools with creative direction and professional judgment.",
             "Dimensión Interactiva es una práctica creativa independiente dirigida por una sola persona.": "Dimensión Interactiva is an independent creative practice led by one person.",
             "Este sitio fue diseñado y desarrollado íntegramente por Dimensión Interactiva.": "This site was entirely designed and developed by Dimensión Interactiva.",
             "Ver Servicios": "View Services",
             "Contacto": "Contact",
             "Enfoque de trabajo": "Working approach",
-            "Una visión. Diseño, fotografía y video bajo un mismo criterio creativo.": "One vision. Design, photography, and video under one creative direction.",
+            "Una visión creativa. Inteligencia artificial integrada en el proceso, del concepto a la ejecución.": "One creative vision. Artificial intelligence integrated throughout the process, from concept to execution.",
+            "En diseño gráfico, fotografía, producción audiovisual y desarrollo de landing pages, integramos herramientas de inteligencia artificial a lo largo del proceso y en las etapas donde aportan valor: desde la exploración de ideas y la creación de recursos hasta la producción y adaptación de formatos. La dirección creativa y la revisión profesional guían cada decisión según las necesidades de cada marca.": "In graphic design, photography, audiovisual production, and landing page development, we integrate artificial intelligence tools throughout the process and wherever they add value: from exploring ideas and creating assets to production and format adaptation. Creative direction and professional review guide each decision according to each brand's needs.",
             "En 2026, la visibilidad se gana en plataformas mobile-first, video corto y descubrimiento asistido por IA. Los medios tradicionales aún aportan valor, pero el crecimiento real ocurre en ecosistemas digitales donde las personas descubren, comparan y deciden en tiempo real.": "In 2026, visibility is won on mobile-first platforms, short-form video, and AI-assisted discovery. Traditional media still has value, but real growth now happens in digital ecosystems where people discover, compare, and decide in real time.",
             "Los canales digitales eliminan fronteras geográficas y reducen barreras de idioma, abriendo oportunidades globales para marcas locales. En un entorno saturado de contenido, solo una estrategia clara y una ejecución profesional logran captar atención y generar confianza.": "Digital channels remove geographic limits and reduce language barriers, creating global opportunities for local brands. In an environment saturated with content, only clear strategy and professional execution can capture attention and build trust.",
             "Para destacar, tu marca necesita más que presencia: requiere coherencia entre narrativa, identidad visual y adaptación de formato en cada plataforma. Incluso un gran producto puede perder impacto si la comunicación es débil; el storytelling estratégico y la ejecución de alto nivel convierten calidad en resultados.": "To stand out, your brand needs more than presence: it needs consistency across narrative, visual identity, and format adaptation for each platform. Even a great product can lose momentum if the communication is weak; strategic storytelling and high-end execution are what turn quality into results.",
@@ -1969,6 +1959,7 @@
             "Fotografía Automotriz": "Automotive Photography",
             "Sesiones exteriores e interiores con manejo de luz natural y artificial. Composición orientada a destacar líneas, acabados y carácter del vehículo.": "Outdoor and indoor sessions with natural and artificial light control. Composition focused on highlighting lines, finishes, and vehicle character.",
             "Fotografía Inmobiliaria": "Real Estate Photography",
+            "Banner Oldies Forever": "Oldies Forever Banner",
             "Captura de espacios con ángulos y encuadres que maximizan amplitud y atractivo. Edición que equilibra temperatura de color, detalle y luminosidad ambiente.": "Space photography with angles and framing that maximize openness and appeal. Editing balances color temperature, detail, and ambient luminosity.",
             "Producción Audiovisual": "Audiovisual Production",
             "Producción Audio Visual": "Audiovisual Production",
@@ -2287,14 +2278,6 @@
             });
         };
 
-        const syncViewModeLabel = () => {
-            const viewTextNode = document.getElementById('view-text');
-            if (!viewTextNode) return;
-            const isMobileMode = htmlEl.classList.contains('simulated-mobile');
-            const labels = modeLabels[currentLanguage] || modeLabels.es;
-            viewTextNode.innerText = isMobileMode ? labels.mobile : labels.desktop;
-        };
-
         const buildTranslationIndexes = () => {
             if (translationIndexReady) return;
 
@@ -2369,7 +2352,6 @@
             setDynamicCopyright(currentLanguage);
             setDynamicWhyDigitalYearCopy(currentLanguage);
             renderDynamicPrices();
-            syncViewModeLabel();
             setLanguageButtonState();
             localStorage.setItem(languageStorageKey, currentLanguage);
         };
@@ -2892,21 +2874,6 @@
             fitWideVideoFrame();
         });
         toggleWideExpandButtons();
-
-        // View Toggle Logic
-        const viewToggleBtn = document.getElementById('view-toggle');
-        const iconDesktop = document.getElementById('icon-desktop');
-        const iconMobile = document.getElementById('icon-mobile');
-
-        if(viewToggleBtn) {
-            viewToggleBtn.addEventListener('click', () => {
-                htmlEl.classList.toggle('simulated-mobile');
-                const isMobile = htmlEl.classList.contains('simulated-mobile');
-                iconDesktop.classList.toggle('hidden', isMobile);
-                iconMobile.classList.toggle('hidden', !isMobile);
-                syncViewModeLabel();
-            });
-        }
 
         // Form Logic
         const form = document.querySelector('.contact-form');
