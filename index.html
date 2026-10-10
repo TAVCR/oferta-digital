@@ -97,6 +97,20 @@
         #services .service-icon {
             flex-shrink: 0;
         }
+        .concept-web-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+        }
+        @media (min-width: 768px) {
+            .concept-web-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1280px) {
+            .concept-web-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
         #services .service-label {
             display: block;
             flex: 1 1 auto;
@@ -522,7 +536,7 @@
             </h1>
             
             <p class="hero-reveal text-base md:text-lg text-brand-orange max-w-xl mx-auto leading-relaxed font-light" data-hero-delay="260">
-                Soluciones creativas con IA integrada: diseño gráfico, landing pages y videos para redes sociales.
+                Diseño gráfico, diseño y producción web, y videos para redes sociales, con IA integrada en todo el proceso.
             </p>
             <p class="hero-reveal text-base md:text-lg text-white max-w-xl mx-auto leading-relaxed font-light mt-3" data-hero-delay="380">
                 De la estrategia a la producción, integramos herramientas de vanguardia con dirección creativa y criterio profesional.
@@ -554,7 +568,7 @@
                         
                         <div class="text-neutral-300 space-y-6 text-left leading-relaxed mb-10 font-light">
                             <p>
-                                En diseño gráfico, fotografía, producción audiovisual y desarrollo de landing pages, integramos herramientas de inteligencia artificial a lo largo del proceso y en las etapas donde aportan valor: desde la exploración de ideas y la creación de recursos hasta la producción y adaptación de formatos. La dirección creativa y la revisión profesional guían cada decisión según las necesidades de cada marca.
+                                En diseño gráfico, diseño y producción web (incluidas landing pages), fotografía y producción audiovisual, integramos herramientas de inteligencia artificial a lo largo del proceso y en las etapas donde aportan valor: desde la exploración de ideas y la creación de recursos hasta la producción y adaptación de formatos. La dirección creativa y la revisión profesional guían cada decisión según las necesidades de cada marca.
                             </p>
                             <p id="why-digital-year-copy">
                                 En 2026, la visibilidad se gana en plataformas mobile-first, video corto y descubrimiento asistido por IA. Los medios tradicionales aún aportan valor, pero el crecimiento real ocurre en ecosistemas digitales donde las personas descubren, comparan y deciden en tiempo real.
@@ -617,6 +631,13 @@
                         <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     </div>
                     <span class="service-label font-medium text-neutral-200 group-hover:text-white">Producción de Video & Reels</span>
+                </a>
+
+                <a href="#web-cases-showcase" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
+                    <div class="service-icon p-3 bg-neutral-800 rounded-lg group-hover:bg-brand-orange transition-colors duration-300">
+                        <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5.75A1.75 1.75 0 014.75 4h14.5A1.75 1.75 0 0121 5.75v12.5A1.75 1.75 0 0119.25 20H4.75A1.75 1.75 0 013 18.25V5.75zM3 8h18M7 6h.01M10 6h.01m-3 6h10m-10 3h7"></path></svg>
+                    </div>
+                    <span class="service-label font-medium text-neutral-200 group-hover:text-white">Diseño y producción web asistidos por IA</span>
                 </a>
 
                 <!-- Menús para Restaurantes Service Item -->
@@ -1656,6 +1677,82 @@
                 </article>
             </div>
 
+            <div class="mt-14">
+                <div class="flex items-center justify-between mb-5 border-b border-neutral-800 pb-4">
+                    <h2 class="font-display font-bold text-3xl text-white">Diseños web conceptuales</h2>
+                </div>
+                <p class="text-neutral-400 text-sm md:text-base mb-7 max-w-4xl leading-relaxed">
+                    Estas muestras son propuestas conceptuales creadas para explorar posibilidades de diseño y producción web. No corresponden a trabajos contratados ni representan los sitios oficiales de las respectivas marcas.
+                </p>
+                <div class="concept-web-grid gap-5">
+                    <article class="glass-panel rounded-2xl p-4 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                        <span class="case-meta-tag case-meta-tag-secondary inline-flex mb-3">Propuesta conceptual</span>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Innovations Home Decor</h3>
+                        <a href="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/innovations/" target="_blank" rel="noopener noreferrer" class="block group" aria-label="Ver diseño conceptual de Innovations Home Decor">
+                            <div class="aspect-video rounded-xl overflow-hidden border border-neutral-700/70 bg-black/35 mb-4">
+                                <img src="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/innovations/media/hero-conceptual-v1.webp" alt="Vista conceptual de Innovations Home Decor" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" decoding="async">
+                            </div>
+                            <span class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 group-hover:text-brand-orange transition-colors">Ver propuesta conceptual <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+
+                    <article class="glass-panel rounded-2xl p-4 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                        <span class="case-meta-tag case-meta-tag-secondary inline-flex mb-3">Propuesta conceptual</span>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">FEMA Industrial</h3>
+                        <a href="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/fema-industrial/" target="_blank" rel="noopener noreferrer" class="block group" aria-label="Ver diseño conceptual de FEMA Industrial">
+                            <div class="aspect-video rounded-xl overflow-hidden border border-neutral-700/70 bg-black/35 mb-4">
+                                <img src="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/fema-industrial/media/cnc-conceptual-v2.webp" alt="Vista conceptual de FEMA Industrial" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" decoding="async">
+                            </div>
+                            <span class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 group-hover:text-brand-orange transition-colors">Ver propuesta conceptual <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+
+                    <article class="glass-panel rounded-2xl p-4 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                        <span class="case-meta-tag case-meta-tag-secondary inline-flex mb-3">Propuesta conceptual</span>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Novaluce Iluminación</h3>
+                        <a href="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/novaluce/" target="_blank" rel="noopener noreferrer" class="block group" aria-label="Ver diseño conceptual de Novaluce Iluminación">
+                            <div class="aspect-video rounded-xl overflow-hidden border border-neutral-700/70 bg-black/35 mb-4">
+                                <img src="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/novaluce/media/hero-conceptual-v1.webp" alt="Vista conceptual de Novaluce Iluminación" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" decoding="async">
+                            </div>
+                            <span class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 group-hover:text-brand-orange transition-colors">Ver propuesta conceptual <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+
+                    <article class="glass-panel rounded-2xl p-4 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                        <span class="case-meta-tag case-meta-tag-secondary inline-flex mb-3">Propuesta conceptual</span>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Piscinas Atlantik</h3>
+                        <a href="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/piscinas-atlantik/" target="_blank" rel="noopener noreferrer" class="block group" aria-label="Ver diseño conceptual de Piscinas Atlantik">
+                            <div class="aspect-video rounded-xl overflow-hidden border border-neutral-700/70 bg-black/35 mb-4">
+                                <img src="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/piscinas-atlantik/media/hero-conceptual-v1.webp" alt="Vista conceptual de Piscinas Atlantik" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" decoding="async">
+                            </div>
+                            <span class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 group-hover:text-brand-orange transition-colors">Ver propuesta conceptual <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+
+                    <article class="glass-panel rounded-2xl p-4 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                        <span class="case-meta-tag case-meta-tag-secondary inline-flex mb-3">Propuesta conceptual</span>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Mabinsa</h3>
+                        <a href="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/mabinsa/" target="_blank" rel="noopener noreferrer" class="block group" aria-label="Ver diseño conceptual de Mabinsa">
+                            <div class="aspect-video rounded-xl overflow-hidden border border-neutral-700/70 bg-black/35 mb-4">
+                                <img src="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/mabinsa/media/propiedad-v2.webp" alt="Vista conceptual de Mabinsa" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" decoding="async">
+                            </div>
+                            <span class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 group-hover:text-brand-orange transition-colors">Ver propuesta conceptual <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+
+                    <article class="glass-panel rounded-2xl p-4 border border-neutral-800 hover:border-brand-orange/40 transition duration-300">
+                        <span class="case-meta-tag case-meta-tag-secondary inline-flex mb-3">Propuesta conceptual</span>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Tanque Diez</h3>
+                        <a href="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/tanque-diez/" target="_blank" rel="noopener noreferrer" class="block group" aria-label="Ver diseño conceptual de Tanque Diez">
+                            <div class="aspect-video rounded-xl overflow-hidden border border-neutral-700/70 bg-black/35 mb-4">
+                                <img src="https://dimension-muestras-web-octubre.tavocr.chatgpt.site/tanque-diez/media/td-hero.webp" alt="Vista conceptual de Tanque Diez" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy" decoding="async">
+                            </div>
+                            <span class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 group-hover:text-brand-orange transition-colors">Ver propuesta conceptual <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+
         </section>
 
         <section id="real-production-note-section" class="mb-14 md:mb-24">
@@ -1851,7 +1948,7 @@
             "Marca": "Brand",
             "a la": "to the",
             "Dimensión Digital": "Digital Dimension",
-            "Soluciones creativas con IA integrada: diseño gráfico, landing pages y videos para redes sociales.": "Creative solutions with integrated AI: graphic design, landing pages, and social media videos.",
+            "Diseño gráfico, diseño y producción web, y videos para redes sociales, con IA integrada en todo el proceso.": "Graphic design, web design and production, and social media videos, with AI integrated throughout the process.",
             "De la estrategia a la producción, integramos herramientas de vanguardia con dirección creativa y criterio profesional.": "From strategy through production, we integrate cutting-edge tools with creative direction and professional judgment.",
             "Dimensión Interactiva es una práctica creativa independiente dirigida por una sola persona.": "Dimensión Interactiva is an independent creative practice led by one person.",
             "Este sitio fue diseñado y desarrollado íntegramente por Dimensión Interactiva.": "This site was entirely designed and developed by Dimensión Interactiva.",
@@ -1859,7 +1956,7 @@
             "Contacto": "Contact",
             "Enfoque de trabajo": "Working approach",
             "Una visión creativa. Inteligencia artificial integrada en el proceso, del concepto a la ejecución.": "One creative vision. Artificial intelligence integrated throughout the process, from concept to execution.",
-            "En diseño gráfico, fotografía, producción audiovisual y desarrollo de landing pages, integramos herramientas de inteligencia artificial a lo largo del proceso y en las etapas donde aportan valor: desde la exploración de ideas y la creación de recursos hasta la producción y adaptación de formatos. La dirección creativa y la revisión profesional guían cada decisión según las necesidades de cada marca.": "In graphic design, photography, audiovisual production, and landing page development, we integrate artificial intelligence tools throughout the process and wherever they add value: from exploring ideas and creating assets to production and format adaptation. Creative direction and professional review guide each decision according to each brand's needs.",
+            "En diseño gráfico, diseño y producción web (incluidas landing pages), fotografía y producción audiovisual, integramos herramientas de inteligencia artificial a lo largo del proceso y en las etapas donde aportan valor: desde la exploración de ideas y la creación de recursos hasta la producción y adaptación de formatos. La dirección creativa y la revisión profesional guían cada decisión según las necesidades de cada marca.": "In graphic design, web design and production (including landing pages), photography, and audiovisual production, we integrate artificial intelligence tools throughout the process and wherever they add value: from exploring ideas and creating assets to production and format adaptation. Creative direction and professional review guide each decision according to each brand's needs.",
             "En 2026, la visibilidad se gana en plataformas mobile-first, video corto y descubrimiento asistido por IA. Los medios tradicionales aún aportan valor, pero el crecimiento real ocurre en ecosistemas digitales donde las personas descubren, comparan y deciden en tiempo real.": "In 2026, visibility is won on mobile-first platforms, short-form video, and AI-assisted discovery. Traditional media still has value, but real growth now happens in digital ecosystems where people discover, compare, and decide in real time.",
             "Los canales digitales eliminan fronteras geográficas y reducen barreras de idioma, abriendo oportunidades globales para marcas locales. En un entorno saturado de contenido, solo una estrategia clara y una ejecución profesional logran captar atención y generar confianza.": "Digital channels remove geographic limits and reduce language barriers, creating global opportunities for local brands. In an environment saturated with content, only clear strategy and professional execution can capture attention and build trust.",
             "Para destacar, tu marca necesita más que presencia: requiere coherencia entre narrativa, identidad visual y adaptación de formato en cada plataforma. Incluso un gran producto puede perder impacto si la comunicación es débil; el storytelling estratégico y la ejecución de alto nivel convierten calidad en resultados.": "To stand out, your brand needs more than presence: it needs consistency across narrative, visual identity, and format adaptation for each platform. Even a great product can lose momentum if the communication is weak; strategic storytelling and high-end execution are what turn quality into results.",
@@ -1871,6 +1968,7 @@
             "Profesionales": "Professional",
             "Diseño de Logotipos": "Logo Design",
             "Producción de Video & Reels": "Video & Reels Production",
+            "Diseño y producción web asistidos por IA": "AI-assisted web design and production",
             "Menús para Restaurantes": "Restaurant Menus",
             "Fotografía & IA": "Photography & AI",
             "Edición de Audio": "Audio Editing",
@@ -1919,8 +2017,24 @@
             "Creatividad & Precisión": "Creativity & Precision",
             "Fotografía de Producto IA: Transformando píxeles en experiencias de alto nivel": "AI Product Photography: Transforming pixels into high-end experiences",
             "Casos Web Publicados": "Published Web Cases",
+            "Diseños web conceptuales": "Conceptual Web Designs",
             "Selección Final": "Final Selection",
             "Dos implementaciones web en producción desarrolladas para clientes, con un enfoque estratégico, creativo y técnico.": "Two live web implementations developed for clients, with a strategic, creative, and technical approach.",
+            "Estas muestras son propuestas conceptuales creadas para explorar posibilidades de diseño y producción web. No corresponden a trabajos contratados ni representan los sitios oficiales de las respectivas marcas.": "These samples are conceptual proposals created to explore web design and production possibilities. They are not commissioned projects and do not represent the official websites of the respective brands.",
+            "Propuesta conceptual": "Concept proposal",
+            "Ver propuesta conceptual": "View concept proposal",
+            "Ver diseño conceptual de Innovations Home Decor": "View conceptual design for Innovations Home Decor",
+            "Vista conceptual de Innovations Home Decor": "Conceptual view of Innovations Home Decor",
+            "Ver diseño conceptual de FEMA Industrial": "View conceptual design for FEMA Industrial",
+            "Vista conceptual de FEMA Industrial": "Conceptual view of FEMA Industrial",
+            "Ver diseño conceptual de Novaluce Iluminación": "View conceptual design for Novaluce Iluminación",
+            "Vista conceptual de Novaluce Iluminación": "Conceptual view of Novaluce Iluminación",
+            "Ver diseño conceptual de Piscinas Atlantik": "View conceptual design for Piscinas Atlantik",
+            "Vista conceptual de Piscinas Atlantik": "Conceptual view of Piscinas Atlantik",
+            "Ver diseño conceptual de Mabinsa": "View conceptual design for Mabinsa",
+            "Vista conceptual de Mabinsa": "Conceptual view of Mabinsa",
+            "Ver diseño conceptual de Tanque Diez": "View conceptual design for Tanque Diez",
+            "Vista conceptual de Tanque Diez": "Conceptual view of Tanque Diez",
             "Más allá de lo visual: Ingeniería de audio y narrativa de largo formato": "Beyond the Visuals: Audio Engineering & Long-form Narrative",
             "Exploración de diseño sonoro profundo y estructuras de guion complejas en narrativa de largo formato.": "Exploration of deep sound design and complex script structures in long-form narrative.",
             "Nuestros podcasts y guiones son obra original de Dimensión Interactiva.": "Our podcasts and scripts are original work by Dimensión Interactiva.",
