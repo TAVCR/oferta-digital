@@ -502,6 +502,12 @@
                 filter: none;
             }
         }
+        /* Pricing is discoverable in Spanish and hidden in English on all screens. */
+        html[lang="en"] #packages,
+        html[lang="en"] #individual-prices,
+        html[lang="en"] .spanish-pricing-link {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="antialiased pb-24 selection:bg-brand-orange selection:text-white relative">
@@ -618,15 +624,17 @@
                 <h2 class="font-display font-bold text-3xl text-white">Servicios <span class="text-brand-orange">Profesionales</span></h2>
             </div>
 
+            <a href="#packages" class="spanish-pricing-link inline-flex items-center mb-6 px-5 py-3 rounded-full border border-brand-orange text-brand-orange font-semibold hover:bg-brand-orange/10 transition">Ver paquetes y tarifas</a>
+
             <div class="services-grid grid gap-3">
-                <a href="#price-logo-design" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
+                <a href="#gallery-logos" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
                     <div class="service-icon p-3 bg-neutral-800 rounded-lg group-hover:bg-brand-orange transition-colors duration-300">
                         <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                     </div>
                     <span class="service-label font-medium text-neutral-200 group-hover:text-white">Diseño de Logotipos</span>
                 </a>
 
-                <a href="#price-videos" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
+                <a href="#videos" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
                     <div class="service-icon p-3 bg-neutral-800 rounded-lg group-hover:bg-brand-orange transition-colors duration-300">
                         <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     </div>
@@ -648,21 +656,21 @@
                     <span class="service-label font-medium text-neutral-200 group-hover:text-white">Menús para Restaurantes</span>
                 </a>
 
-                <a href="#price-photography-ia" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
+                <a href="#product-photography-ia" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
                     <div class="service-icon p-3 bg-neutral-800 rounded-lg group-hover:bg-brand-orange transition-colors duration-300">
                         <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
                     </div>
                     <span class="service-label font-medium text-neutral-200 group-hover:text-white">Fotografía & IA</span>
                 </a>
 
-                <a href="#price-audio-editing" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
+                <a href="#podcast-showcase" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
                     <div class="service-icon p-3 bg-neutral-800 rounded-lg group-hover:bg-brand-orange transition-colors duration-300">
                         <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                     </div>
                     <span class="service-label font-medium text-neutral-200 group-hover:text-white">Edición de Audio</span>
                 </a>
 
-                 <a href="#price-banners" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
+                 <a href="#gallery-banners" class="service-card glass-panel p-6 rounded-xl flex items-center space-x-4 group min-w-0">
                     <div class="service-icon p-3 bg-neutral-800 rounded-lg group-hover:bg-brand-orange transition-colors duration-300">
                         <svg class="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     </div>
@@ -1766,7 +1774,7 @@
         <!-- Contact Form -->
         <section id="contact" class="mb-20 relative">
             <div class="mb-10 flex flex-wrap justify-center gap-5">
-                <a href="#packages" class="px-8 py-3 btn-primary font-semibold rounded-lg flex items-center gap-2">
+                <a href="#services" class="px-8 py-3 btn-primary font-semibold rounded-lg flex items-center gap-2">
                     Ver Servicios
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 </a>
@@ -1997,7 +2005,7 @@
             "Servicios Individuales": "Individual Services",
             "Personalizado según complejidad": "Customized by complexity",
             "Desde ₡75,400": "From ₡75,400",
-            "Diseño de Menús": "Menu Design | From $350",
+            "Diseño de Menús": "Menu Design",
             "Formatos digitales (QR) y listos para impresión": "Digital (QR) and print-ready formats",
             "Precio Negociable": "From $350",
             "Menú Digital QR — desde $350": "QR Digital Menu — from $350",
@@ -2483,7 +2491,11 @@
             }
 
             const storedLanguage = localStorage.getItem(languageStorageKey);
-            applyLanguage(storedLanguage === 'en' ? 'en' : 'es');
+            const browserLang = (navigator.language || 'es').toLowerCase();
+            const defaultLanguage = storedLanguage
+                ? (storedLanguage === 'en' ? 'en' : 'es')
+                : (browserLang.startsWith('es') ? 'es' : 'en');
+            applyLanguage(defaultLanguage);
         };
 
         const reorderLandingSections = () => {
