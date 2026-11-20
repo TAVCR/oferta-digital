@@ -2729,7 +2729,7 @@
                 document.querySelectorAll(selector).forEach((element) => uniqueElements.add(element));
             });
 
-            const revealTargets = Array.from(uniqueElements).filter((element) => !element.classList.contains('reveal-on-scroll'));
+            const revealTargets = Array.from(uniqueElements).filter((element) => !element.classList.contains('reveal-on-scroll') && !element.matches('section'));
             if (!revealTargets.length) return;
 
             const sectionOrder = Array.from(document.querySelectorAll('main > section'));
