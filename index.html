@@ -853,24 +853,6 @@
                 </div>
             </div>
 
-            <!-- Folletos Imprimibles -->
-            <div class="mb-16" id="gallery-printable-brochures">
-                <div class="glass-panel rounded-2xl p-5 sm:p-8 md:p-10 border border-neutral-800">
-                    <div class="mb-6 text-center">
-                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mb-2">Folletos Imprimibles</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed font-light max-w-2xl mx-auto">Diseño editorial para impresión en alta resolución. Materiales pensados para captar atención y comunicar la propuesta de valor de forma inmediata.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/T30Gxx7x/MONKEY_SLOTH_1_1_2.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Folleto imprimible 1">
-                        </div>
-                        <div class="gallery-item glass-panel rounded-lg overflow-hidden cursor-pointer group border border-neutral-800">
-                            <img loading="lazy" decoding="async" src="https://i.postimg.cc/0QW01zmf/TUCAN.png" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" alt="Folleto imprimible 2">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
              <!-- Gastronomic Photos (Updated with New Images) -->
              <div class="mb-16" id="gallery-gastronomic-photos">
                 <div class="glass-panel rounded-2xl p-5 sm:p-8 md:p-10 border border-neutral-800">
@@ -1951,13 +1933,13 @@
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Portafolio</span>
             </a>
-            <a href="#videos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
-                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
-                <span class="text-[10px] font-medium uppercase">Videos</span>
-            </a>
             <a href="#shorts" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                 <span class="text-[10px] font-medium uppercase">Shorts</span>
+            </a>
+            <a href="#videos" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
+                <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
+                <span class="text-[10px] font-medium uppercase">Videos</span>
             </a>
             <a href="#web-conceptual-designs" class="flex-shrink-0 snap-center flex flex-col items-center justify-center min-w-[80px] py-2 rounded-xl text-neutral-500 hover:text-white hover:bg-white/5 transition group">
                 <svg class="w-5 h-5 mb-1 group-hover:text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M3 12h18M3 19h18"/></svg>
@@ -2570,11 +2552,9 @@
             const gallery = document.getElementById('gallery');
             const contact = document.getElementById('contact');
             const banners = document.getElementById('gallery-banners');
-            const realEstate = document.getElementById('gallery-real-estate');
             const videos = document.getElementById('videos');
             const shorts = document.getElementById('shorts');
             const webCases = document.getElementById('web-cases-showcase');
-            const realProductionNoteSection = document.getElementById('real-production-note-section');
 
             if (main && header && gallery) {
                 main.insertBefore(gallery, header.nextSibling);
@@ -2602,8 +2582,8 @@
                 shorts.classList.add('mb-0');
 
                 mediaRow.appendChild(mediaTitle);
-                mediaRow.appendChild(videos);
                 mediaRow.appendChild(shorts);
+                mediaRow.appendChild(videos);
                 banners.insertAdjacentElement('afterend', mediaRow);
             } else if (banners && videos) {
                 banners.insertAdjacentElement('afterend', videos);
@@ -2618,11 +2598,21 @@
                 });
             }
 
-            if (realEstate && webCases) {
-                realEstate.insertAdjacentElement('afterend', webCases);
-                if (realProductionNoteSection) {
-                    webCases.insertAdjacentElement('afterend', realProductionNoteSection);
-                }
+            if (gallery && webCases) {
+                const podcast = document.getElementById('podcast-showcase');
+                const conceptual = document.getElementById('web-conceptual-designs').parentElement.parentElement;
+                webCases.before(podcast);
+                webCases.prepend(conceptual);
+                conceptual.classList.replace('mt-14', 'mb-10');
+
+                const portfolioOrder = [
+                    'gallery-banners', 'media-showcase-row', 'gallery-menus',
+                    'web-cases-showcase', 'gallery-gastronomic-photos', 'gallery-people-photos',
+                    'product-photography-ia', 'gallery-logos',
+                    'gallery-restoration', 'gallery-vehicles', 'gallery-real-estate',
+                    'podcast-showcase', 'real-production-note-section',
+                ];
+                portfolioOrder.forEach((id) => gallery.appendChild(document.getElementById(id)));
             }
         };
 
