@@ -2811,21 +2811,50 @@
             }
         };
 
+        let imageModalTimer;
+        let imageModalClosing = false;
+
+        const showImageModal = (src) => {
+            clearTimeout(imageModalTimer);
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            imageModalTimer = setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        };
+
+        const hideImageModal = () => {
+            clearTimeout(imageModalTimer);
+            modal.classList.add('opacity-0');
+            imageModalTimer = setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.parentElement.addEventListener('click', () => {
-                modal.classList.remove('hidden');
-                setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
-                modalImg.src = img.src;
+                if (imageModalClosing || history.state?.portfolioImage) return;
+                history.pushState({ ...history.state, portfolioImage: img.src }, '');
+                showImageModal(img.src);
             });
         });
 
-        const hideModal = () => {
-            modal.classList.add('opacity-0');
-            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        const closeImageModal = () => {
+            if (imageModalClosing || !history.state?.portfolioImage) return;
+            imageModalClosing = true;
+            history.back();
         };
 
-        closeBtn.addEventListener('click', hideModal);
-        modal.addEventListener('click', (e) => { if(e.target === modal) hideModal(); });
+        window.addEventListener('popstate', (event) => {
+            imageModalClosing = false;
+            if (event.state?.portfolioImage) {
+                showImageModal(event.state.portfolioImage);
+            } else if (!modal.classList.contains('hidden')) {
+                hideImageModal();
+            }
+        });
+
+        if (history.state?.portfolioImage) showImageModal(history.state.portfolioImage);
+        closeBtn.addEventListener('click', closeImageModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) closeImageModal();
+        });
 
         const restoreInlineVideo = (element) => {
             if (!element) return;
@@ -2982,6 +3011,7 @@
         if (audioModal) audioModal.addEventListener('click', (e) => { if (e.target === audioModal) hideAudioModal(); });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
+                closeImageModal();
                 hideVideoModal();
                 hideVideoModalWide();
                 hideAudioModal();
