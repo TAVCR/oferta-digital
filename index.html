@@ -1054,11 +1054,11 @@
                     <div class="grid grid-cols-2 gap-4">
                         <!-- ZULAY Review -->
                         <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                            <img loading="lazy" decoding="async" src="assets/zulay-review-4x5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Reseña de producto ZULAY">
+                            <img loading="lazy" decoding="async" src="assets/zulay-review-4x5.webp" class="w-full h-full object-contain transition duration-500 opacity-80 group-hover:opacity-100" alt="Reseña de producto ZULAY">
                         </div>
                         <!-- ZULAY Product Infographic -->
                         <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
-                            <img loading="lazy" decoding="async" src="assets/zulay-infographic-4x5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100" alt="Infografía de producto ZULAY">
+                            <img loading="lazy" decoding="async" src="assets/zulay-infographic-4x5.webp" class="w-full h-full object-contain transition duration-500 opacity-80 group-hover:opacity-100" alt="Infografía de producto ZULAY">
                         </div>
                         <!-- Banner KiwiGlow Gira Mayo 1 -->
                         <div class="gallery-item aspect-[4/5] glass-panel rounded-lg overflow-hidden cursor-pointer relative group border border-neutral-800">
@@ -1725,7 +1725,7 @@
 
             <div class="mt-14">
                 <div class="flex items-center justify-between mb-5 border-b border-neutral-800 pb-4">
-                    <h2 id="web-conceptual-designs" class="font-display font-bold text-3xl text-white">Diseños web conceptuales</h2>
+                    <h2 id="web-conceptual-designs" tabindex="-1" class="font-display font-bold text-3xl text-white">Diseños web conceptuales</h2>
                 </div>
                 <p class="text-neutral-400 text-sm md:text-base mb-7 max-w-4xl leading-relaxed">
                     Estas muestras son propuestas conceptuales creadas para explorar posibilidades de diseño y producción web. No corresponden a trabajos contratados ni representan los sitios oficiales de las respectivas marcas.
@@ -3286,6 +3286,16 @@
 
         // Reorder Sections + Infinite Bottom Carousel + Language System
         reorderLandingSections();
+        document.getElementById('main-nav').addEventListener('click', (event) => {
+            const link = event.target.closest('a[href="#web-conceptual-designs"]');
+            if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+            const heading = document.getElementById('web-conceptual-designs');
+            heading.focus({ preventScroll: true });
+            window.scrollTo({ top: heading.getBoundingClientRect().top + window.scrollY - 16, behavior: 'instant' });
+        });
+
         setupInfiniteBottomNav();
         initializeLanguageSystem();
         initializeCurrencySystem();
