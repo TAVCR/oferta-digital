@@ -1234,16 +1234,16 @@
                 <!-- Video Carousel (Removed scroll-smooth class for JS control) -->
                 <div id="video-carousel" class="flex overflow-x-auto space-x-6 pb-8 hide-scrollbar snap-x">
                     
-                    <!-- Selenios Beta Final2 Azul -->
+                    <!-- Selenios Hyperframes Spline -->
                     <div class="snap-center flex-shrink-0 w-72 md:w-96 glass-panel p-3 rounded-xl border border-neutral-800">
-                        <div class="video-container relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openWideVideo(event, 'loIlYgTzjZA')">
-                            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/loIlYgTzjZA/hqdefault.jpg" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Selenios Beta Final2 Azul">
+                        <div class="video-container relative pt-[56.25%] rounded-lg overflow-hidden h-full flex items-center bg-black cursor-pointer group" onclick="openWideVideo(event, 'assets/selenios-spline-horizontal.mp4')">
+                            <img loading="lazy" decoding="async" src="assets/selenios-spline-horizontal.webp" class="absolute top-0 left-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300" alt="Selenios Hyperframes Spline">
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
                                     <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                            <button class="expand-btn expand-16x9 absolute top-2 right-2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-md p-2.5 backdrop-blur-sm" onclick="openWideVideo(event, 'loIlYgTzjZA')" aria-label="Agrandar video Selenios Beta Final2 Azul">
+                            <button class="expand-btn expand-16x9 absolute top-2 right-2 z-10 bg-black/70 hover:bg-black/90 text-white rounded-md p-2.5 backdrop-blur-sm" onclick="openWideVideo(event, 'assets/selenios-spline-horizontal.mp4')" aria-label="Agrandar video Selenios Hyperframes Spline">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
                             </button>
                         </div>
@@ -2940,7 +2940,12 @@
             videoModalWide.classList.remove('hidden');
             videoModalWide.classList.remove('opacity-0');
             setTimeout(() => { videoModalWide.classList.remove('opacity-0'); }, 10);
-            videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+            if (videoId === 'assets/selenios-spline-horizontal.mp4') {
+                videoModalWideFrame.innerHTML = '<video class="w-full h-full" controls autoplay playsinline preload="metadata" aria-label="Selenios Hyperframes Spline"></video>';
+                videoModalWideFrame.firstElementChild.src = videoId;
+            } else {
+                videoModalWideFrame.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+            }
             lockScroll();
             fitWideVideoFrame();
             enterFullscreen(videoModalWide).finally(() => {
